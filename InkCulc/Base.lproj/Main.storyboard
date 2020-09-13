@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tpy-26-5Lr">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="bananaslipplus.otf">
+            <string>bananaslipplus</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Top View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="TopViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ugX-7W-Pe3">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sfa-3y-Zt1" customClass="CustomTableViewCell" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sfa-3y-Zt1" id="Fow-6s-VYY">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="fup-4m-nfl"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="MHy-ny-AyM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ugX-7W-Pe3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1E3-Mf-eBj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ugX-7W-Pe3" secondAttribute="bottom" id="OZy-0U-8e8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ugX-7W-Pe3" secondAttribute="trailing" id="Sj3-tz-GJt"/>
+                            <constraint firstItem="ugX-7W-Pe3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dHW-VM-j0i"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="w1M-wH-vXR"/>
+                    <connections>
+                        <outlet property="tableView" destination="ugX-7W-Pe3" id="atb-Sl-fVx"/>
+                        <segue destination="CLM-b8-tff" kind="show" identifier="addItem" id="KXQ-Ns-UnE"/>
+                        <segue destination="X5u-JD-zum" kind="show" identifier="editGearset" id="6zv-t0-BNs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="987" y="-1135"/>
+        </scene>
+        <!--Add Item View Controller-->
+        <scene sceneID="Xvl-Br-mm1">
+            <objects>
+                <viewController id="CLM-b8-tff" customClass="AddItemViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZBb-pG-8iW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ix9-jg-r8r">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vbn-Da-NYC">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mgM-TV-mxI" customClass="CustomCollectionViewCell" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="msm-7y-Vxw" customClass="CustomCollectionViewCell" customModule="IKA_Cul_" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="CLM-b8-tff" id="T88-sy-QtB"/>
+                                    <outlet property="delegate" destination="CLM-b8-tff" id="wkj-t5-yuU"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ix9-jg-r8r" secondAttribute="bottom" id="NU4-aW-Ggh"/>
+                            <constraint firstItem="ix9-jg-r8r" firstAttribute="top" secondItem="Pfv-Kh-T4k" secondAttribute="top" id="Ohl-Xd-wjn"/>
+                            <constraint firstItem="ix9-jg-r8r" firstAttribute="trailing" secondItem="Pfv-Kh-T4k" secondAttribute="trailing" id="XjW-3l-2W7"/>
+                            <constraint firstItem="ix9-jg-r8r" firstAttribute="leading" secondItem="Pfv-Kh-T4k" secondAttribute="leading" id="svA-4n-Wku"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pfv-Kh-T4k"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="thG-I3-Lfq"/>
+                    <connections>
+                        <outlet property="collectionView" destination="ix9-jg-r8r" id="aRe-pG-9bl"/>
+                        <segue destination="zjj-8X-EBC" kind="show" identifier="setGearpower" id="CVx-TV-Vbd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PuR-91-Ni5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1859" y="-402"/>
+        </scene>
+        <!--Set Gearpower View Controller-->
+        <scene sceneID="BkT-yJ-7Yh">
+            <objects>
+                <viewController id="zjj-8X-EBC" customClass="SetGearpowerViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w2b-Am-IRc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-11-hPl" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
+                                <rect key="frame" x="62" y="24" width="290" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="uqn-Gb-OGl"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-ik-pYy" customClass="GearpowerKeyboardView" customModule="IKA_Cul_" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="613" width="414" height="283"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-vO-SEg">
+                                <rect key="frame" x="187.5" y="236" width="39" height="46"/>
+                                <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="24"/>
+                                <state key="normal" title="決定">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButton:" destination="zjj-8X-EBC" eventType="touchUpInside" id="ieR-8D-cWL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JP6-11-hPl" firstAttribute="centerX" secondItem="w2b-Am-IRc" secondAttribute="centerX" id="2Gp-Xv-Jks"/>
+                            <constraint firstItem="JP6-11-hPl" firstAttribute="top" secondItem="zWl-av-I67" secondAttribute="top" constant="24" id="9wB-QF-LgT"/>
+                            <constraint firstItem="g0d-vO-SEg" firstAttribute="centerX" secondItem="w2b-Am-IRc" secondAttribute="centerX" id="LaU-ZA-mQY"/>
+                            <constraint firstItem="g0d-vO-SEg" firstAttribute="top" secondItem="JP6-11-hPl" secondAttribute="bottom" constant="12" id="Z6H-RO-L1O"/>
+                            <constraint firstItem="JP6-11-hPl" firstAttribute="width" secondItem="w2b-Am-IRc" secondAttribute="width" multiplier="0.7" id="uyL-Hz-r2q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zWl-av-I67"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jw5-Lt-zlV"/>
+                    <connections>
+                        <outlet property="gearpowerKeyboard" destination="wbk-ik-pYy" id="0Mr-at-IXe"/>
+                        <outlet property="gearpowerView" destination="JP6-11-hPl" id="h9y-Kd-xVM"/>
+                        <segue destination="X5u-JD-zum" kind="show" identifier="gearsetDetail" id="G81-F5-FZ6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MPx-eE-gLV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2638" y="-402"/>
+        </scene>
+        <!--Gearset Detail View Controller-->
+        <scene sceneID="Lbp-jW-HBL">
+            <objects>
+                <viewController id="X5u-JD-zum" customClass="GearsetDetailViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wkw-dO-bHA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Id0-9M-ZQe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Hs-eX-rMO" customClass="WeaponSetImageView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="18" width="168.5" height="135"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="5Hs-eX-rMO" secondAttribute="height" multiplier="5:4" id="IYT-4i-otu"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOW-iU-uLL" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="210.5" y="18" width="185.5" height="148.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="WOW-iU-uLL" secondAttribute="height" multiplier="5:4" id="FuI-Wy-gfc"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ohi-0n-YAc" customClass="MainWeaponInfoView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="255" width="366" height="138"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0pg-AE-Wpi" customClass="SubWeaponInfoView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="430" width="366" height="115"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOm-UY-vIN" customClass="SpecialWeaponInfoView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="584" width="352" height="133"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="width" secondItem="5Hs-eX-rMO" secondAttribute="width" multiplier="1.1" id="3Rs-Ja-yFo"/>
+                                    <constraint firstItem="5Hs-eX-rMO" firstAttribute="top" secondItem="lv9-Ch-sC4" secondAttribute="top" constant="18" id="GxK-oq-FHo"/>
+                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="leading" secondItem="5Hs-eX-rMO" secondAttribute="trailing" constant="18" id="cfb-tZ-Evs"/>
+                                    <constraint firstItem="5Hs-eX-rMO" firstAttribute="leading" secondItem="Id0-9M-ZQe" secondAttribute="leading" constant="24" id="m9O-9j-iRw"/>
+                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="top" secondItem="lv9-Ch-sC4" secondAttribute="top" constant="18" id="nQf-SZ-WCg"/>
+                                    <constraint firstItem="qjE-x2-6pn" firstAttribute="trailing" secondItem="WOW-iU-uLL" secondAttribute="trailing" constant="18" id="sI0-en-YJv"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="lv9-Ch-sC4"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="qjE-x2-6pn"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Id0-9M-ZQe" firstAttribute="top" secondItem="C8s-q4-YhV" secondAttribute="top" id="4Au-F0-TOc"/>
+                            <constraint firstItem="Id0-9M-ZQe" firstAttribute="leading" secondItem="C8s-q4-YhV" secondAttribute="leading" id="JxT-lb-uoW"/>
+                            <constraint firstAttribute="bottom" secondItem="Id0-9M-ZQe" secondAttribute="bottom" id="ZWw-An-h9g"/>
+                            <constraint firstItem="Id0-9M-ZQe" firstAttribute="trailing" secondItem="C8s-q4-YhV" secondAttribute="trailing" id="nIc-03-En1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="C8s-q4-YhV"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="0MC-gT-fEI"/>
+                    <connections>
+                        <outlet property="gearpowerView" destination="WOW-iU-uLL" id="d3g-aJ-l7n"/>
+                        <outlet property="mainWeaponInfoView" destination="Ohi-0n-YAc" id="55Y-Im-NRy"/>
+                        <outlet property="scrollView" destination="Id0-9M-ZQe" id="hfY-N5-XCW"/>
+                        <outlet property="specialWeaponInfoView" destination="fOm-UY-vIN" id="YuP-RS-Wov"/>
+                        <outlet property="subWeaponInfoView" destination="0pg-AE-Wpi" id="lnn-HY-4mu"/>
+                        <outlet property="weaponSetImageView" destination="5Hs-eX-rMO" id="M43-1b-k6j"/>
+                        <segue destination="zjj-8X-EBC" kind="show" identifier="changeGearpower" id="Gbz-Tr-4ng"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cgx-1e-9Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3635" y="-1135"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U5o-hT-b30">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tpy-26-5Lr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ydm-be-ZjY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="18"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="776-fW-jmJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="drK-tL-Yu6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="200" y="-1135"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="G81-F5-FZ6"/>
+        <segue reference="Gbz-Tr-4ng"/>
+    </inferredMetricsTieBreakers>
+</document>
