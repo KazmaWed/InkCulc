@@ -1,7 +1,7 @@
 import UIKit
 
 class SpecialWeaponInfoView: UIView {
-
+    
     let topLabel = UILabel()
     var keyLabels:[UILabel] = []
     var valueLabels:[UILabel] = []
@@ -12,8 +12,8 @@ class SpecialWeaponInfoView: UIView {
         removeElements()
         
         let specialWeaponName = weapon.special
-//        let specialWeaponNum = inkApi.subWeaponNum(of: weapon)
-//        let subWeaponInfo = inkApi.specialInfo[specialWeaponNum]
+        //        let specialWeaponNum = inkApi.subWeaponNum(of: weapon)
+        //        let subWeaponInfo = inkApi.specialInfo[specialWeaponNum]
         
         var keyLabelWidth:CGFloat = 0
         var labelY:CGFloat = 0
@@ -53,7 +53,7 @@ class SpecialWeaponInfoView: UIView {
         let infoRaw = inkApi.specialInfo
         if let info = inkApi.dict(keysAndStringValues: infoRaw)[specialWeaponName] {
             for (key, value) in info {
-
+                
                 let keyLabel = UILabel()
                 keyLabel.text = key
                 keyLabel.sizeToFit()
@@ -118,5 +118,5 @@ class SpecialWeaponInfoView: UIView {
         buttons = []
         
     }
-
+    
 }
