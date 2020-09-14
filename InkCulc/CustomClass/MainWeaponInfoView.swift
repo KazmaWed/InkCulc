@@ -84,12 +84,27 @@ class MainWeaponInfoView: UIView {
             
         }
         
+        if mainWeaponInfo!.mainPowerUpKey != "" {
+            let detailButton = UIButton()
+            detailButton.setTitle(">", for: .normal)
+            detailButton.setTitleColor(UIColor.darkText, for: .normal)
+            detailButton.contentHorizontalAlignment = .right
+            detailButton.frame.size.width = self.frame.size.width
+            detailButton.frame.size.height = keyLabels[7].frame.size.height
+            detailButton.frame.origin.y = keyLabels[7].frame.origin.y
+            detailButton.tag = 0
+            buttons.append(detailButton)
+        }
+        
         //----------ラベルをビューに追加・ビューのサイズ----------
         
         self.addSubview(topLabel)
         for n in 0...keyLabels.count - 1 {
             self.addSubview(keyLabels[n])
             self.addSubview(valueLabels[n])
+        }
+        for button in buttons {
+            self.addSubview(button)
         }
         self.frame.size.height = valueLabels.last!.frame.origin.y + valueLabels.last!.frame.size.height
         
@@ -141,7 +156,7 @@ class MainWeaponInfoView: UIView {
         
         
     }
-    
+
     func removeElements() {
         
         topLabel.removeFromSuperview()

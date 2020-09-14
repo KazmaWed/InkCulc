@@ -84,6 +84,12 @@ class GearsetDetailViewController: UIViewController {
                                           width: infoViewWidth,
                                           height: mainWeaponInfoView.frame.size.height)
         
+        if mainWeaponInfoView.buttons.count != 0 {
+            mainWeaponInfoView.buttons[0].addTarget(self,
+                                                    action: #selector(showGearpowerEffect(sender:)),
+                                                    for: .touchUpInside)
+        }
+            
         subWeaponInfoView.set(weapon: weapon!)
         let subWeaponInfoY = mainWeaponInfoView.frame.origin.y + mainWeaponInfoView.frame.size.height + infoViewInset
         subWeaponInfoView.frame = CGRect(x: infoViewInset, y: subWeaponInfoY,
@@ -118,14 +124,14 @@ class GearsetDetailViewController: UIViewController {
             
             //変更ボタン
             let barButtonItem = UIBarButtonItem(title: "ギア変更", style: .done, target: self,
-                                                action: #selector(editBarButtonTapped(_:)))
+                                                action: #selector(editBarButtonTapped(sender:)))
             self.navigationItem.rightBarButtonItems = [barButtonItem]
             
         } else if fromSetGearpowerViewController {
             
             //保存ボタン
             let barButtonItem = UIBarButtonItem(title: "保存", style: .done, target: self,
-                                                action: #selector(saveBarButtonTapped(_:)))
+                                                action: #selector(saveBarButtonTapped(sender:)))
             self.navigationItem.rightBarButtonItems = [barButtonItem]
             
         }
@@ -136,14 +142,16 @@ class GearsetDetailViewController: UIViewController {
     //--------------------画面遷移--------------------
     
     
-    @objc func editBarButtonTapped(_ sender: UIBarButtonItem) {
-        
+    @objc func editBarButtonTapped(sender: UIBarButtonItem) {
         performSegue(withIdentifier: "changeGearpower", sender: self)
-        
+    }
+    
+    @objc func showGearpowerEffect(sender:UIButton) {
+        performSegue(withIdentifier: "showGearpowerEffect", sender: self)
     }
     
     //保存ボタン
-    @objc func saveBarButtonTapped(_ sender: UIBarButtonItem) {
+    @objc func saveBarButtonTapped(sender: UIBarButtonItem) {
         
         let gearSet = Gearset(weapon: weapon!)
         gearSet.gearpowerNames = gearpowerNames!
@@ -173,6 +181,11 @@ class GearsetDetailViewController: UIViewController {
                 self.gearset!.gearpowerNames = changedNames
                 Static.gearsets[self.gearset!.id!] = self.gearset!
             }
+            
+        } else if segue.identifier == "showGearpowerEffect" {
+            
+            let next = segue.destination as! GearpowerEffectViewController
+            next.weapon = weapon
             
         }
         

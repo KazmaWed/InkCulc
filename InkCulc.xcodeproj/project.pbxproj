@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		472D0200250FC07000ED75F6 /* GearpowerEffectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472D01FF250FC07000ED75F6 /* GearpowerEffectViewController.swift */; };
 		474B1394250357DF00283F32 /* GearpowerFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B1393250357DF00283F32 /* GearpowerFrameView.swift */; };
 		474B13962503675700283F32 /* SetGearpowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B13952503675700283F32 /* SetGearpowerViewController.swift */; };
 		474B13982503D0A700283F32 /* GearpowerKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474B13972503D0A700283F32 /* GearpowerKeyboardView.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		472D01FF250FC07000ED75F6 /* GearpowerEffectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearpowerEffectViewController.swift; sourceTree = "<group>"; };
 		474B1384250245B600283F32 /* IKA Cul.Debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "IKA Cul.Debug.entitlements"; sourceTree = "<group>"; };
 		474B1393250357DF00283F32 /* GearpowerFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearpowerFrameView.swift; sourceTree = "<group>"; };
 		474B13952503675700283F32 /* SetGearpowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGearpowerViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				475855D02501C9F700AD5FFF /* AddItemViewController.swift */,
 				474B13952503675700283F32 /* SetGearpowerViewController.swift */,
 				474B139D25060E3600283F32 /* GearsetDetailViewController.swift */,
+				472D01FF250FC07000ED75F6 /* GearpowerEffectViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				479CD0EB24FF75240037250D /* AppDelegate.swift in Sources */,
 				479CD0ED24FF75240037250D /* SceneDelegate.swift in Sources */,
 				475855D12501C9F700AD5FFF /* AddItemViewController.swift in Sources */,
+				472D0200250FC07000ED75F6 /* GearpowerEffectViewController.swift in Sources */,
 				474B1394250357DF00283F32 /* GearpowerFrameView.swift in Sources */,
 				475855CB25007C1D00AD5FFF /* InkAPIClass.swift in Sources */,
 				475018C7250A04BB00B1504B /* WeaponSetImageView.swift in Sources */,

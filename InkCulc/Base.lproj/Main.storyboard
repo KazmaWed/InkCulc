@@ -117,11 +117,11 @@
             <objects>
                 <viewController id="zjj-8X-EBC" customClass="SetGearpowerViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w2b-Am-IRc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-11-hPl" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
-                                <rect key="frame" x="62" y="112" width="290" height="200"/>
+                                <rect key="frame" x="62" y="24" width="290" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="uqn-Gb-OGl"/>
@@ -133,7 +133,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-vO-SEg">
-                                <rect key="frame" x="187.5" y="324" width="39" height="46"/>
+                                <rect key="frame" x="187.5" y="236" width="39" height="46"/>
                                 <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="24"/>
                                 <state key="normal" title="決定">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -158,33 +158,97 @@
                         <outlet property="gearpowerKeyboard" destination="wbk-ik-pYy" id="0Mr-at-IXe"/>
                         <outlet property="gearpowerView" destination="JP6-11-hPl" id="h9y-Kd-xVM"/>
                         <segue destination="X5u-JD-zum" kind="show" identifier="gearsetDetail" id="G81-F5-FZ6"/>
+                        <segue destination="lCf-Su-s8E" kind="show" identifier="showGearpowerEffect" id="K5d-aA-X6z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPx-eE-gLV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2638" y="-402"/>
         </scene>
-        <!--View Controller-->
+        <!--Gearpower Effect View Controller-->
         <scene sceneID="9gf-UP-99J">
             <objects>
-                <viewController id="lCf-Su-s8E" sceneMemberID="viewController">
+                <viewController id="lCf-Su-s8E" customClass="GearpowerEffectViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P3u-l3-Ogu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ギアパワー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1e-Re-1bw">
+                                <rect key="frame" x="18" y="12" width="86" height="31"/>
+                                <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="バリュー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYN-3r-A2a">
+                                <rect key="frame" x="333" y="12" width="63" height="28"/>
+                                <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tx2-LC-IeE">
+                                <rect key="frame" x="0.0" y="51" width="414" height="791"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="EUo-Pe-W5F" detailTextLabel="I7E-eg-Tcc" style="IBUITableViewCellStyleValue1" id="uWo-2g-Z0W">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uWo-2g-Z0W" id="feT-UK-WlA">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EUo-Pe-W5F">
+                                                    <rect key="frame" x="20" y="10" width="38" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I7E-eg-Tcc">
+                                                    <rect key="frame" x="343.5" y="10" width="50.5" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lCf-Su-s8E" id="Pdp-11-5Qs"/>
+                                    <outlet property="delegate" destination="lCf-Su-s8E" id="c88-OD-Lmd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="w1e-Re-1bw" firstAttribute="leading" secondItem="BlG-z9-rfx" secondAttribute="leading" constant="18" id="1Un-3v-UP0"/>
+                            <constraint firstItem="w1e-Re-1bw" firstAttribute="top" secondItem="BlG-z9-rfx" secondAttribute="top" constant="12" id="Fa7-aK-paH"/>
+                            <constraint firstItem="HYN-3r-A2a" firstAttribute="top" secondItem="BlG-z9-rfx" secondAttribute="top" constant="12" id="LIe-IJ-giS"/>
+                            <constraint firstItem="BlG-z9-rfx" firstAttribute="trailing" secondItem="HYN-3r-A2a" secondAttribute="trailing" constant="18" id="REo-Oe-Rmb"/>
+                            <constraint firstAttribute="bottom" secondItem="tx2-LC-IeE" secondAttribute="bottom" id="UXg-pw-5IY"/>
+                            <constraint firstItem="tx2-LC-IeE" firstAttribute="leading" secondItem="BlG-z9-rfx" secondAttribute="leading" id="YLw-mL-3nt"/>
+                            <constraint firstItem="tx2-LC-IeE" firstAttribute="top" secondItem="w1e-Re-1bw" secondAttribute="bottom" constant="8" id="cOm-TT-UtJ"/>
+                            <constraint firstItem="tx2-LC-IeE" firstAttribute="trailing" secondItem="BlG-z9-rfx" secondAttribute="trailing" id="ejb-hm-jHR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BlG-z9-rfx"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Pg8-rI-mDL"/>
+                    <connections>
+                        <outlet property="tableView" destination="tx2-LC-IeE" id="mfN-OZ-tXw"/>
+                        <outlet property="valueKey" destination="HYN-3r-A2a" id="IEW-d8-lr0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6H-sB-OYc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4472" y="-402"/>
+            <point key="canvasLocation" x="4469.5652173913049" y="-402.45535714285711"/>
         </scene>
         <!--Gearset Detail View Controller-->
         <scene sceneID="Lbp-jW-HBL">
             <objects>
                 <viewController id="X5u-JD-zum" customClass="GearsetDetailViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wkw-dO-bHA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Id0-9M-ZQe">
@@ -256,6 +320,7 @@
                         <outlet property="subWeaponInfoView" destination="0pg-AE-Wpi" id="lnn-HY-4mu"/>
                         <outlet property="weaponSetImageView" destination="5Hs-eX-rMO" id="M43-1b-k6j"/>
                         <segue destination="zjj-8X-EBC" kind="show" identifier="changeGearpower" id="Gbz-Tr-4ng"/>
+                        <segue destination="lCf-Su-s8E" kind="show" identifier="showGearpowerEffect" id="14A-FL-mdv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgx-1e-9Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -301,6 +366,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="G81-F5-FZ6"/>
-        <segue reference="CVx-TV-Vbd"/>
+        <segue reference="K5d-aA-X6z"/>
+        <segue reference="Gbz-Tr-4ng"/>
     </inferredMetricsTieBreakers>
 </document>
