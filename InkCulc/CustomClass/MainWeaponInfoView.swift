@@ -97,20 +97,6 @@ class MainWeaponInfoView: UIView {
     
     func increasedLabelHighlight(gearpower: [String:Int]) {
         
-//        if mainPowerUpKey == "damage" && mainPowerUpGearPoint > 0 {
-//            //ダメージのラベルのindex
-//            let labelNum = 0
-//
-//            //上昇後の値取得
-//            let increasedDamage = mainWeaponInfo!.getIncreasedValue(gearpowerPoint: mainPowerUpGearPoint)
-//
-//            //ラベルの値・色変更
-//            keyLabels[labelNum].textColor = UIColor.red
-//            valueLabels[labelNum].textColor = UIColor.red
-//            valueLabels[labelNum].text = String(increasedDamage)
-//            valueLabels[labelNum].sizeToFit()
-//        }
-        
         let gearpowerPoints = [gearpower["インク効率アップ(メイン)"]!,
                                gearpower["ヒト移動速度アップ"]!,
                                gearpower["イカダッシュ速度アップ"]!]

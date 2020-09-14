@@ -27,8 +27,7 @@ class SpecialWeaponInfoView: UIView {
         topLabel.sizeToFit()
         
         //ダメージ
-        let damagesRaw = inkApi.specialDamage
-        if let damages = inkApi.dict(keysAndNumValues: damagesRaw)[specialWeaponName] {
+        if let damages = inkApi.specialDamage(of: weapon) {
             for (key, value) in damages {
                 
                 let keyLabel = UILabel()

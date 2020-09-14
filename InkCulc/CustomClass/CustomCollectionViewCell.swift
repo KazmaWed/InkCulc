@@ -9,7 +9,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     
     func set(weapon:Weapon) {
         
-        let weaponIndex = inkApi.weaponNum(of: weapon)!
+        let weaponIndex = inkApi.weaponNum(of: weapon)
         var weaponNameString = weapon.name
         if weapon.collectionName! != "" {
             weaponNameString = weapon.collectionName!

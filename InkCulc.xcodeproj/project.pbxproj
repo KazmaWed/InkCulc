@@ -27,6 +27,7 @@
 		479CD0F224FF75240037250D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479CD0F024FF75240037250D /* Main.storyboard */; };
 		479CD0F424FF75260037250D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 479CD0F324FF75260037250D /* Assets.xcassets */; };
 		479CD0F724FF75260037250D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479CD0F524FF75260037250D /* LaunchScreen.storyboard */; };
+		47BAE2DA250F0FEC00732A53 /* MainDamageCulcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BAE2D9250F0FEC00732A53 /* MainDamageCulcView.swift */; };
 		47FED9E2250A0B33005EA56A /* MainWeaponInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FED9E1250A0B33005EA56A /* MainWeaponInfoView.swift */; };
 		47FED9E4250A231F005EA56A /* SubWeaponInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FED9E3250A231F005EA56A /* SubWeaponInfoView.swift */; };
 		47FED9E6250A655A005EA56A /* SpecialWeaponInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FED9E5250A655A005EA56A /* SpecialWeaponInfoView.swift */; };
@@ -57,6 +58,7 @@
 		479CD0F324FF75260037250D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		479CD0F624FF75260037250D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		479CD0F824FF75260037250D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47BAE2D9250F0FEC00732A53 /* MainDamageCulcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDamageCulcView.swift; sourceTree = "<group>"; };
 		47FED9E1250A0B33005EA56A /* MainWeaponInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeaponInfoView.swift; sourceTree = "<group>"; };
 		47FED9E3250A231F005EA56A /* SubWeaponInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubWeaponInfoView.swift; sourceTree = "<group>"; };
 		47FED9E5250A655A005EA56A /* SpecialWeaponInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialWeaponInfoView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				47FED9E1250A0B33005EA56A /* MainWeaponInfoView.swift */,
 				47FED9E3250A231F005EA56A /* SubWeaponInfoView.swift */,
 				47FED9E5250A655A005EA56A /* SpecialWeaponInfoView.swift */,
+				47BAE2D9250F0FEC00732A53 /* MainDamageCulcView.swift */,
 				475855CA25007C1D00AD5FFF /* InkAPIClass.swift */,
 			);
 			path = CustomClass;
@@ -295,6 +298,7 @@
 				475855BB24FF881100AD5FFF /* Struct.swift in Sources */,
 				47FED9E2250A0B33005EA56A /* MainWeaponInfoView.swift in Sources */,
 				479CD0EF24FF75240037250D /* TopViewController.swift in Sources */,
+				47BAE2DA250F0FEC00732A53 /* MainDamageCulcView.swift in Sources */,
 				474B139E25060E3600283F32 /* GearsetDetailViewController.swift in Sources */,
 				479CD0EB24FF75240037250D /* AppDelegate.swift in Sources */,
 				479CD0ED24FF75240037250D /* SceneDelegate.swift in Sources */,

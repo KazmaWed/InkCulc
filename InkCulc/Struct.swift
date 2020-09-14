@@ -96,4 +96,20 @@ class KeysAndValues:Codable {
     let name:String
     let keys:String
     let values:String
+    
+    func dict() -> [String:String] {
+        
+        var output:[String:String] = [:]
+        
+        let keyArray = keys.split(separator: ",")
+        let valueArray = values.split(separator: ",")
+        
+        for n in 0...keyArray.count - 1 {
+            output.updateValue(String(valueArray[n]),
+                               forKey: String(keyArray[n]))
+        }
+        
+        return output
+    }
+    
 }

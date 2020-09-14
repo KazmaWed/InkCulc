@@ -26,7 +26,15 @@ class GearsetDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        //ブキ基本情報ビュー
         setInfoViews()
+        
+        //ダメージテーブル
+        setDamageTable()
+        
+        //スクロールビューコンテンツサイズ
+        let contentSize = mainDamageCulcView.frame.origin.y + mainDamageCulcView.frame.size.height
+        scrollView.contentSize = CGSize(width: view.frame.size.width, height: contentSize)
         
         let gearpowerPoints = gearpowerView.gearpowerPoint()
         mainWeaponInfoView.increasedLabelHighlight(gearpower: gearpowerPoints)
@@ -47,6 +55,7 @@ class GearsetDetailViewController: UIViewController {
     @IBOutlet weak var mainWeaponInfoView: MainWeaponInfoView!
     @IBOutlet weak var subWeaponInfoView: SubWeaponInfoView!
     @IBOutlet weak var specialWeaponInfoView: SpecialWeaponInfoView!
+    @IBOutlet weak var mainDamageCulcView: MainDamageCulcView!
     
     var weapon:Weapon?
     var gearpowerNames:[[String]]?
@@ -62,6 +71,7 @@ class GearsetDetailViewController: UIViewController {
     //--------------------メソッド--------------------
     
     
+    //メイン・サブ・スペシャルの基本情報ビュー
     func setInfoViews() {
         
         let infoViewInset:CGFloat = 24
@@ -86,8 +96,19 @@ class GearsetDetailViewController: UIViewController {
                                              width: infoViewWidth,
                                              height: specialWeaponInfoView.frame.size.height)
         
-        let contentSize = specialWeaponInfoView.frame.origin.y + subWeaponInfoView.frame.size.height + infoViewInset
-        scrollView.contentSize = CGSize(width: view.frame.size.width, height: contentSize)
+    }
+    
+    //ダメージテーブル
+    func setDamageTable() {
+        
+        let infoViewInset:CGFloat = 24
+        let infoViewWidth = view.frame.size.width - infoViewInset * 2
+        
+        let gearpowerPoint = gearpowerView.gearpowerPoint()
+        mainDamageCulcView.culc(weapon: weapon!, gearpowerPoint: gearpowerPoint)
+        mainDamageCulcView.size(width: infoViewWidth)
+        mainDamageCulcView.frame.origin.x = infoViewInset
+        mainDamageCulcView.frame.origin.y = specialWeaponInfoView.frame.origin.y + specialWeaponInfoView.frame.size.height + infoViewInset
         
     }
     

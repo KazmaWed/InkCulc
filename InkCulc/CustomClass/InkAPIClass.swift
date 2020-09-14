@@ -9,9 +9,9 @@ class InkAPI {
     var weaponImages:[UIImage] = []
     var mainWeaponInfo:[MainWeaponInfo] = []
     var subWeaponInfo:[SubWeaponInfo] = []
-    var bombDamage:[KeysAndValues] = []
+    var bombDamageRaw:[KeysAndValues] = []
     var specialInfo:[KeysAndValues] = []
-    var specialDamage:[KeysAndValues] = []
+    var specialDamageRaw:[KeysAndValues] = []
     
     var ifError = false
     
@@ -37,9 +37,9 @@ class InkAPI {
                         self.weaponList = self.weaponInfo!.weaponList
                         self.mainWeaponInfo = self.weaponInfo!.mainWeaponInfo
                         self.subWeaponInfo = self.weaponInfo!.subWeaponInfo
-                        self.bombDamage = self.weaponInfo!.bombDamage
+                        self.bombDamageRaw = self.weaponInfo!.bombDamage
                         self.specialInfo = self.weaponInfo!.specialInfo
-                        self.specialDamage = self.weaponInfo!.specialDamage
+                        self.specialDamageRaw = self.weaponInfo!.specialDamage
                         closure()
                     } catch let error {
                         self.ifError = true
@@ -81,7 +81,7 @@ class InkAPI {
     }
     
     //ブキのインデックス取得
-    func weaponNum(of:Weapon) -> Int? {
+    func weaponNum(of:Weapon) -> Int {
         var weaponNum:Int?
         
         for n in 0...weaponList.count - 1 {
@@ -90,11 +90,7 @@ class InkAPI {
             }
         }
         
-        if weaponNum != nil {
-            return weaponNum
-        } else {
-            return nil
-        }
+        return weaponNum!
     }
     //メイン武器のインデックス取得
     func mainWeaponNum(of:Weapon) -> Int {
@@ -181,8 +177,8 @@ class InkAPI {
     
     func increasedValues(of:Weapon) -> [Int:Double] {
         
-        let weaponNum = self.weaponNum(of: of)
-        let rowValues = mainWeaponInfo[weaponNum!].increasedValues
+        let mainWeaponNum = self.mainWeaponNum(of: of)
+        let rowValues = mainWeaponInfo[mainWeaponNum].increasedValues
         let stringArray = rowValues.split(separator: ",")
         
         var doubleArray:[Int:Double] = [:]
@@ -208,6 +204,66 @@ class InkAPI {
         return outputDict
     }
     
+    func bombDamage(of weapon:Weapon) -> [(String,Double)]? {
+        
+        //出力用タプル配列(ダメージ小さい順)
+        var output:[(String, Double)]?
+        //出力前の辞書(ダメージソート前の値格納)
+        var numberDict:[String:Double] = [:]
+        
+        let subName = weapon.sub
+        
+        for bomb in bombDamageRaw {
+            if bomb.name == subName {
+                let rawDict = bomb.dict()
+                for eachone in rawDict {
+                    numberDict[eachone.key] = Double(Int(Double(eachone.value)! * 10)) / 10
+                }
+                break
+            }
+        }
+        
+        //サブがボムじゃない時はnilを返す
+        guard numberDict != [:] else { return nil }
+        
+        //辞書をソートしてタプル配列に変換
+        output = numberDict.sorted(by: { a, b  -> Bool in
+            return a.value < b.value
+        })
+        
+        return output!
+    }
+    
+    func specialDamage(of weapon: Weapon) -> [(String,Double)]? {
+        
+        //出力用タプル配列(ダメージ小さい順)
+        var output:[(String, Double)]?
+        //出力前の辞書(ダメージソート前の値格納)
+        var numberDict:[String:Double] = [:]
+        
+        let specialName = weapon.special
+        
+        for special in specialDamageRaw {
+            if special.name == specialName {
+                let rawDict = special.dict()
+                for eachone in rawDict {
+                    numberDict[eachone.key] = Double(Int(Double(eachone.value)! * 10)) / 10
+                }
+                break
+            }
+        }
+        
+        //スペシャルが攻撃系じゃない時はnilを返す
+        guard numberDict != [:] else { return nil }
+        
+        //辞書をソートしてタプル配列に変換
+        output = numberDict.sorted(by: { a, b  -> Bool in
+            return a.value < b.value
+        })
+        
+        return output!
+        
+    }
     
     func dict(keysAndNumValues:[KeysAndValues]) -> [String:[String:Double]]{
         

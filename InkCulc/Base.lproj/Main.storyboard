@@ -117,11 +117,11 @@
             <objects>
                 <viewController id="zjj-8X-EBC" customClass="SetGearpowerViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w2b-Am-IRc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-11-hPl" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
-                                <rect key="frame" x="62" y="24" width="290" height="200"/>
+                                <rect key="frame" x="62" y="112" width="290" height="200"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="uqn-Gb-OGl"/>
@@ -133,7 +133,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-vO-SEg">
-                                <rect key="frame" x="187.5" y="236" width="39" height="46"/>
+                                <rect key="frame" x="187.5" y="324" width="39" height="46"/>
                                 <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="24"/>
                                 <state key="normal" title="決定">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -164,12 +164,27 @@
             </objects>
             <point key="canvasLocation" x="2638" y="-402"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="9gf-UP-99J">
+            <objects>
+                <viewController id="lCf-Su-s8E" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P3u-l3-Ogu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="BlG-z9-rfx"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K6H-sB-OYc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4472" y="-402"/>
+        </scene>
         <!--Gearset Detail View Controller-->
         <scene sceneID="Lbp-jW-HBL">
             <objects>
                 <viewController id="X5u-JD-zum" customClass="GearsetDetailViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wkw-dO-bHA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Id0-9M-ZQe">
@@ -190,17 +205,22 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ohi-0n-YAc" customClass="MainWeaponInfoView" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="255" width="366" height="138"/>
+                                        <rect key="frame" x="24" y="208" width="366" height="106"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0pg-AE-Wpi" customClass="SubWeaponInfoView" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="430" width="366" height="115"/>
+                                        <rect key="frame" x="24" y="322" width="366" height="115"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14G-xF-fyA" customClass="MainDamageCulcView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="562" width="366" height="118"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOm-UY-vIN" customClass="SpecialWeaponInfoView" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="584" width="352" height="133"/>
+                                        <rect key="frame" x="24" y="445" width="366" height="109"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
@@ -229,6 +249,7 @@
                     <navigationItem key="navigationItem" id="0MC-gT-fEI"/>
                     <connections>
                         <outlet property="gearpowerView" destination="WOW-iU-uLL" id="d3g-aJ-l7n"/>
+                        <outlet property="mainDamageCulcView" destination="14G-xF-fyA" id="TLT-Ir-KZ8"/>
                         <outlet property="mainWeaponInfoView" destination="Ohi-0n-YAc" id="55Y-Im-NRy"/>
                         <outlet property="scrollView" destination="Id0-9M-ZQe" id="hfY-N5-XCW"/>
                         <outlet property="specialWeaponInfoView" destination="fOm-UY-vIN" id="YuP-RS-Wov"/>
@@ -239,7 +260,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgx-1e-9Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3635" y="-1135"/>
+            <point key="canvasLocation" x="3634.7826086956525" y="-1135.0446428571429"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ETW-tv-I80">
+            <objects>
+                <viewController id="FFq-xL-kvh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PRc-bh-C5S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="whe-tH-gLh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I5S-wn-ynA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4471" y="-1135"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U5o-hT-b30">
@@ -265,6 +301,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="G81-F5-FZ6"/>
-        <segue reference="Gbz-Tr-4ng"/>
+        <segue reference="CVx-TV-Vbd"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,10 +7,9 @@ class CustomTableViewCell: UITableViewCell {
     
     func set(weapon:Weapon) {
         //ブキ番号
-        if let weaponIndex = inkApi.weaponNum(of: weapon) {
-            itemImageView.image = inkApi.weaponImages[weaponIndex]
-            itemNameLabel.text = inkApi.weaponList[weaponIndex].name
-        }
+        let weaponIndex = inkApi.weaponNum(of: weapon)
+        itemImageView.image = inkApi.weaponImages[weaponIndex]
+        itemNameLabel.text = inkApi.weaponList[weaponIndex].name
         
     }
     

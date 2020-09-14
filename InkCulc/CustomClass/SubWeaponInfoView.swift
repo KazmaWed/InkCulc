@@ -27,8 +27,7 @@ class SubWeaponInfoView: UIView {
         topLabel.sizeToFit()
         
         //ダメージ
-        let damagesRaw = inkApi.bombDamage
-        if let damages = inkApi.dict(keysAndNumValues: damagesRaw)[subWeaponName] {
+        if let damages = inkApi.bombDamage(of: weapon) {
             for (key, value) in damages {
                 
                 let keyLabel = UILabel()
@@ -45,7 +44,6 @@ class SubWeaponInfoView: UIView {
                 
                 keyLabels.append(keyLabel)
                 valueLabels.append(valueLabel)
-                
             }
         }
         
