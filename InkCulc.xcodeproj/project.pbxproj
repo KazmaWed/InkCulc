@@ -22,6 +22,7 @@
 		475855D12501C9F700AD5FFF /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475855D02501C9F700AD5FFF /* AddItemViewController.swift */; };
 		475855DA2502102100AD5FFF /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475855D82502102100AD5FFF /* CustomCollectionViewCell.swift */; };
 		475855DB2502102100AD5FFF /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475855D92502102100AD5FFF /* CustomCollectionViewCell.xib */; };
+		4796DA97251096B200D4EE80 /* DamageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4796DA96251096B200D4EE80 /* DamageTableViewController.swift */; };
 		479CD0EB24FF75240037250D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CD0EA24FF75240037250D /* AppDelegate.swift */; };
 		479CD0ED24FF75240037250D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CD0EC24FF75240037250D /* SceneDelegate.swift */; };
 		479CD0EF24FF75240037250D /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CD0EE24FF75240037250D /* TopViewController.swift */; };
@@ -52,6 +53,7 @@
 		475855D02501C9F700AD5FFF /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		475855D82502102100AD5FFF /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		475855D92502102100AD5FFF /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		4796DA96251096B200D4EE80 /* DamageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageTableViewController.swift; sourceTree = "<group>"; };
 		479CD0E724FF75240037250D /* IKA Cul..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IKA Cul..app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		479CD0EA24FF75240037250D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		479CD0EC24FF75240037250D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				474B13952503675700283F32 /* SetGearpowerViewController.swift */,
 				474B139D25060E3600283F32 /* GearsetDetailViewController.swift */,
 				472D01FF250FC07000ED75F6 /* GearpowerEffectViewController.swift */,
+				4796DA96251096B200D4EE80 /* DamageTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4796DA97251096B200D4EE80 /* DamageTableViewController.swift in Sources */,
 				475855C824FFA10A00AD5FFF /* CustomTableViewCell.swift in Sources */,
 				475855DA2502102100AD5FFF /* CustomCollectionViewCell.swift in Sources */,
 				474B13962503675700283F32 /* SetGearpowerViewController.swift in Sources */,

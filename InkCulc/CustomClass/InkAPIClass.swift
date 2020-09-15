@@ -171,7 +171,6 @@ class InkAPI {
         
     }
     
-    
     //--------------------json変換メソッド--------------------
     
     
@@ -234,6 +233,41 @@ class InkAPI {
         return output!
     }
     
+    func damageArray(damageArrayRaw:[KeysAndValues]) -> [[(String,String,Double)]] {
+        
+        var output:[[(String,String,Double)]] = []
+        
+        for damages in damageArrayRaw {
+            
+            let name = damages.name
+            var newArray:[(String,String,Double)] = []
+            
+            let keys = damages.keys.split(separator: ",")
+            let values = damages.values.split(separator: ",")
+            
+            for n in 0...keys.count - 1 {
+                
+                let key = String(keys[n])
+                let value = Double(values[n])!
+                if value >= 10 {
+                    let newTaple = (name, key, value)
+                    newArray.append(newTaple)
+                }
+                    
+            }
+            
+            //ソート
+            let sortedArray:[(String,String,Double)] = newArray.sorted(by: { a, b -> Bool in
+                return a.2 < b.2
+            })
+            
+            output.append(sortedArray)
+        }
+        
+        return output
+        
+    }
+    
     func specialDamage(of weapon: Weapon) -> [(String,Double)]? {
         
         //出力用タプル配列(ダメージ小さい順)
@@ -265,40 +299,15 @@ class InkAPI {
         
     }
     
-    func dict(keysAndNumValues:[KeysAndValues]) -> [String:[String:Double]]{
-        
-        var outputDict:[String:[String:Double]] = [:]
-        
-        for n in 0...keysAndNumValues.count - 1 {
-            
-            let name = keysAndNumValues[n].name
-            let keys = keysAndNumValues[n].keys.split(separator: ",")
-            let values = keysAndNumValues[n].values.split(separator: ",")
-            let valuesCount = values.count
-            
-            var outputInfo:[String:Double] = [:]
-            for n in 0...valuesCount - 1 {
-                let key = String(keys[n])
-                let value = Double(values[n])!
-                outputInfo.updateValue(value, forKey: key)
-            }
-            
-            outputDict.updateValue(outputInfo, forKey: name)
-            
-        }
-        
-        return outputDict
-    }
-    
-    func dict(keysAndStringValues:[KeysAndValues]) -> [String:[String:String]] {
+    func specialInfoDict() -> [String:[String:String]] {
         
         var outputDict:[String:[String:String]] = [:]
         
-        for n in 0...keysAndStringValues.count - 1 {
+        for n in 0...specialInfo.count - 1 {
             
-            let name = keysAndStringValues[n].name
-            let keys = keysAndStringValues[n].keys.split(separator: ",")
-            let values = keysAndStringValues[n].values.split(separator: ",")
+            let name = specialInfo[n].name
+            let keys = specialInfo[n].keys.split(separator: ",")
+            let values = specialInfo[n].values.split(separator: ",")
             let valuesCount = values.count
             
             var outputInfo:[String:String] = [:]

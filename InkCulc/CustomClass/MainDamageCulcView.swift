@@ -15,6 +15,8 @@ class MainDamageCulcView: UIView {
     var damageLabels:[UILabel] = []
     var remainingHpLabels:[UILabel] = []
     var decisiveAttackLabels:[[UILabel]] = []
+    var buttons:[UIButton] = []
+    var thresholds:[Double] = []
     
     func culc(weapon:Weapon, gearpowerPoint:[String:Int]) {
         
@@ -152,6 +154,19 @@ class MainDamageCulcView: UIView {
                     decisiveAttackLabels[n].last!.sizeToFit()
                 }
             }
+            
+            //全ダメージテーブルボタン
+            if n > 0 {
+                let button = UIButton()
+                button.setTitle("すべてのダメージ ＞", for: .normal)
+                button.setTitleColor(UIColor.systemBlue, for: .normal)
+                button.sizeToFit()
+                button.tag = n - 1
+                buttons.append(button)
+                
+                thresholds.append(remainingHps[n])
+            }
+            
 
         }
         
@@ -175,8 +190,15 @@ class MainDamageCulcView: UIView {
                 for m in 0...decisiveAttackLabels[n].count - 1 {
                     let decisiveAttackLabelX = width - decisiveAttackLabels[n][m].frame.size.width
                     decisiveAttackLabels[n][m].frame.origin = CGPoint(x: decisiveAttackLabelX, y: labelY)
-                    labelY += decisiveAttackLabels[n][m].frame.size.height + labelGap
+                    labelY += decisiveAttackLabels[n][m].frame.size.height + labelGap - 8
                 }
+            }
+            
+            if n > 0 {
+                let m = n - 1
+                let buttonX = width - buttons[m].frame.size.width
+                buttons[m].frame.origin = CGPoint(x: buttonX, y: labelY)
+                labelY += buttons[m].frame.size.height + labelGap
             }
                 
         }
@@ -191,7 +213,13 @@ class MainDamageCulcView: UIView {
             for label in decisiveAttackLabels[n] {
                 self.addSubview(label)
             }
+            
+            if n > 0 {
+                let m = n - 1
+                self.addSubview(buttons[m])
+            }
         }
+        
         
         self.frame.size.height =  labelY
         
@@ -210,9 +238,14 @@ class MainDamageCulcView: UIView {
                 label.removeFromSuperview()
             }
         }
+        for button in buttons {
+            button.removeFromSuperview()
+        }
         damageLabels = []
         remainingHpLabels = []
         decisiveAttackLabels = []
+        buttons = []
+        thresholds = []
         
     }
     

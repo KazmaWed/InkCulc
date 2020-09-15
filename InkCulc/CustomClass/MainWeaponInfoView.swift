@@ -11,7 +11,7 @@ class MainWeaponInfoView: UIView {
     
     func set(weapon: Weapon) {
         
-        //
+        //初期化
         removeElements()
         
         let mainWeaponNum = inkApi.mainWeaponNum(of: weapon)

@@ -65,6 +65,8 @@ class GearsetDetailViewController: UIViewController {
     var fromTopViewController = false
     var fromSetGearpowerViewController = false
     
+    var tappedButtonTag = 0
+    
     var infoViewsAppeared = false
     
     
@@ -85,11 +87,10 @@ class GearsetDetailViewController: UIViewController {
                                           height: mainWeaponInfoView.frame.size.height)
         
         if mainWeaponInfoView.buttons.count != 0 {
-            mainWeaponInfoView.buttons[0].addTarget(self,
-                                                    action: #selector(showGearpowerEffect(sender:)),
+            mainWeaponInfoView.buttons[0].addTarget(self, action: #selector(showGearpowerEffect(sender:)),
                                                     for: .touchUpInside)
         }
-            
+        
         subWeaponInfoView.set(weapon: weapon!)
         let subWeaponInfoY = mainWeaponInfoView.frame.origin.y + mainWeaponInfoView.frame.size.height + infoViewInset
         subWeaponInfoView.frame = CGRect(x: infoViewInset, y: subWeaponInfoY,
@@ -115,6 +116,12 @@ class GearsetDetailViewController: UIViewController {
         mainDamageCulcView.size(width: infoViewWidth)
         mainDamageCulcView.frame.origin.x = infoViewInset
         mainDamageCulcView.frame.origin.y = specialWeaponInfoView.frame.origin.y + specialWeaponInfoView.frame.size.height + infoViewInset
+        
+        if mainDamageCulcView.buttons.count != 0 {
+            for button in mainDamageCulcView.buttons {
+                button.addTarget(self, action: #selector(showDamageTable(sender:)), for: .touchUpInside)
+            }
+        }
         
     }
     
@@ -148,6 +155,11 @@ class GearsetDetailViewController: UIViewController {
     
     @objc func showGearpowerEffect(sender:UIButton) {
         performSegue(withIdentifier: "showGearpowerEffect", sender: self)
+    }
+    
+    @objc func showDamageTable(sender:UIButton) {
+        tappedButtonTag = sender.tag
+        performSegue(withIdentifier: "showDamageTable", sender: self)
     }
     
     //保存ボタン
@@ -186,6 +198,12 @@ class GearsetDetailViewController: UIViewController {
             
             let next = segue.destination as! GearpowerEffectViewController
             next.weapon = weapon
+            
+        } else if segue.identifier == "showDamageTable" {
+            
+            let next = segue.destination as! DamageTableViewController
+            let threshold = mainDamageCulcView.thresholds[tappedButtonTag]
+            next.threshold = threshold
             
         }
         

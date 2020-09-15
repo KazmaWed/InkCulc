@@ -13,6 +13,10 @@ class TopViewController: UIViewController {
         inkApi.getWeapons(closure: { () -> Void in
             inkApi.getWeaponImages(closure: { () -> Void in
                 print("Downloaded...")
+                
+                let bomb = inkApi.bombDamageRaw
+                print(inkApi.damageArray(damageArrayRaw: bomb))
+                
             })
         })
         

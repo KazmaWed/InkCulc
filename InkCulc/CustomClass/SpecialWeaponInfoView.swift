@@ -49,8 +49,7 @@ class SpecialWeaponInfoView: UIView {
         }
         
         //その他情報
-        let infoRaw = inkApi.specialInfo
-        if let info = inkApi.dict(keysAndStringValues: infoRaw)[specialWeaponName] {
+        if let info = inkApi.specialInfoDict()[specialWeaponName] {
             for (key, value) in info {
                 
                 let keyLabel = UILabel()
