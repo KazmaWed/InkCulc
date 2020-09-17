@@ -5,6 +5,10 @@ class AddItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //バックグラウンド
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_dark.png")!)
+        
+        //タイトル
         title = "ブキ選択"
         
         //ブキリスト
@@ -16,7 +20,18 @@ class AddItemViewController: UIViewController {
         collextionViewSetting()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //セルのサイズ
+        let cellSize = view.frame.size.width / 3
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: cellSize, height: cellSize)
+        
+        //セル間隔
+        layout.minimumInteritemSpacing = 0
+        
+        //適応
+        collectionView.collectionViewLayout = layout
         
     }
     
@@ -50,6 +65,10 @@ class AddItemViewController: UIViewController {
     
 }
 
+
+//----------------コレクションビュー--------------------
+
+
 extension AddItemViewController : UICollectionViewDelegate, UICollectionViewDataSource {
     
     //セクション数
@@ -75,6 +94,13 @@ extension AddItemViewController : UICollectionViewDelegate, UICollectionViewData
         cell.set(weapon:weapon)
         return cell
         
+    }
+    
+    //インセット
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 5)
     }
     
     

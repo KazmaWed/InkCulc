@@ -256,12 +256,14 @@ class InkAPI {
                     
             }
             
-            //ソート
-            let sortedArray:[(String,String,Double)] = newArray.sorted(by: { a, b -> Bool in
-                return a.2 < b.2
-            })
-            
-            output.append(sortedArray)
+            if newArray.count > 0 {
+                //ソート
+                let sortedArray:[(String,String,Double)] = newArray.sorted(by: { a, b -> Bool in
+                    return a.2 < b.2
+                })
+                
+                output.append(sortedArray)
+            }
         }
         
         return output

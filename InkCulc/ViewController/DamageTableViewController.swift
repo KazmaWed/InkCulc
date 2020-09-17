@@ -4,9 +4,11 @@ class DamageTableViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.systemGray5
 
         makeDamageTaples()
-        sortByDamage(of: 30.0)
+        sortByDamage(of: threshold!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,17 +53,25 @@ class DamageTableViewController: UIViewController {
                 
                 let taple = eachWeaponTaples[n]
                 let damage:Double = taple.2
+                var ifFound = false
                 
-                if damage >= of {
+                if damage >= of || n == eachWeaponTaples.count - 1 {
                     if n > 0 {
                         let prevTaple = eachWeaponTaples[n - 1]
                         sortedTaples.append(prevTaple)
                     }
                     sortedTaples.append(taple)
+                    ifFound = true
                 }
+                if ifFound { break }
                 
             }
         }
+        
+        let resorted = sortedTaples.sorted(by: { a, b -> Bool in
+            return a.2 < b.2
+        })
+        sortedTaples = resorted
         
     }
     
@@ -82,8 +92,18 @@ extension DamageTableViewController: UITableViewDelegate, UITableViewDataSource 
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = "\(sortedTaples[indexPath.row].0) \(sortedTaples[indexPath.row].1)"
+        let ifDecisive:Bool = self.threshold! <= sortedTaples[indexPath.row].2
+        
+        cell.imageView?.image = UIImage(named: sortedTaples[indexPath.row].0)
+        cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        cell.textLabel?.text = "\(sortedTaples[indexPath.row].1)"
         cell.detailTextLabel?.text = String(sortedTaples[indexPath.row].2)
+        
+        if ifDecisive {
+            cell.detailTextLabel?.textColor = UIColor.systemRed
+        } else {
+            cell.detailTextLabel?.textColor = UIColor.systemBlue
+        }
         
         return cell
         

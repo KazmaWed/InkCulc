@@ -8,11 +8,16 @@ class GearpowerFrameView: UIView {
     
     var gearpowerNames:[[String]] = []
     var highlightened:[Int]?
-    
-    
-    func setSize(width:CGFloat, height:CGFloat) {
+
+    func setSize() {
+        
+        removeElements()
+        self.backgroundColor = UIColor.clear
         
         //----------アイコン準備----------
+        
+        let width = self.frame.size.width
+        let height = self.frame.size.height
         
         //パートアイコン
         let partIconImageNames = ["ギアアイコン_アタマ","ギアアイコン_フク","ギアアイコン_クツ"]
@@ -293,4 +298,23 @@ class GearpowerFrameView: UIView {
         }
     }
     
+    //初期化
+    func removeElements() {
+        
+        iconFrameView.removeFromSuperview()
+        iconFrameView = UIView()
+        for part in partIcons {
+            part.removeFromSuperview()
+        }
+        partIcons = []
+        for part in icons {
+            for icon in part {
+                icon.removeFromSuperview()
+            }
+        }
+        icons = []
+        
+        gearpowerNames = []
+        highlightened = nil
+    }
 }

@@ -5,17 +5,18 @@ class GearsetDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addTileBackground(name: "background_light")
+        
+        //情報表示用ブキ・ギアパワー取得
         weapon = gearset!.weapon
         gearpowerNames = gearset!.gearpowerNames
         
         //ブキ画像
-        weaponSetImageView.setSize(width: weaponSetImageView.frame.size.width,
-                                height: weaponSetImageView.frame.size.height)
+        weaponSetImageView.setSize()
         weaponSetImageView.set(weapon: weapon!)
         
         //ギアパワー画像
-        gearpowerView.setSize(width: gearpowerView.frame.size.width,
-                              height: gearpowerView.frame.size.height)
+        gearpowerView.setSize()
         gearpowerView.gearpowerNames = gearpowerNames!
         gearpowerView.reloadIcon()
         
@@ -50,6 +51,7 @@ class GearsetDetailViewController: UIViewController {
     
     
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var cardImageView: UIImageView!
     @IBOutlet weak var weaponSetImageView: WeaponSetImageView!
     @IBOutlet weak var gearpowerView: GearpowerFrameView!
     @IBOutlet weak var mainWeaponInfoView: MainWeaponInfoView!
@@ -81,7 +83,7 @@ class GearsetDetailViewController: UIViewController {
         
         //メイン詳細ビュー
         mainWeaponInfoView.set(weapon: weapon!)
-        let mainWeaponInfoY = gearpowerView.frame.origin.y + gearpowerView.frame.size.height + 32
+        let mainWeaponInfoY = cardImageView.frame.origin.y + cardImageView.frame.size.height + 32
         mainWeaponInfoView.frame = CGRect(x: infoViewInset, y: mainWeaponInfoY,
                                           width: infoViewWidth,
                                           height: mainWeaponInfoView.frame.size.height)

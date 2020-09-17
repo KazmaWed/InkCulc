@@ -3,6 +3,9 @@ class TopViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+         
+        //バックグラウンド
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_dark.png")!)
         
         //----------ナビゲーションバー----------
         
@@ -13,10 +16,6 @@ class TopViewController: UIViewController {
         inkApi.getWeapons(closure: { () -> Void in
             inkApi.getWeaponImages(closure: { () -> Void in
                 print("Downloaded...")
-                
-                let bomb = inkApi.bombDamageRaw
-                print(inkApi.damageArray(damageArrayRaw: bomb))
-                
             })
         })
         
@@ -26,6 +25,7 @@ class TopViewController: UIViewController {
         
         //ナビゲーションバーに追加
         self.navigationItem.rightBarButtonItems = [addBarButtonItem]
+        self.navigationController?.navigationBar.tintColor = .white
         
         //----------テーブルビュー----------
         
@@ -37,7 +37,17 @@ class TopViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        //編集設定
+        if Static.gearsets.count > 0 {
+            navigationItem.leftBarButtonItem = editButtonItem
+            tableView.allowsMultipleSelectionDuringEditing = true
+        } else {
+            navigationItem.leftBarButtonItem = nil
+        }
         self.tableView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
         
     }
     
@@ -45,6 +55,14 @@ class TopViewController: UIViewController {
         
     }
 
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.isEditing = editing
+        
+        print(editing)
+    }
+    
 
     //--------------------IBアウトレット・インスタンス--------------------
     
@@ -52,6 +70,7 @@ class TopViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var selectedGearSet:Gearset?
+    var viewWidth:CGFloat?
     
     
     //--------------------メソッド--------------------
@@ -92,30 +111,50 @@ class TopViewController: UIViewController {
 
 extension TopViewController: UITableViewDelegate, UITableViewDataSource {
 
+    //セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         Static.gearsets.count
     }
-
+    
+    //セル設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let gearset = Static.gearsets[indexPath.row]
-        let weapon = gearset.weapon
         let cell: CustomTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-        cell.set(weapon: weapon)
+        
+        let cellSelectedBgView = UIView()
+        cellSelectedBgView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+        cell.selectedBackgroundView = cellSelectedBgView
+        
+        cell.set(gearset: gearset)
         
         return cell
         
     }
-
+    
+    //セルタップ
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedGearSet = Static.gearsets[indexPath.row]
-        self.performSegue(withIdentifier: "editGearset", sender: self)
+        if tableView.isEditing {
+            tableView.cellForRow(at: indexPath)?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        } else {
+            selectedGearSet = Static.gearsets[indexPath.row]
+            self.performSegue(withIdentifier: "editGearset", sender: self)
+        }
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72
+    //選択解除時のデリゲートメソッド
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.transform = CGAffineTransform(scaleX: 1, y: 1)
+        print(indexPath.row)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return view.frame.size.width / 2
+    }
+ 
+    
+    //----------編集モード----------
 
 }

@@ -6,10 +6,11 @@ class SetGearpowerViewController: UIViewController {
         super.viewDidLoad()
         
         title = "ギアパワー選択"
+        
+        view.addTileBackground(name: "background_light")
 
         //ギアパワービュー設定
-        gearpowerView.setSize(width: gearpowerView.frame.size.width,
-                              height: gearpowerView.frame.size.height)
+        gearpowerView.setSize()
         if fromGearsetDetailViewController {
             gearpowerView.gearpowerNames = self.gearpowerNames!
             gearpowerView.reloadIcon()
@@ -20,6 +21,10 @@ class SetGearpowerViewController: UIViewController {
         gearpowerKeyboard.setSize(view: view)
         gearpowerKeyboard.enableLimitedKeys()
         setKeyboardAction()
+        
+        //決定ボタン
+        doneButtonOutlet.layer.cornerRadius = doneButtonOutlet.frame.size.height / 4
+        doneButtonOutlet.titleEdgeInsets.bottom += doneButtonOutlet.titleLabel!.font.pointSize / 8
         
     }
 
@@ -39,6 +44,7 @@ class SetGearpowerViewController: UIViewController {
     @IBOutlet weak var gearpowerView: GearpowerFrameView!
     @IBOutlet weak var gearpowerKeyboard: GearpowerKeyboardView!
     @IBAction func doneButton(_ sender: Any) { doneTapped() }
+    @IBOutlet weak var doneButtonOutlet: UIButton!
     
     var weapon:Weapon?
     var gearpowerNames:[[String]]?

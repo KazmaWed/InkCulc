@@ -2,14 +2,18 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var itemImageView: UIImageView!
-    @IBOutlet weak var itemNameLabel: UILabel!
+    @IBOutlet weak var weaponSetImageView: WeaponSetImageView!
+    @IBOutlet weak var gearpowerFrameView: GearpowerFrameView!
     
-    func set(weapon:Weapon) {
-        //ブキ番号
-        let weaponIndex = inkApi.weaponNum(of: weapon)
-        itemImageView.image = inkApi.weaponImages[weaponIndex]
-        itemNameLabel.text = inkApi.weaponList[weaponIndex].name
+    func set(gearset:Gearset) {
+        
+        weaponSetImageView.setSize()
+        weaponSetImageView.set(weapon: gearset.weapon)
+        
+        gearpowerFrameView.isUserInteractionEnabled = false
+        gearpowerFrameView.setSize()
+        gearpowerFrameView.gearpowerNames = gearset.gearpowerNames!
+        gearpowerFrameView.reloadIcon()
         
     }
     

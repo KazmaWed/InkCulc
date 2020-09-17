@@ -7,7 +7,6 @@ class GearpowerEffectViewController: UIViewController {
 
         mainWeaponInfo = inkApi.mainWeaponInfo[inkApi.mainWeaponNum(of: weapon!)]
         increasedValues = inkApi.increasedValues(of: weapon!)
-        print(increasedValues!.count)
     }
     
     override func viewWillAppear(_ animated: Bool) {

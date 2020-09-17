@@ -23,7 +23,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ugX-7W-Pe3">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sfa-3y-Zt1" customClass="CustomTableViewCell" customModule="IKA_Cul_" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -58,7 +58,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="987" y="-1135"/>
+            <point key="canvasLocation" x="987" y="-546"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="Xvl-Br-mm1">
@@ -70,7 +70,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ix9-jg-r8r">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vbn-Da-NYC">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -110,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuR-91-Ni5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1859" y="-402"/>
+            <point key="canvasLocation" x="1858" y="190"/>
         </scene>
         <!--Set Gearpower View Controller-->
         <scene sceneID="BkT-yJ-7Yh">
@@ -122,7 +122,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-11-hPl" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
                                 <rect key="frame" x="62" y="24" width="290" height="200"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="uqn-Gb-OGl"/>
                                 </constraints>
@@ -133,28 +133,34 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-vO-SEg">
-                                <rect key="frame" x="187.5" y="236" width="39" height="46"/>
+                                <rect key="frame" x="167" y="242" width="80" height="42"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="yLx-kJ-hkX"/>
+                                    <constraint firstAttribute="width" constant="80" id="zeZ-uw-JEw"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="24"/>
                                 <state key="normal" title="決定">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="doneButton:" destination="zjj-8X-EBC" eventType="touchUpInside" id="ieR-8D-cWL"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="JP6-11-hPl" firstAttribute="centerX" secondItem="w2b-Am-IRc" secondAttribute="centerX" id="2Gp-Xv-Jks"/>
                             <constraint firstItem="JP6-11-hPl" firstAttribute="top" secondItem="zWl-av-I67" secondAttribute="top" constant="24" id="9wB-QF-LgT"/>
+                            <constraint firstItem="g0d-vO-SEg" firstAttribute="top" secondItem="JP6-11-hPl" secondAttribute="bottom" constant="18" id="CFZ-Cx-O2v"/>
                             <constraint firstItem="g0d-vO-SEg" firstAttribute="centerX" secondItem="w2b-Am-IRc" secondAttribute="centerX" id="LaU-ZA-mQY"/>
-                            <constraint firstItem="g0d-vO-SEg" firstAttribute="top" secondItem="JP6-11-hPl" secondAttribute="bottom" constant="12" id="Z6H-RO-L1O"/>
                             <constraint firstItem="JP6-11-hPl" firstAttribute="width" secondItem="w2b-Am-IRc" secondAttribute="width" multiplier="0.7" id="uyL-Hz-r2q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zWl-av-I67"/>
                     </view>
                     <navigationItem key="navigationItem" id="Jw5-Lt-zlV"/>
                     <connections>
+                        <outlet property="doneButtonOutlet" destination="g0d-vO-SEg" id="xQc-uf-SOb"/>
                         <outlet property="gearpowerKeyboard" destination="wbk-ik-pYy" id="0Mr-at-IXe"/>
                         <outlet property="gearpowerView" destination="JP6-11-hPl" id="h9y-Kd-xVM"/>
                         <segue destination="X5u-JD-zum" kind="show" identifier="gearsetDetail" id="G81-F5-FZ6"/>
@@ -163,7 +169,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPx-eE-gLV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2638" y="-402"/>
+            <point key="canvasLocation" x="2638" y="190"/>
         </scene>
         <!--Gearpower Effect View Controller-->
         <scene sceneID="9gf-UP-99J">
@@ -241,7 +247,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6H-sB-OYc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4469.5652173913049" y="-402.45535714285711"/>
+            <point key="canvasLocation" x="4470" y="190"/>
         </scene>
         <!--Gearset Detail View Controller-->
         <scene sceneID="Lbp-jW-HBL">
@@ -254,18 +260,17 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Id0-9M-ZQe">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_white_wide" translatesAutoresizingMaskIntoConstraints="NO" id="zfF-bE-19c">
+                                        <rect key="frame" x="24" y="18" width="366" height="183"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zfF-bE-19c" secondAttribute="height" multiplier="2:1" id="bOc-bP-2lw"/>
+                                        </constraints>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Hs-eX-rMO" customClass="WeaponSetImageView" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="18" width="168.5" height="135"/>
+                                        <rect key="frame" x="40" y="54" width="144.5" height="115.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="5Hs-eX-rMO" secondAttribute="height" multiplier="5:4" id="IYT-4i-otu"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOW-iU-uLL" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="210.5" y="18" width="185.5" height="148.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="WOW-iU-uLL" secondAttribute="height" multiplier="5:4" id="FuI-Wy-gfc"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ohi-0n-YAc" customClass="MainWeaponInfoView" customModule="IKA_Cul_" customModuleProvider="target">
@@ -288,14 +293,24 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOW-iU-uLL" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="200.5" y="54" width="173.5" height="139"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="WOW-iU-uLL" secondAttribute="height" multiplier="5:4" id="FuI-Wy-gfc"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="width" secondItem="5Hs-eX-rMO" secondAttribute="width" multiplier="1.1" id="3Rs-Ja-yFo"/>
-                                    <constraint firstItem="5Hs-eX-rMO" firstAttribute="top" secondItem="lv9-Ch-sC4" secondAttribute="top" constant="18" id="GxK-oq-FHo"/>
-                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="leading" secondItem="5Hs-eX-rMO" secondAttribute="trailing" constant="18" id="cfb-tZ-Evs"/>
-                                    <constraint firstItem="5Hs-eX-rMO" firstAttribute="leading" secondItem="Id0-9M-ZQe" secondAttribute="leading" constant="24" id="m9O-9j-iRw"/>
-                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="top" secondItem="lv9-Ch-sC4" secondAttribute="top" constant="18" id="nQf-SZ-WCg"/>
-                                    <constraint firstItem="qjE-x2-6pn" firstAttribute="trailing" secondItem="WOW-iU-uLL" secondAttribute="trailing" constant="18" id="sI0-en-YJv"/>
+                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="width" secondItem="5Hs-eX-rMO" secondAttribute="width" multiplier="1.2" id="3Rs-Ja-yFo"/>
+                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="top" secondItem="5Hs-eX-rMO" secondAttribute="top" id="4Vc-79-CdH"/>
+                                    <constraint firstItem="zfF-bE-19c" firstAttribute="top" secondItem="lv9-Ch-sC4" secondAttribute="top" constant="18" id="JJm-Tw-Ku8"/>
+                                    <constraint firstItem="zfF-bE-19c" firstAttribute="leading" secondItem="qjE-x2-6pn" secondAttribute="leading" constant="24" id="Vmr-hK-KwR"/>
+                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="leading" secondItem="5Hs-eX-rMO" secondAttribute="trailing" constant="16" id="cfb-tZ-Evs"/>
+                                    <constraint firstItem="zfF-bE-19c" firstAttribute="trailing" secondItem="WOW-iU-uLL" secondAttribute="trailing" constant="16" id="guo-aS-ssQ"/>
+                                    <constraint firstItem="qjE-x2-6pn" firstAttribute="trailing" secondItem="zfF-bE-19c" secondAttribute="trailing" constant="24" id="iRV-iz-mtQ"/>
+                                    <constraint firstItem="5Hs-eX-rMO" firstAttribute="leading" secondItem="zfF-bE-19c" secondAttribute="leading" constant="16" id="m9O-9j-iRw"/>
+                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="top" secondItem="zfF-bE-19c" secondAttribute="top" constant="36" id="nQf-SZ-WCg"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="lv9-Ch-sC4"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="qjE-x2-6pn"/>
@@ -312,6 +327,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="0MC-gT-fEI"/>
                     <connections>
+                        <outlet property="cardImageView" destination="zfF-bE-19c" id="bW9-CL-Zip"/>
                         <outlet property="gearpowerView" destination="WOW-iU-uLL" id="d3g-aJ-l7n"/>
                         <outlet property="mainDamageCulcView" destination="14G-xF-fyA" id="TLT-Ir-KZ8"/>
                         <outlet property="mainWeaponInfoView" destination="Ohi-0n-YAc" id="55Y-Im-NRy"/>
@@ -326,7 +342,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgx-1e-9Vf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3634.7826086956525" y="-1135.0446428571429"/>
+            <point key="canvasLocation" x="3634.7826086956525" y="-546.42857142857144"/>
         </scene>
         <!--Damage Table View Controller-->
         <scene sceneID="ETW-tv-I80">
@@ -387,7 +403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5S-wn-ynA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4469.5652173913049" y="-1135.0446428571429"/>
+            <point key="canvasLocation" x="4470" y="-546"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U5o-hT-b30">
@@ -397,8 +413,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ydm-be-ZjY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -408,7 +426,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="drK-tL-Yu6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200" y="-1135"/>
+            <point key="canvasLocation" x="-62" y="-546"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -416,4 +434,7 @@
         <segue reference="14A-FL-mdv"/>
         <segue reference="Gbz-Tr-4ng"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="card_white_wide" width="1440" height="720"/>
+    </resources>
 </document>

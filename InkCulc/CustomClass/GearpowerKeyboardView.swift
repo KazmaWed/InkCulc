@@ -8,6 +8,8 @@ class GearpowerKeyboardView: UIView {
     var keyFrames:[UIView] = []
     let keySetNames = ["ギアパワー","アタマ専用","フク専用","クツ専用"]
     
+    var keyboardHeight:CGFloat?
+    
     func setSize(view:UIView) {
         
         let width = view.frame.size.width
@@ -92,10 +94,10 @@ class GearpowerKeyboardView: UIView {
         deleteKey.frame = CGRect(x: deleteX, y: deleteY,
                                  width: keySize, height: keySize)
         
-        let keyboardHeight = keyFrames[2].frame.origin.y + keyFrames[2].frame.size.height + sideInset * 2 + safeAreaBottomInset
-        let keyboardY = safeAreaBottomInset - keyboardHeight
+        keyboardHeight = keyFrames[2].frame.origin.y + keyFrames[2].frame.size.height + sideInset * 2 + safeAreaBottomInset
+        let keyboardY = safeAreaBottomInset - keyboardHeight!
         self.frame.origin = CGPoint(x: 0, y: keyboardY)
-        self.frame.size = CGSize(width: width, height: keyboardHeight)
+        self.frame.size = CGSize(width: width, height: keyboardHeight!)
         
         self.backgroundColor = UIColor.systemGray5
         

@@ -5,6 +5,7 @@ class MainWeaponInfoView: UIView {
     let topLabel = UILabel()
     var keyLabels:[UILabel] = []
     var valueLabels:[UILabel] = []
+    let mainPowerupIcon = UIImageView(image: UIImage(named: "メイン性能アップ"))
     var buttons:[UIButton] = []
     
     var mainWeaponInfo:MainWeaponInfo?
@@ -35,7 +36,7 @@ class MainWeaponInfoView: UIView {
         for n in 0...7 {
             
             let keyLabel = UILabel()
-            keyLabel.text = keysJp[n]
+            if n < 7 { keyLabel.text = keysJp[n] }
             keyLabel.sizeToFit()
             
             if keyLabelWidth < keyLabel.frame.size.width {
@@ -74,7 +75,7 @@ class MainWeaponInfoView: UIView {
         
         labelY += topLabel.frame.size.height + labelGap
         
-        for n in 0...keyLabels.count - 1 {
+        for n in 0...6 {
          
             keyLabels[n].frame.origin.y = labelY
             valueLabels[n].frame.origin.x = keyLabelWidth + labelGap * 2
@@ -83,6 +84,12 @@ class MainWeaponInfoView: UIView {
             labelY += valueLabels[n].frame.size.height + labelGap
             
         }
+
+        let iconSize = valueLabels[6].frame.size.height * 1.6
+        mainPowerupIcon.frame.size = CGSize(width: iconSize, height: iconSize)
+        mainPowerupIcon.frame.origin.y = labelY
+        let valueLabelY = labelY + (iconSize - valueLabels[7].frame.size.height) / 2
+        valueLabels.last!.frame.origin = CGPoint(x: iconSize + labelGap, y: valueLabelY)
         
         if mainWeaponInfo!.mainPowerUpKey != "" {
             let detailButton = UIButton()
@@ -90,8 +97,8 @@ class MainWeaponInfoView: UIView {
             detailButton.setTitleColor(UIColor.darkText, for: .normal)
             detailButton.contentHorizontalAlignment = .right
             detailButton.frame.size.width = self.frame.size.width
-            detailButton.frame.size.height = keyLabels[7].frame.size.height
-            detailButton.frame.origin.y = keyLabels[7].frame.origin.y
+            detailButton.frame.size.height = valueLabels[7].frame.size.height
+            detailButton.frame.origin.y = valueLabels[7].frame.origin.y
             detailButton.tag = 0
             buttons.append(detailButton)
         }
@@ -103,6 +110,7 @@ class MainWeaponInfoView: UIView {
             self.addSubview(keyLabels[n])
             self.addSubview(valueLabels[n])
         }
+        self.addSubview(mainPowerupIcon)
         for button in buttons {
             self.addSubview(button)
         }
@@ -170,6 +178,8 @@ class MainWeaponInfoView: UIView {
             label.removeFromSuperview()
         }
         valueLabels = []
+        
+        mainPowerupIcon.removeFromSuperview()
         
         for button in buttons {
             button.removeFromSuperview()
