@@ -21,15 +21,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ugX-7W-Pe3">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ugX-7W-Pe3">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sfa-3y-Zt1" customClass="CustomTableViewCell" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sfa-3y-Zt1" id="Fow-6s-VYY">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -117,11 +117,11 @@
             <objects>
                 <viewController id="zjj-8X-EBC" customClass="SetGearpowerViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w2b-Am-IRc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-11-hPl" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
-                                <rect key="frame" x="62" y="24" width="290" height="200"/>
+                                <rect key="frame" x="62" y="112" width="290" height="200"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="uqn-Gb-OGl"/>
@@ -133,8 +133,8 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-vO-SEg">
-                                <rect key="frame" x="167" y="242" width="80" height="42"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <rect key="frame" x="167" y="330" width="80" height="42"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="yLx-kJ-hkX"/>
                                     <constraint firstAttribute="width" constant="80" id="zeZ-uw-JEw"/>
@@ -148,7 +148,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="JP6-11-hPl" firstAttribute="centerX" secondItem="w2b-Am-IRc" secondAttribute="centerX" id="2Gp-Xv-Jks"/>
                             <constraint firstItem="JP6-11-hPl" firstAttribute="top" secondItem="zWl-av-I67" secondAttribute="top" constant="24" id="9wB-QF-LgT"/>
@@ -176,23 +176,23 @@
             <objects>
                 <viewController id="lCf-Su-s8E" customClass="GearpowerEffectViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P3u-l3-Ogu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ギアパワー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1e-Re-1bw">
-                                <rect key="frame" x="18" y="12" width="86" height="31"/>
+                                <rect key="frame" x="18" y="100" width="86" height="31"/>
                                 <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="バリュー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYN-3r-A2a">
-                                <rect key="frame" x="333" y="12" width="63" height="28"/>
+                                <rect key="frame" x="333" y="100" width="63" height="28"/>
                                 <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tx2-LC-IeE">
-                                <rect key="frame" x="0.0" y="51" width="414" height="791"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="EUo-Pe-W5F" detailTextLabel="I7E-eg-Tcc" style="IBUITableViewCellStyleValue1" id="uWo-2g-Z0W">
@@ -254,37 +254,26 @@
             <objects>
                 <viewController id="X5u-JD-zum" customClass="GearsetDetailViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wkw-dO-bHA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Id0-9M-ZQe">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_white_wide" translatesAutoresizingMaskIntoConstraints="NO" id="zfF-bE-19c">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lkb-cd-p3K" customClass="GearsetCardView" customModule="IKA_Cul_" customModuleProvider="target">
                                         <rect key="frame" x="24" y="18" width="366" height="183"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="zfF-bE-19c" secondAttribute="height" multiplier="2:1" id="bOc-bP-2lw"/>
-                                        </constraints>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Hs-eX-rMO" customClass="WeaponSetImageView" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="54" width="144.5" height="115.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="5Hs-eX-rMO" secondAttribute="height" multiplier="5:4" id="IYT-4i-otu"/>
+                                            <constraint firstAttribute="width" secondItem="lkb-cd-p3K" secondAttribute="height" multiplier="2:1" id="RYB-Y8-psM"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ohi-0n-YAc" customClass="MainWeaponInfoView" customModule="IKA_Cul_" customModuleProvider="target">
                                         <rect key="frame" x="24" y="208" width="366" height="106"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0pg-AE-Wpi" customClass="SubWeaponInfoView" customModule="IKA_Cul_" customModuleProvider="target">
                                         <rect key="frame" x="24" y="322" width="366" height="115"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14G-xF-fyA" customClass="MainDamageCulcView" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="562" width="366" height="118"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
@@ -293,24 +282,16 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOW-iU-uLL" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="200.5" y="54" width="173.5" height="139"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="14G-xF-fyA" customClass="MainDamageCulcView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="562" width="366" height="118"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="WOW-iU-uLL" secondAttribute="height" multiplier="5:4" id="FuI-Wy-gfc"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="width" secondItem="5Hs-eX-rMO" secondAttribute="width" multiplier="1.2" id="3Rs-Ja-yFo"/>
-                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="top" secondItem="5Hs-eX-rMO" secondAttribute="top" id="4Vc-79-CdH"/>
-                                    <constraint firstItem="zfF-bE-19c" firstAttribute="top" secondItem="lv9-Ch-sC4" secondAttribute="top" constant="18" id="JJm-Tw-Ku8"/>
-                                    <constraint firstItem="zfF-bE-19c" firstAttribute="leading" secondItem="qjE-x2-6pn" secondAttribute="leading" constant="24" id="Vmr-hK-KwR"/>
-                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="leading" secondItem="5Hs-eX-rMO" secondAttribute="trailing" constant="16" id="cfb-tZ-Evs"/>
-                                    <constraint firstItem="zfF-bE-19c" firstAttribute="trailing" secondItem="WOW-iU-uLL" secondAttribute="trailing" constant="16" id="guo-aS-ssQ"/>
-                                    <constraint firstItem="qjE-x2-6pn" firstAttribute="trailing" secondItem="zfF-bE-19c" secondAttribute="trailing" constant="24" id="iRV-iz-mtQ"/>
-                                    <constraint firstItem="5Hs-eX-rMO" firstAttribute="leading" secondItem="zfF-bE-19c" secondAttribute="leading" constant="16" id="m9O-9j-iRw"/>
-                                    <constraint firstItem="WOW-iU-uLL" firstAttribute="top" secondItem="zfF-bE-19c" secondAttribute="top" constant="36" id="nQf-SZ-WCg"/>
+                                    <constraint firstItem="qjE-x2-6pn" firstAttribute="trailing" secondItem="lkb-cd-p3K" secondAttribute="trailing" constant="24" id="0we-39-ieW"/>
+                                    <constraint firstItem="lkb-cd-p3K" firstAttribute="top" secondItem="lv9-Ch-sC4" secondAttribute="top" constant="18" id="IKy-ov-Qx1"/>
+                                    <constraint firstItem="lkb-cd-p3K" firstAttribute="leading" secondItem="qjE-x2-6pn" secondAttribute="leading" constant="24" id="fia-kr-49s"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="lv9-Ch-sC4"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="qjE-x2-6pn"/>
@@ -327,14 +308,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="0MC-gT-fEI"/>
                     <connections>
-                        <outlet property="cardImageView" destination="zfF-bE-19c" id="bW9-CL-Zip"/>
-                        <outlet property="gearpowerView" destination="WOW-iU-uLL" id="d3g-aJ-l7n"/>
+                        <outlet property="gearsetCardView" destination="lkb-cd-p3K" id="yJa-Tf-zg1"/>
                         <outlet property="mainDamageCulcView" destination="14G-xF-fyA" id="TLT-Ir-KZ8"/>
                         <outlet property="mainWeaponInfoView" destination="Ohi-0n-YAc" id="55Y-Im-NRy"/>
                         <outlet property="scrollView" destination="Id0-9M-ZQe" id="hfY-N5-XCW"/>
                         <outlet property="specialWeaponInfoView" destination="fOm-UY-vIN" id="YuP-RS-Wov"/>
                         <outlet property="subWeaponInfoView" destination="0pg-AE-Wpi" id="lnn-HY-4mu"/>
-                        <outlet property="weaponSetImageView" destination="5Hs-eX-rMO" id="M43-1b-k6j"/>
                         <segue destination="zjj-8X-EBC" kind="show" identifier="changeGearpower" id="Gbz-Tr-4ng"/>
                         <segue destination="lCf-Su-s8E" kind="show" identifier="showGearpowerEffect" id="14A-FL-mdv"/>
                         <segue destination="FFq-xL-kvh" kind="show" identifier="showDamageTable" id="jvT-KP-ztk"/>
@@ -349,11 +328,11 @@
             <objects>
                 <viewController id="FFq-xL-kvh" customClass="DamageTableViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PRc-bh-C5S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2KV-UZ-i5M">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="hrK-Ow-HR2" detailTextLabel="CW2-CP-1ki" style="IBUITableViewCellStyleValue1" id="fQe-Ps-ugy">
@@ -430,11 +409,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="G81-F5-FZ6"/>
+        <segue reference="6zv-t0-BNs"/>
         <segue reference="14A-FL-mdv"/>
         <segue reference="Gbz-Tr-4ng"/>
     </inferredMetricsTieBreakers>
-    <resources>
-        <image name="card_white_wide" width="1440" height="720"/>
-    </resources>
 </document>

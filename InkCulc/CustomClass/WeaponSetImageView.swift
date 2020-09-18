@@ -7,6 +7,13 @@ class WeaponSetImageView: UIView {
     var specialImageView = UIImageView()
     var weaponNameLabel = UILabel()
     
+    override var frame: CGRect {
+        didSet {
+            guard frame.size.width != 0 else { return }
+            setSize()
+        }
+    }
+    
     func setSize() {
         
         let width = self.frame.size.width
@@ -17,7 +24,6 @@ class WeaponSetImageView: UIView {
         let subSpecialImageGap = (weaponImageSize - subSpecialImageSize * 2) / 3
         let labelHeight = height - weaponImageSize
         
-        self.frame.size = CGSize(width: width, height: height)
         mainImageView.frame = CGRect(x: 0, y: 0, width: weaponImageSize, height: weaponImageSize)
         
         subImageView.frame = CGRect(x: width - subSpecialImageSize, y: subSpecialImageGap,

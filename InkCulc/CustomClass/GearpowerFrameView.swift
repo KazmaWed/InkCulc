@@ -6,8 +6,14 @@ class GearpowerFrameView: UIView {
     var partIcons:[UIImageView] = []
     var icons:[[UIButton]] = []
     
-    var gearpowerNames:[[String]] = []
-    var highlightened:[Int]?
+    var gearpowerNames:[[String]] = [] { didSet { reloadIcon() }}
+    override var frame: CGRect {
+        didSet {
+            guard frame.size.width != 0 else { return }
+            setSize()
+        }
+    }
+    var highlightened:[Int]? { didSet { highlight(at: highlightened) }}
 
     func setSize() {
         
@@ -119,7 +125,6 @@ class GearpowerFrameView: UIView {
         
         let frameHeight = height
         let frameWidth:CGFloat = icons.first!.last!.frame.origin.x + icons.first!.last!.frame.size.width
-        self.frame.size = CGSize(width: width, height: height)
         iconFrameView.frame.size = CGSize(width: frameWidth, height: frameHeight)
         
         let contentAspect = frameHeight / frameWidth
@@ -145,7 +150,8 @@ class GearpowerFrameView: UIView {
 
     //選択中アイコン強調表示
     func highlight(at: [Int]? = nil) {
-        if at != nil { highlightened = at! } else { highlightened = nil }
+        
+        guard gearpowerNames.count == 3 && gearpowerNames.last!.count == 4 else { return }
         
         for n in 0...2 {
             for m in 0...3 {
@@ -191,13 +197,13 @@ class GearpowerFrameView: UIView {
         reloadIcon()
         
         if !highlightNext {
-            highlight(at: [to[0], to[1]])
+            highlightened = to
         } else if let blank = blankIcon(after: highlightened!) {
-            highlight(at: blank)
+            highlightened = blank
         } else if let blank = blankIcon(after: [0,0]) {
-            highlight(at: blank)
+            highlightened = blank
         } else {
-            highlight()
+            highlightened = nil
         }
     }
     
@@ -285,6 +291,9 @@ class GearpowerFrameView: UIView {
     
     //アイコン更新
     func reloadIcon() {
+        
+        guard gearpowerNames.count == 3 && gearpowerNames.last!.count == 4 else { return }
+        
         for n in 0...2 {
             for m in 0...3 {
                 let fileName = gearpowerNames[n][m]

@@ -7,6 +7,7 @@ class MainWeaponInfoView: UIView {
     var valueLabels:[UILabel] = []
     let mainPowerupIcon = UIImageView(image: UIImage(named: "メイン性能アップ"))
     var buttons:[UIButton] = []
+    var backgroundCardView = UIView()
     
     var mainWeaponInfo:MainWeaponInfo?
     
@@ -21,29 +22,42 @@ class MainWeaponInfoView: UIView {
         var keyLabelWidth:CGFloat = 0
         var labelY:CGFloat = 0
         
+        let topLabelHeight:CGFloat = 54
+        let contentInset:CGFloat = 18
         let labelGap:CGFloat = 10
+        
+        let font = UIFont(name: "HiraMaruProN-W4", size: 18)
         
         //----------ラベルのテキスト----------
         
         let keysJp = ["ダメージ","射程","連射間隔","インク消費", //0...3
-            "ヒト速","ヒト速(攻撃中)","イカ速", //4...6
+            "ヒト速","ヒト速 (攻撃中)","イカ速", //4...6
             "メイン性能アップ効果"] //7
         
         topLabel.text = "メインブキ性能"
+        topLabel.textAlignment = .center
         topLabel.font = UIFont(name: "bananaslipplus", size: 24)
-        topLabel.sizeToFit()
+        topLabel.textColor = UIColor.white
+        topLabel.frame.size = CGSize(width:self.frame.width, height: topLabelHeight)
+        topLabel.backgroundColor = UIColor.systemTeal
+        labelY += topLabel.frame.height + contentInset
         
         for n in 0...7 {
             
             let keyLabel = UILabel()
-            if n < 7 { keyLabel.text = keysJp[n] }
+            let valueLabel = UILabel()
+            keyLabel.font = font
+            valueLabel.font = font
+            
+            if n < 7 { keyLabel.text = keysJp[n] } else { keyLabel.text = "の効果" }
+            
             keyLabel.sizeToFit()
+            keyLabel.frame.size.height *= 1.2
             
             if keyLabelWidth < keyLabel.frame.size.width {
                 keyLabelWidth = keyLabel.frame.size.width
             }
             
-            let valueLabel = UILabel()
             switch n {
             case 0:
                 valueLabel.text = String(Double(Int(mainWeaponInfo!.damage * 10))/10)
@@ -65,6 +79,7 @@ class MainWeaponInfoView: UIView {
                 break
             }
             valueLabel.sizeToFit()
+            valueLabel.frame.size.height = keyLabel.frame.size.height
             
             keyLabels.append(keyLabel)
             valueLabels.append(valueLabel)
@@ -73,48 +88,81 @@ class MainWeaponInfoView: UIView {
         
         //----------ラベルのフレーム----------
         
-        labelY += topLabel.frame.size.height + labelGap
-        
         for n in 0...6 {
          
+            keyLabels[n].frame.origin.x = contentInset
             keyLabels[n].frame.origin.y = labelY
-            valueLabels[n].frame.origin.x = keyLabelWidth + labelGap * 2
+            valueLabels[n].frame.origin.x = contentInset + keyLabelWidth + labelGap * 2
             valueLabels[n].frame.origin.y = labelY
             
             labelY += valueLabels[n].frame.size.height + labelGap
             
         }
 
-        let iconSize = valueLabels[6].frame.size.height * 1.6
+        //メイン性能アップアイコン
+        let iconSize = valueLabels[7].frame.size.height * 1.8
         mainPowerupIcon.frame.size = CGSize(width: iconSize, height: iconSize)
-        mainPowerupIcon.frame.origin.y = labelY
-        let valueLabelY = labelY + (iconSize - valueLabels[7].frame.size.height) / 2
-        valueLabels.last!.frame.origin = CGPoint(x: iconSize + labelGap, y: valueLabelY)
+        mainPowerupIcon.frame.origin = CGPoint(x: contentInset, y:labelY + labelGap)
+        mainPowerupIcon.contentMode = .scaleAspectFit
+        
+        //メイン性能アップキーラベル
+        let lastLabelY = mainPowerupIcon.frame.origin.y + (iconSize - valueLabels[7].frame.size.height) / 2
+        let keyLabelX = mainPowerupIcon.frame.origin.x + mainPowerupIcon.frame.size.width + labelGap / 2
+        keyLabels.last!.frame.origin = CGPoint(x: keyLabelX, y: lastLabelY)
+        
+        //メイン性能アップバリューラベル
+        let valueLabelX = keyLabels.last!.frame.origin.x + keyLabels.last!.frame.size.width + labelGap * 2
+        valueLabels.last!.frame.origin = CGPoint(x: valueLabelX, y: lastLabelY)
+        
+        //----------ラベルをビューに追加・ビューのサイズ----------
+        
+        self.frame.size.height = mainPowerupIcon.frame.origin.y + mainPowerupIcon.frame.size.height + contentInset
+        backgroundCardView.frame.size = self.frame.size
+        backgroundCardView.clipsToBounds = true
+        backgroundCardView.layer.cornerRadius = cornerRadius
+        backgroundCardView.backgroundColor = UIColor.white
+        
+        backgroundCardView.addSubview(topLabel)
+        for n in 0...keyLabels.count - 1 {
+            backgroundCardView.addSubview(keyLabels[n])
+            backgroundCardView.addSubview(valueLabels[n])
+        }
+        backgroundCardView.addSubview(mainPowerupIcon)
+        
+        self.backgroundColor = UIColor.clear
+        self.addSubview(backgroundCardView)
+        
+        //----------メイン性能アップ詳細ボタン----------
         
         if mainWeaponInfo!.mainPowerUpKey != "" {
             let detailButton = UIButton()
-            detailButton.setTitle(">", for: .normal)
-            detailButton.setTitleColor(UIColor.darkText, for: .normal)
-            detailButton.contentHorizontalAlignment = .right
-            detailButton.frame.size.width = self.frame.size.width
-            detailButton.frame.size.height = valueLabels[7].frame.size.height
-            detailButton.frame.origin.y = valueLabels[7].frame.origin.y
+            let buttonSize = valueLabels[7].frame.size.height * 2
+            let buttonY = valueLabels.last!.frame.origin.y + (valueLabels.last!.frame.size.height - buttonSize) / 2
+            let buttonX = self.frame.size.width - (self.frame.size.height - buttonY)
+            
+            detailButton.frame.origin = CGPoint(x: buttonX, y: buttonY)
+            detailButton.frame.size = CGSize(width: buttonSize, height: buttonSize)
+            
+            detailButton.layer.cornerRadius = detailButton.frame.size.height / 2
+            detailButton.backgroundColor = UIColor.systemTeal
+            
+            detailButton.layer.shadowColor = shadowColor
+            detailButton.layer.shadowOffset = shadowOffset
+            detailButton.layer.shadowRadius = shadowRadius
+            detailButton.layer.shadowOpacity = shadowOpacity
+            
+            let tintedImage = UIImage(named: "tablecells_black")!.withRenderingMode(.alwaysTemplate)
+            detailButton.setImage(tintedImage, for: .normal)
+            detailButton.tintColor = UIColor.white
+            detailButton.contentHorizontalAlignment = .center
+            
             detailButton.tag = 0
             buttons.append(detailButton)
         }
         
-        //----------ラベルをビューに追加・ビューのサイズ----------
-        
-        self.addSubview(topLabel)
-        for n in 0...keyLabels.count - 1 {
-            self.addSubview(keyLabels[n])
-            self.addSubview(valueLabels[n])
-        }
-        self.addSubview(mainPowerupIcon)
         for button in buttons {
-            self.addSubview(button)
+            backgroundCardView.addSubview(button)
         }
-        self.frame.size.height = valueLabels.last!.frame.origin.y + valueLabels.last!.frame.size.height
         
     }
     
@@ -131,8 +179,8 @@ class MainWeaponInfoView: UIView {
              
             if gearpowerPoint > 0 {
                 for num in labelNums[n] {
-                    keyLabels[num].textColor = UIColor.red
-                    valueLabels[num].textColor = UIColor.red
+                    keyLabels[num].textColor = UIColor.systemBlue
+                    valueLabels[num].textColor = UIColor.systemBlue
                 }
             }
             
@@ -159,8 +207,8 @@ class MainWeaponInfoView: UIView {
         //上昇後の値
         valueLabels[increasedLabelNum!].text = String(increasedValue!)
         valueLabels[increasedLabelNum!].sizeToFit()
-        valueLabels[increasedLabelNum!].textColor = UIColor.systemRed
-        keyLabels[increasedLabelNum!].textColor = UIColor.systemRed
+        valueLabels[increasedLabelNum!].textColor = UIColor.systemBlue
+        keyLabels[increasedLabelNum!].textColor = UIColor.systemBlue
         
         
     }
@@ -185,6 +233,9 @@ class MainWeaponInfoView: UIView {
             button.removeFromSuperview()
         }
         buttons = []
+        
+        backgroundCardView.removeFromSuperview()
+        backgroundCardView = UIView()
         
     }
     

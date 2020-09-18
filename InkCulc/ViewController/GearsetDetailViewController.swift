@@ -5,23 +5,26 @@ class GearsetDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addTileBackground(name: "background_light")
-        
         //情報表示用ブキ・ギアパワー取得
         weapon = gearset!.weapon
         gearpowerNames = gearset!.gearpowerNames
         
-        //ブキ画像
-        weaponSetImageView.setSize()
-        weaponSetImageView.set(weapon: weapon!)
-        
-        //ギアパワー画像
-        gearpowerView.setSize()
-        gearpowerView.gearpowerNames = gearpowerNames!
-        gearpowerView.reloadIcon()
+        //ブキ・ギアパワー画像
+        gearsetCardView.gearset = gearset
+        gearsetCardView.withShadow = true
         
         //バーボタンアイテム
         setBarButtonItem()
+        
+        //影
+        let views = [mainWeaponInfoView!, subWeaponInfoView!, specialWeaponInfoView!, mainDamageCulcView!]
+        for view in views {
+            view.clipsToBounds = false
+            view.layer.shadowOpacity = shadowOpacity
+            view.layer.shadowRadius = shadowRadius
+            view.layer.shadowOffset = shadowOffset
+            view.layer.shadowColor = shadowColor
+        }
         
     }
     
@@ -37,7 +40,7 @@ class GearsetDetailViewController: UIViewController {
         let contentSize = mainDamageCulcView.frame.origin.y + mainDamageCulcView.frame.size.height
         scrollView.contentSize = CGSize(width: view.frame.size.width, height: contentSize)
         
-        let gearpowerPoints = gearpowerView.gearpowerPoint()
+        let gearpowerPoints = gearsetCardView.gearpowerFrameView.gearpowerPoint()
         mainWeaponInfoView.increasedLabelHighlight(gearpower: gearpowerPoints)
 
     }
@@ -51,9 +54,7 @@ class GearsetDetailViewController: UIViewController {
     
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var cardImageView: UIImageView!
-    @IBOutlet weak var weaponSetImageView: WeaponSetImageView!
-    @IBOutlet weak var gearpowerView: GearpowerFrameView!
+    @IBOutlet weak var gearsetCardView: GearsetCardView!
     @IBOutlet weak var mainWeaponInfoView: MainWeaponInfoView!
     @IBOutlet weak var subWeaponInfoView: SubWeaponInfoView!
     @IBOutlet weak var specialWeaponInfoView: SpecialWeaponInfoView!
@@ -78,12 +79,12 @@ class GearsetDetailViewController: UIViewController {
     //メイン・サブ・スペシャルの基本情報ビュー
     func setInfoViews() {
         
-        let infoViewInset:CGFloat = 24
+        let infoViewInset:CGFloat = gearsetCardView.frame.origin.x
         let infoViewWidth = view.frame.size.width - infoViewInset * 2
         
         //メイン詳細ビュー
         mainWeaponInfoView.set(weapon: weapon!)
-        let mainWeaponInfoY = cardImageView.frame.origin.y + cardImageView.frame.size.height + 32
+        let mainWeaponInfoY = gearsetCardView.frame.origin.y + gearsetCardView.frame.size.height + infoViewInset
         mainWeaponInfoView.frame = CGRect(x: infoViewInset, y: mainWeaponInfoY,
                                           width: infoViewWidth,
                                           height: mainWeaponInfoView.frame.size.height)
@@ -113,7 +114,7 @@ class GearsetDetailViewController: UIViewController {
         let infoViewInset:CGFloat = 24
         let infoViewWidth = view.frame.size.width - infoViewInset * 2
         
-        let gearpowerPoint = gearpowerView.gearpowerPoint()
+        let gearpowerPoint = gearsetCardView.gearpowerFrameView.gearpowerPoint()
         mainDamageCulcView.culc(weapon: weapon!, gearpowerPoint: gearpowerPoint)
         mainDamageCulcView.size(width: infoViewWidth)
         mainDamageCulcView.frame.origin.x = infoViewInset
@@ -184,13 +185,12 @@ class GearsetDetailViewController: UIViewController {
             //登録済みギアの変更
             let next = segue.destination as! SetGearpowerViewController
             next.weapon = weapon
-            next.gearpowerNames = gearpowerView.gearpowerNames
+            next.gearpowerNames = gearsetCardView.gearpowerFrameView.gearpowerNames
             next.fromGearsetDetailViewController = true
             
             //変更後のギアパワーを受け取って、ビュー更新
             next.closure = {(changedNames : [[String]]) -> Void in
-                self.gearpowerView.gearpowerNames = changedNames
-                self.gearpowerView.reloadIcon()
+                self.gearsetCardView.gearpowerFrameView.gearpowerNames = changedNames
                 
                 self.gearset!.gearpowerNames = changedNames
                 Static.gearsets[self.gearset!.id!] = self.gearset!

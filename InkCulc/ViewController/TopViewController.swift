@@ -5,7 +5,7 @@ class TopViewController: UIViewController {
         super.viewDidLoad()
          
         //バックグラウンド
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_dark.png")!)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_dark.png")!)
         
         //----------ナビゲーションバー----------
         
@@ -30,6 +30,7 @@ class TopViewController: UIViewController {
         //----------テーブルビュー----------
         
         tableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil),forCellReuseIdentifier: "cell")
+        tableView.delaysContentTouches = false
         
         //----------その他----------
         
@@ -59,8 +60,6 @@ class TopViewController: UIViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         tableView.isEditing = editing
-        
-        print(editing)
     }
     
 
@@ -120,13 +119,16 @@ extension TopViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let gearset = Static.gearsets[indexPath.row]
-        let cell: CustomTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
+        let cell: CustomTableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell",
+                                                                      for: indexPath) as! CustomTableViewCell
         
         let cellSelectedBgView = UIView()
-        cellSelectedBgView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+        cellSelectedBgView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = cellSelectedBgView
         
-        cell.set(gearset: gearset)
+        cell.gearsetCardView.frame.size.width = view.frame.size.width - 16
+        cell.gearsetCardView.setSize()
+        cell.gearset = gearset
         
         return cell
         
@@ -144,14 +146,40 @@ extension TopViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    //ハイライト
+    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        if !isEditing {
+            UIView.animate(withDuration: 0.3) {
+                tableView.cellForRow(at: indexPath)?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            }
+        }
+    }
+    
+    //アンハイライト
+    func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.3) {
+            tableView.cellForRow(at: indexPath)?.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        // 先にデータを削除しないと、エラーが発生します。
+        Static.gearsets.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
     //選択解除時のデリゲートメソッド
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.transform = CGAffineTransform(scaleX: 1, y: 1)
+        UIView.animate(withDuration: 0.3) {
+            tableView.cellForRow(at: indexPath)?.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }
         print(indexPath.row)
     }
     
+    //セルの高さ
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return view.frame.size.width / 2
+        return (view.frame.size.width - 16) * 2 / 3 + 8
     }
  
     

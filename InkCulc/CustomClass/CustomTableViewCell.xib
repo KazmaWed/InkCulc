@@ -6,97 +6,67 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="bananaslipplus.otf">
+            <string>bananaslipplus</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="IKA_Cul_" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="360" height="180"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="216" id="KGk-i7-Jjw" customClass="CustomTableViewCell" customModule="IKA_Cul_" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="466" height="308"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="360" height="180"/>
+            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="466" height="308"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="card_white_wide" translatesAutoresizingMaskIntoConstraints="NO" id="4pW-j7-eOp">
-                        <rect key="frame" x="18" y="9" width="324" height="162"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ge-Hk-GUX">
+                        <rect key="frame" x="8" y="8" width="450" height="300"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ギアセット" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAM-SK-JIb">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="75"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="24"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kP-As-UQ7" customClass="GearsetCardView" customModule="IKA_Cul_" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="75" width="450" height="225"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2kP-As-UQ7" secondAttribute="height" multiplier="2:1" id="RSJ-Wu-FBp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="4pW-j7-eOp" secondAttribute="height" multiplier="2:1" id="RVi-uc-skK"/>
+                            <constraint firstItem="eAM-SK-JIb" firstAttribute="top" secondItem="5Ge-Hk-GUX" secondAttribute="top" id="2Fx-6R-MLT"/>
+                            <constraint firstAttribute="trailing" secondItem="eAM-SK-JIb" secondAttribute="trailing" id="3Ux-ip-AK1"/>
+                            <constraint firstAttribute="bottom" secondItem="2kP-As-UQ7" secondAttribute="bottom" id="F0H-i0-yUr"/>
+                            <constraint firstAttribute="trailing" secondItem="2kP-As-UQ7" secondAttribute="trailing" id="Ggd-la-WLT"/>
+                            <constraint firstAttribute="width" secondItem="5Ge-Hk-GUX" secondAttribute="height" multiplier="3:2" id="N9L-Cg-lPB"/>
+                            <constraint firstItem="eAM-SK-JIb" firstAttribute="leading" secondItem="5Ge-Hk-GUX" secondAttribute="leading" id="Pk9-ws-umN"/>
+                            <constraint firstItem="eAM-SK-JIb" firstAttribute="height" secondItem="5Ge-Hk-GUX" secondAttribute="height" multiplier="0.25" id="WSr-GS-Ct1"/>
+                            <constraint firstItem="2kP-As-UQ7" firstAttribute="top" secondItem="eAM-SK-JIb" secondAttribute="bottom" id="hfi-OH-BVm"/>
+                            <constraint firstAttribute="width" secondItem="5Ge-Hk-GUX" secondAttribute="height" multiplier="3:2" id="iqJ-vj-uVc"/>
+                            <constraint firstItem="2kP-As-UQ7" firstAttribute="leading" secondItem="5Ge-Hk-GUX" secondAttribute="leading" id="w5u-n2-u22"/>
                         </constraints>
-                    </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2u-hn-EsU" customClass="WeaponSetImageView" customModule="IKA_Cul_" customModuleProvider="target">
-                        <rect key="frame" x="32" y="39.5" width="128" height="102.5"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="T2u-hn-EsU" secondAttribute="height" multiplier="5:4" id="b7K-q5-Qqi"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfr-mC-erl" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
-                        <rect key="frame" x="174" y="39.5" width="154" height="123"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="Wfr-mC-erl" secondAttribute="height" multiplier="5:4" id="hwt-v9-WOI"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msc-Hy-UK9" userLabel="Top Inset">
-                        <rect key="frame" x="18" y="9" width="324" height="21.5"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="Msc-Hy-UK9" secondAttribute="height" multiplier="15:1" id="SN5-Yk-MNL"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FpH-iD-hlo" userLabel="left">
-                        <rect key="frame" x="18" y="30.5" width="14" height="140.5"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="FpH-iD-hlo" secondAttribute="height" multiplier="1:10" id="VNX-Hj-fOK"/>
-                        </constraints>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6kr-R3-DbH" userLabel="Center">
-                        <rect key="frame" x="160" y="30.5" width="14" height="140.5"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hr-t1-mXk" userLabel="Right">
-                        <rect key="frame" x="328" y="30.5" width="14" height="140.5"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="4pW-j7-eOp" firstAttribute="bottom" secondItem="6kr-R3-DbH" secondAttribute="bottom" id="1J1-Vf-Xw5"/>
-                    <constraint firstItem="4pW-j7-eOp" firstAttribute="trailing" secondItem="5hr-t1-mXk" secondAttribute="trailing" id="3eF-pM-bkW"/>
-                    <constraint firstItem="4pW-j7-eOp" firstAttribute="bottom" secondItem="FpH-iD-hlo" secondAttribute="bottom" id="79J-Bb-H4b"/>
-                    <constraint firstItem="6kr-R3-DbH" firstAttribute="width" secondItem="FpH-iD-hlo" secondAttribute="width" id="9D9-sF-Jie"/>
-                    <constraint firstItem="5hr-t1-mXk" firstAttribute="width" secondItem="FpH-iD-hlo" secondAttribute="width" id="9LV-IM-58X"/>
-                    <constraint firstItem="FpH-iD-hlo" firstAttribute="leading" secondItem="4pW-j7-eOp" secondAttribute="leading" id="D78-kg-OK5"/>
-                    <constraint firstItem="FpH-iD-hlo" firstAttribute="top" secondItem="Msc-Hy-UK9" secondAttribute="bottom" id="DtC-9v-3VH"/>
-                    <constraint firstItem="4pW-j7-eOp" firstAttribute="trailing" secondItem="Msc-Hy-UK9" secondAttribute="trailing" id="Et9-BJ-b3i"/>
-                    <constraint firstItem="4pW-j7-eOp" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="KVS-3W-PGb"/>
-                    <constraint firstItem="6kr-R3-DbH" firstAttribute="centerY" secondItem="FpH-iD-hlo" secondAttribute="centerY" id="NfK-hd-6Lo"/>
-                    <constraint firstItem="5hr-t1-mXk" firstAttribute="top" secondItem="Msc-Hy-UK9" secondAttribute="bottom" id="OgC-N8-wT9"/>
-                    <constraint firstItem="4pW-j7-eOp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="UEP-Aq-F4W"/>
-                    <constraint firstItem="Msc-Hy-UK9" firstAttribute="top" secondItem="4pW-j7-eOp" secondAttribute="top" id="Uur-C7-VHb"/>
-                    <constraint firstItem="T2u-hn-EsU" firstAttribute="leading" secondItem="FpH-iD-hlo" secondAttribute="trailing" id="VzL-3h-cS6"/>
-                    <constraint firstItem="Wfr-mC-erl" firstAttribute="centerY" secondItem="FpH-iD-hlo" secondAttribute="centerY" id="WQC-mD-Ejm"/>
-                    <constraint firstItem="Wfr-mC-erl" firstAttribute="top" secondItem="T2u-hn-EsU" secondAttribute="top" id="YEn-0H-hHP"/>
-                    <constraint firstItem="5hr-t1-mXk" firstAttribute="centerY" secondItem="FpH-iD-hlo" secondAttribute="centerY" id="biL-3X-JHg"/>
-                    <constraint firstAttribute="bottom" secondItem="4pW-j7-eOp" secondAttribute="bottom" constant="9" id="fEN-7j-1ZQ"/>
-                    <constraint firstItem="6kr-R3-DbH" firstAttribute="top" secondItem="Msc-Hy-UK9" secondAttribute="bottom" id="gZo-5M-Mt2"/>
-                    <constraint firstItem="5hr-t1-mXk" firstAttribute="leading" secondItem="Wfr-mC-erl" secondAttribute="trailing" id="gcS-kb-DK0"/>
-                    <constraint firstItem="Wfr-mC-erl" firstAttribute="height" secondItem="T2u-hn-EsU" secondAttribute="height" multiplier="1.2" id="iaY-jy-rYK"/>
-                    <constraint firstItem="6kr-R3-DbH" firstAttribute="leading" secondItem="T2u-hn-EsU" secondAttribute="trailing" id="jh7-GG-a0F"/>
-                    <constraint firstItem="4pW-j7-eOp" firstAttribute="bottom" secondItem="5hr-t1-mXk" secondAttribute="bottom" id="jnQ-rq-JwJ"/>
-                    <constraint firstItem="Msc-Hy-UK9" firstAttribute="leading" secondItem="4pW-j7-eOp" secondAttribute="leading" id="yIZ-6G-OJc"/>
-                    <constraint firstItem="Wfr-mC-erl" firstAttribute="leading" secondItem="6kr-R3-DbH" secondAttribute="trailing" id="yuk-Ns-H3P"/>
+                    <constraint firstAttribute="bottom" secondItem="5Ge-Hk-GUX" secondAttribute="bottom" id="2td-Lb-8Gx"/>
+                    <constraint firstItem="5Ge-Hk-GUX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Ohd-oq-4fI"/>
+                    <constraint firstItem="5Ge-Hk-GUX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="VT5-NO-YGu"/>
+                    <constraint firstAttribute="trailing" secondItem="5Ge-Hk-GUX" secondAttribute="trailing" constant="8" id="aJH-cn-tjO"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="gearpowerFrameView" destination="Wfr-mC-erl" id="fuE-ph-kT5"/>
-                <outlet property="weaponSetImageView" destination="T2u-hn-EsU" id="API-gl-m9Y"/>
+                <outlet property="gearsetCardView" destination="2kP-As-UQ7" id="VQb-17-JSC"/>
             </connections>
-            <point key="canvasLocation" x="147.82608695652175" y="155.35714285714286"/>
+            <point key="canvasLocation" x="115.94202898550725" y="109.15178571428571"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="card_white_wide" width="1440" height="720"/>
-    </resources>
 </document>

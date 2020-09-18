@@ -2,19 +2,25 @@ import UIKit
 
 class CustomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var weaponSetImageView: WeaponSetImageView!
-    @IBOutlet weak var gearpowerFrameView: GearpowerFrameView!
+    @IBOutlet weak var gearsetCardView: GearsetCardView!
     
-    func set(gearset:Gearset) {
-        
-        weaponSetImageView.setSize()
-        weaponSetImageView.set(weapon: gearset.weapon)
-        
-        gearpowerFrameView.isUserInteractionEnabled = false
-        gearpowerFrameView.setSize()
-        gearpowerFrameView.gearpowerNames = gearset.gearpowerNames!
-        gearpowerFrameView.reloadIcon()
-        
+    override var frame: CGRect {
+        didSet {
+            print("didSet")
+        }
+    }
+    
+    var gearset: Gearset? {
+        didSet {
+            self.layer.shadowColor = shadowColor
+            self.layer.shadowOffset = shadowOffset
+            self.layer.shadowRadius = shadowRadius
+            self.layer.shadowOpacity = shadowOpacity
+            
+            gearsetCardView.layer.cornerRadius = cornerRadius
+            gearsetCardView.clipsToBounds = true
+            gearsetCardView.gearset = self.gearset
+        }
     }
     
 }

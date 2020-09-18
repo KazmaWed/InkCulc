@@ -2,12 +2,19 @@ import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var cardView: UIImageView!
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var subImageView: UIImageView!
     @IBOutlet weak var specialImageView: UIImageView!
     @IBOutlet weak var weaponNameLabel: UILabel!
     
     func set(weapon:Weapon) {
+        
+        cardView.layer.shadowOpacity = shadowOpacity
+        cardView.layer.shadowRadius = shadowRadius
+        cardView.layer.shadowOffset = shadowOffset
+        cardView.layer.shadowColor = shadowColor
+        cardView.layer.cornerRadius = cornerRadius
         
         let weaponIndex = inkApi.weaponNum(of: weapon)
         var weaponNameString = weapon.name

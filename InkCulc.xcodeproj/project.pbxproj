@@ -22,6 +22,7 @@
 		475855D12501C9F700AD5FFF /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475855D02501C9F700AD5FFF /* AddItemViewController.swift */; };
 		475855DA2502102100AD5FFF /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475855D82502102100AD5FFF /* CustomCollectionViewCell.swift */; };
 		475855DB2502102100AD5FFF /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475855D92502102100AD5FFF /* CustomCollectionViewCell.xib */; };
+		477B5196251476D0006A592C /* GearsetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477B5195251476D0006A592C /* GearsetCardView.swift */; };
 		4796DA97251096B200D4EE80 /* DamageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4796DA96251096B200D4EE80 /* DamageTableViewController.swift */; };
 		479CD0EB24FF75240037250D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CD0EA24FF75240037250D /* AppDelegate.swift */; };
 		479CD0ED24FF75240037250D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479CD0EC24FF75240037250D /* SceneDelegate.swift */; };
@@ -53,6 +54,7 @@
 		475855D02501C9F700AD5FFF /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		475855D82502102100AD5FFF /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		475855D92502102100AD5FFF /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		477B5195251476D0006A592C /* GearsetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearsetCardView.swift; sourceTree = "<group>"; };
 		4796DA96251096B200D4EE80 /* DamageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageTableViewController.swift; sourceTree = "<group>"; };
 		479CD0E724FF75240037250D /* IKA Cul..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IKA Cul..app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		479CD0EA24FF75240037250D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				475855D92502102100AD5FFF /* CustomCollectionViewCell.xib */,
 				475018C6250A04BB00B1504B /* WeaponSetImageView.swift */,
 				474B1393250357DF00283F32 /* GearpowerFrameView.swift */,
+				477B5195251476D0006A592C /* GearsetCardView.swift */,
 				474B13972503D0A700283F32 /* GearpowerKeyboardView.swift */,
 				47FED9E1250A0B33005EA56A /* MainWeaponInfoView.swift */,
 				47FED9E3250A231F005EA56A /* SubWeaponInfoView.swift */,
@@ -298,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				477B5196251476D0006A592C /* GearsetCardView.swift in Sources */,
 				4796DA97251096B200D4EE80 /* DamageTableViewController.swift in Sources */,
 				475855C824FFA10A00AD5FFF /* CustomTableViewCell.swift in Sources */,
 				475855DA2502102100AD5FFF /* CustomCollectionViewCell.swift in Sources */,

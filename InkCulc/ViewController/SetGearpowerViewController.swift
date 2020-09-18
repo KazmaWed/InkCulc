@@ -3,17 +3,15 @@ import UIKit
 class SetGearpowerViewController: UIViewController {
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         title = "ギアパワー選択"
-        
-        view.addTileBackground(name: "background_light")
 
         //ギアパワービュー設定
         gearpowerView.setSize()
         if fromGearsetDetailViewController {
             gearpowerView.gearpowerNames = self.gearpowerNames!
-            gearpowerView.reloadIcon()
         }
         setGearpowerViewAction()
         
@@ -25,14 +23,17 @@ class SetGearpowerViewController: UIViewController {
         //決定ボタン
         doneButtonOutlet.layer.cornerRadius = doneButtonOutlet.frame.size.height / 4
         doneButtonOutlet.titleEdgeInsets.bottom += doneButtonOutlet.titleLabel!.font.pointSize / 8
+        doneButtonEnable()
         
     }
 
     override func viewDidAppear(_ animated: Bool) {
         
-        gearpowerView.highlight(at: gearpowerView.blankIcon())
+        //ギアパワービュー表示
+        gearpowerView.highlightened = gearpowerView.blankIcon()
         gearpowerKeyboard.appear(view: view)
         
+        //パート限定キーの有効化・無効化
         let part = gearpowerView.selectedMainGearpowerIcon()
         gearpowerKeyboard.enableLimitedKeys(part: part)
         
@@ -45,6 +46,8 @@ class SetGearpowerViewController: UIViewController {
     @IBOutlet weak var gearpowerKeyboard: GearpowerKeyboardView!
     @IBAction func doneButton(_ sender: Any) { doneTapped() }
     @IBOutlet weak var doneButtonOutlet: UIButton!
+    
+    
     
     var weapon:Weapon?
     var gearpowerNames:[[String]]?
@@ -70,10 +73,9 @@ class SetGearpowerViewController: UIViewController {
     //アイコンタップ
     @objc func iconTapped(sender: UIButton) {
         let coordinate = gearpowerView.coordinate(tag: sender.tag)
-        gearpowerView.highlight(at: coordinate)
+        gearpowerView.highlightened = coordinate
         
     }
-    
     
     //--------------------キーボード--------------------
     
@@ -101,6 +103,8 @@ class SetGearpowerViewController: UIViewController {
         
         let part = gearpowerView.selectedMainGearpowerIcon()
         gearpowerKeyboard.enableLimitedKeys(part: part)
+        
+        doneButtonEnable()
     }
     
     //デリートキータップ
@@ -135,6 +139,8 @@ class SetGearpowerViewController: UIViewController {
         let part = gearpowerView.selectedMainGearpowerIcon()
         gearpowerKeyboard.enableLimitedKeys(part: part)
         
+        doneButtonEnable()
+        
     }
     
     
@@ -145,9 +151,7 @@ class SetGearpowerViewController: UIViewController {
     func doneTapped() {
         
         if fromAddItemViewController {
-            
             performSegue(withIdentifier: "gearsetDetail", sender: self)
-            
         } else if fromGearsetDetailViewController {
             
             self.navigationController?.popViewController(animated: true)
@@ -158,13 +162,45 @@ class SetGearpowerViewController: UIViewController {
         
     }
     
+    func doneButtonEnable(bool:Bool) {
+        
+        if bool {
+            //ボタン有効時
+            UIView.animate(withDuration: 0.3, delay: 0,
+                           options: .curveEaseInOut, animations: { () -> Void in
+                            self.doneButtonOutlet.alpha = 1
+                            self.doneButtonOutlet.layer.shadowColor = shadowColor
+                            self.doneButtonOutlet.layer.shadowOffset = shadowOffset
+                            self.doneButtonOutlet.layer.shadowRadius = shadowRadius
+                            self.doneButtonOutlet.layer.shadowOpacity = shadowOpacity
+            })
+            
+        } else {
+            //ボタン無効時
+            UIView.animate(withDuration: 0.3, delay: 0,
+                           options: .curveEaseInOut, animations: { () -> Void in
+                            self.doneButtonOutlet.alpha = 0.5
+                            self.doneButtonOutlet.layer.shadowColor = UIColor.clear.cgColor
+                            self.doneButtonOutlet.layer.shadowOffset = CGSize(width: 0, height: 0)
+                            self.doneButtonOutlet.layer.shadowRadius = 0
+                            self.doneButtonOutlet.layer.shadowOpacity = 0
+            })
+        }
+        
+    }
+    
+    func doneButtonEnable() {
+        
+        let finishEditing:Bool = gearpowerView.blankIcon() == nil
+        doneButtonEnable(bool: finishEditing)
+        
+    }
     
     //遷移先に値渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "gearsetDetail" {
             let next = segue.destination as! GearsetDetailViewController
-            
             let gearset = Gearset(weapon:weapon!)
             gearset.gearpowerNames = gearpowerView.gearpowerNames
             next.gearset = gearset
