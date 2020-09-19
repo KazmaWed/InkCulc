@@ -8,7 +8,8 @@ class SetGearpowerViewController: UIViewController {
         
         title = "ギアパワー選択"
 
-        weaponSetCell.set(weapon: weapon!)
+        weaponSetView.weapon = weapon!
+        weaponSetView.setSize()
         
         //ギアパワービュー設定
         gearpowerView.setSize()
@@ -39,13 +40,16 @@ class SetGearpowerViewController: UIViewController {
         let part = gearpowerView.selectedMainGearpowerIcon()
         gearpowerKeyboard.enableLimitedKeys(part: part)
         
+        weaponSetImageAnimate()
+        
     }
     
     //--------------------IBアウトレットなど--------------------
     
     
 
-    @IBOutlet weak var weaponSetCell: CustomCollectionViewCell!
+    
+    @IBOutlet weak var weaponSetView: WeaponSetImageView!
     @IBOutlet weak var gearpowerView: GearpowerFrameView!
     @IBOutlet weak var gearpowerKeyboard: GearpowerKeyboardView!
     @IBAction func doneButton(_ sender: Any) { doneTapped() }
@@ -58,6 +62,10 @@ class SetGearpowerViewController: UIViewController {
     
     var fromAddItemViewController = false
     var fromGearsetDetailViewController = false
+    
+    var weaponSetImage = WeaponSetImageView()
+    var imageSize:CGSize?
+    var imageOrigin:CGPoint?
     
     var closure = {(changedNames: [[String]]) -> Void in }
     
@@ -151,7 +159,29 @@ class SetGearpowerViewController: UIViewController {
     //--------------------画面遷移--------------------
     
     
-    //
+    //コレクションビューからアニメ
+    func weaponSetImageAnimate() {
+        
+        weaponSetImage.frame.size = imageSize!
+        weaponSetImage.frame.origin = imageOrigin!
+        weaponSetImage.weapon = weapon
+        
+        view.addSubview(weaponSetImage)
+        view.sendSubviewToBack(weaponSetImage)
+        
+        let weaponImageX = weaponSetView.frame.origin.x
+        let weaponImageY = weaponSetView.frame.origin.y - view.frame.origin.y
+        let weaponImageSize = weaponSetView.frame.size.width
+        
+        UIView.animate(withDuration: 0.3, delay: 0,
+                       options: .curveEaseInOut, animations: { () -> Void in
+                        self.weaponSetImage.frame.size = CGSize(width: weaponImageSize, height: weaponImageSize)
+                        self.weaponSetImage.frame.origin = CGPoint(x: weaponImageX, y: weaponImageY)
+        })
+        
+    }
+    
+    //決定ボタン
     func doneTapped() {
         
         if fromAddItemViewController {
@@ -165,7 +195,7 @@ class SetGearpowerViewController: UIViewController {
         }
         
     }
-    
+    //決定ボタン透過
     func doneButtonEnable(bool:Bool) {
         
         if bool {

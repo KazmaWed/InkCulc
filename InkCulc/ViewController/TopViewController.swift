@@ -28,7 +28,6 @@ class TopViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         //追加ボタン
-        naviButtonSlide(out: false)
         self.tableView.reloadData()
         
     }
@@ -42,10 +41,10 @@ class TopViewController: UIViewController {
         
     }
     
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        tableView.isEditing = editing
-    }
+//    override func setEditing(_ editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated: animated)
+//        tableView.isEditing = editing
+//    }
     
 
     //--------------------IBアウトレット・インスタンス--------------------
@@ -220,9 +219,8 @@ extension TopViewController: UITableViewDelegate, UITableViewDataSource {
         cellSelectedBgView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = cellSelectedBgView
         
-        cell.gearsetCardView.frame.size.width = view.frame.size.width - 16
-        cell.gearsetCardView.setSize()
         cell.gearset = gearset
+//        cell.gearsetCardView.setSize()
         
         return cell
         
@@ -257,8 +255,6 @@ extension TopViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        // 先にデータを削除しないと、エラーが発生します。
         Static.gearsets.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }

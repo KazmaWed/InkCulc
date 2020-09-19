@@ -11,51 +11,58 @@ class AddItemViewController: UIViewController {
         //ブキリスト
         weaponsGrouped = inkApi.weaponsGroupedByMain()
         
-        //コレクションビュー・カスタムセル登録
-        collectionView.register(UINib(nibName: "CustomCollectionViewCell", bundle: .main),
-                                forCellWithReuseIdentifier: "cell")
-        collectionView.reloadData()
-        collextionViewSetting()
-        collectionView.delaysContentTouches = false
+        collectionView.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
+        if firstAppear {
+            collectionViewSetting()
+            firstAppear = false
+        }
         
-        //セルのサイズ
-        let cellSize = view.frame.size.width / 3
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: cellSize, height: cellSize)
+        collectionView.reloadData()
         
-        //セル間隔
-        layout.minimumInteritemSpacing = 0
-        
-        //適応
-        collectionView.collectionViewLayout = layout
+        //セルサイズ再計算
+        for path in collectionView.indexPathsForVisibleItems {
+            let cell = collectionView.cellForItem(at: path)
+            let weaponsetImageView = cell!.contentView.viewWithTag(1) as! WeaponSetImageView
+            weaponsetImageView.setSize()
+        }
         
     }
     
     
-    //--------------------
+    //--------------------IB
     
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var weaponsGrouped:[[Weapon]]?
     var selectedItem:Weapon?
+    var firstAppear = true
+    
+    var imageSize:CGSize?
+    var imageOrigin:CGPoint?
+    var cardSize:CGSize?
+    var cardOrigin:CGPoint?
     
     
     //--------------------メソッド--------------------
     
     
-    func collextionViewSetting() {
+    func collectionViewSetting() {
+        
+        collectionView.delaysContentTouches = false
         
         let layout = UICollectionViewFlowLayout()
-        
-        let cellSize:CGFloat = view.frame.size.width / 3 - 8
-        let margin = (view.frame.size.width - cellSize * 3) / 4
+        let margin:CGFloat = 12
+        let cellSize:CGFloat = (view.frame.size.width - margin * 4 - 1 ) / 3
         layout.itemSize = CGSize(width: cellSize, height: cellSize)
         layout.minimumInteritemSpacing = margin
         layout.minimumLineSpacing = margin
-        layout.sectionInset = UIEdgeInsets(top: margin * 2, left: margin, bottom: 0, right: margin)
+        layout.sectionInset = UIEdgeInsets(top: margin, left: margin, bottom: 0, right: margin)
         
         collectionView.collectionViewLayout = layout
         
@@ -76,7 +83,7 @@ extension AddItemViewController : UICollectionViewDelegate, UICollectionViewData
         return sectionNum
     }
     
-    //セクションないアイテム数
+    //セクション内アイテム数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let itemNum = weaponsGrouped![section].count
         return itemNum
@@ -86,9 +93,18 @@ extension AddItemViewController : UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView,  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         
         let weapon = weaponsGrouped![indexPath.section][indexPath.row]
-        let cell: CustomCollectionViewCell =  collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
-                                                                                 for: indexPath) as! CustomCollectionViewCell
-        cell.set(weapon:weapon)
+        
+        let cell:UICollectionViewCell =  collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.isUserInteractionEnabled = true
+        
+        let card = cell.contentView.viewWithTag(1)!
+        card.layer.cornerRadius = cornerRadius
+        card.shadow()
+        
+        let weaponsetImageView = cell.contentView.viewWithTag(2) as! WeaponSetImageView
+        weaponsetImageView.weapon = weapon
+        weaponsetImageView.setSize()
+        
         return cell
         
     }
@@ -123,6 +139,17 @@ extension AddItemViewController : UICollectionViewDelegate, UICollectionViewData
     //セルタップ時
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        //セルないビュー
+        let cell = collectionView.cellForItem(at: indexPath)!
+        let image = cell.contentView.viewWithTag(2)!
+        //スクロール量
+        let contentOffset = collectionView.contentOffset.y
+        
+        let imageX = image.frame.origin.x + cell.frame.origin.x
+        let imageY = image.frame.origin.y + cell.frame.origin.y - contentOffset
+        imageSize = image.frame.size
+        imageOrigin = CGPoint(x: imageX, y: imageY)
+        
         selectedItem = weaponsGrouped![indexPath.section][indexPath.row]
         self.performSegue(withIdentifier: "setGearpower", sender: self)
         
@@ -136,6 +163,8 @@ extension AddItemViewController : UICollectionViewDelegate, UICollectionViewData
             let next = segue.destination as! SetGearpowerViewController
             next.fromAddItemViewController = true
             next.weapon = selectedItem
+            next.imageSize = imageSize
+            next.imageOrigin = imageOrigin
         }
         
     }

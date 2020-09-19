@@ -27,11 +27,11 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sfa-3y-Zt1" customClass="CustomTableViewCell" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="350" id="Sfa-3y-Zt1" customClass="CustomTableViewCell" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="350"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sfa-3y-Zt1" id="Fow-6s-VYY">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -73,20 +73,48 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ix9-jg-r8r">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vbn-Da-NYC">
-                                    <size key="itemSize" width="128" height="128"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vbn-Da-NYC">
+                                    <size key="itemSize" width="135" height="135"/>
+                                    <size key="estimatedItemSize" width="125" height="125"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="mgM-TV-mxI" customClass="CustomCollectionViewCell" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="mgM-TV-mxI">
+                                        <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="msm-7y-Vxw" customClass="CustomCollectionViewCell" customModule="IKA_Cul_" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="msm-7y-Vxw">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yY6-vo-Zpm">
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                                    <subviews>
+                                                        <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNB-k2-uIA" customClass="WeaponSetImageView" customModule="IKA_Cul_" customModuleProvider="target">
+                                                            <rect key="frame" x="8" y="8" width="109" height="109"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="MNB-k2-uIA" secondAttribute="height" multiplier="1:1" id="hUQ-aW-LFf"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstItem="MNB-k2-uIA" firstAttribute="centerY" secondItem="yY6-vo-Zpm" secondAttribute="centerY" id="5Ku-sv-xWK"/>
+                                                        <constraint firstItem="MNB-k2-uIA" firstAttribute="centerX" secondItem="yY6-vo-Zpm" secondAttribute="centerX" id="bRR-8w-and"/>
+                                                        <constraint firstAttribute="width" secondItem="yY6-vo-Zpm" secondAttribute="height" multiplier="1:1" id="lTd-5s-Pgo"/>
+                                                        <constraint firstItem="MNB-k2-uIA" firstAttribute="top" secondItem="yY6-vo-Zpm" secondAttribute="top" constant="8" id="v0b-aF-0r4"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="yY6-vo-Zpm" secondAttribute="trailing" id="ZJa-f5-hzq"/>
+                                                <constraint firstItem="yY6-vo-Zpm" firstAttribute="top" secondItem="msm-7y-Vxw" secondAttribute="top" id="hZh-jv-7Ov"/>
+                                                <constraint firstItem="yY6-vo-Zpm" firstAttribute="leading" secondItem="msm-7y-Vxw" secondAttribute="leading" id="zlk-Fl-yzJ"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
+                                        <size key="customSize" width="125" height="125"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -106,31 +134,31 @@
                     </view>
                     <navigationItem key="navigationItem" id="thG-I3-Lfq"/>
                     <connections>
-                        <outlet property="collectionView" destination="ix9-jg-r8r" id="aRe-pG-9bl"/>
-                        <segue destination="zjj-8X-EBC" kind="show" identifier="setGearpower" id="CVx-TV-Vbd"/>
+                        <outlet property="collectionView" destination="ix9-jg-r8r" id="qvk-IY-Ly8"/>
+                        <segue destination="zjj-8X-EBC" kind="show" identifier="setGearpower" animates="NO" id="CVx-TV-Vbd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PuR-91-Ni5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1858" y="190"/>
+            <point key="canvasLocation" x="1857.9710144927537" y="189.50892857142856"/>
         </scene>
         <!--Set Gearpower View Controller-->
         <scene sceneID="BkT-yJ-7Yh">
             <objects>
                 <viewController id="zjj-8X-EBC" customClass="SetGearpowerViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w2b-Am-IRc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-11-hPl" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
-                                <rect key="frame" x="160" y="18" width="230" height="184"/>
+                                <rect key="frame" x="160" y="106" width="230" height="184"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="JP6-11-hPl" secondAttribute="height" multiplier="5:4" id="hcp-xC-7QW"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctv-Ee-166" customClass="CustomCollectionViewCell" customModule="IKA_Cul_" customModuleProvider="target">
-                                <rect key="frame" x="18" y="48" width="124" height="124"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctv-Ee-166" customClass="WeaponSetImageView" customModule="IKA_Cul_" customModuleProvider="target">
+                                <rect key="frame" x="18" y="136" width="124" height="124"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ctv-Ee-166" secondAttribute="height" multiplier="1:1" id="tvf-ve-FOC"/>
@@ -142,7 +170,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-vO-SEg">
-                                <rect key="frame" x="167" y="220" width="80" height="42"/>
+                                <rect key="frame" x="167" y="308" width="80" height="42"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="yLx-kJ-hkX"/>
@@ -175,7 +203,7 @@
                         <outlet property="doneButtonOutlet" destination="g0d-vO-SEg" id="xQc-uf-SOb"/>
                         <outlet property="gearpowerKeyboard" destination="wbk-ik-pYy" id="0Mr-at-IXe"/>
                         <outlet property="gearpowerView" destination="JP6-11-hPl" id="h9y-Kd-xVM"/>
-                        <outlet property="weaponSetCell" destination="ctv-Ee-166" id="cD1-xU-gsm"/>
+                        <outlet property="weaponSetView" destination="ctv-Ee-166" id="PIL-zL-nSD"/>
                         <segue destination="X5u-JD-zum" kind="show" identifier="gearsetDetail" id="G81-F5-FZ6"/>
                         <segue destination="lCf-Su-s8E" kind="show" identifier="showGearpowerEffect" id="K5d-aA-X6z"/>
                     </connections>
@@ -189,23 +217,23 @@
             <objects>
                 <viewController id="lCf-Su-s8E" customClass="GearpowerEffectViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P3u-l3-Ogu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ギアパワー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1e-Re-1bw">
-                                <rect key="frame" x="18" y="12" width="86" height="31"/>
+                                <rect key="frame" x="18" y="100" width="86" height="31"/>
                                 <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="バリュー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HYN-3r-A2a">
-                                <rect key="frame" x="333" y="12" width="63" height="28"/>
+                                <rect key="frame" x="333" y="100" width="63" height="28"/>
                                 <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tx2-LC-IeE">
-                                <rect key="frame" x="0.0" y="51" width="414" height="791"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="EUo-Pe-W5F" detailTextLabel="I7E-eg-Tcc" style="IBUITableViewCellStyleValue1" id="uWo-2g-Z0W">
@@ -267,7 +295,7 @@
             <objects>
                 <viewController id="X5u-JD-zum" customClass="GearsetDetailViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wkw-dO-bHA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Id0-9M-ZQe">
@@ -341,11 +369,11 @@
             <objects>
                 <viewController id="FFq-xL-kvh" customClass="DamageTableViewController" customModule="IKA_Cul_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PRc-bh-C5S">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2KV-UZ-i5M">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="hrK-Ow-HR2" detailTextLabel="CW2-CP-1ki" style="IBUITableViewCellStyleValue1" id="fQe-Ps-ugy">
@@ -424,7 +452,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="G81-F5-FZ6"/>
         <segue reference="K5d-aA-X6z"/>
-        <segue reference="Gbz-Tr-4ng"/>
+        <segue reference="CVx-TV-Vbd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">

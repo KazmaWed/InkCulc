@@ -21,7 +21,7 @@ class GearsetCardView: UIView {
             let weapon = gearset!.weapon
             let gearpowerNames = gearset!.gearpowerNames!
             
-            weaponSetImageView.set(weapon: weapon)
+            weaponSetImageView.weapon = weapon
             gearpowerFrameView.gearpowerNames = gearpowerNames
             gearpowerFrameView.isUserInteractionEnabled = false
         }
@@ -45,14 +45,13 @@ class GearsetCardView: UIView {
         self.layer.cornerRadius = cornerRadius
         
         let contentInset = frame.size.width / 30
-//        let bottomInset = frame.size.width / 42
         let bottomInset:CGFloat = 0
         let weaponSetImageWidthProportion:CGFloat = 5
         let gearpowerFrameWidthProportion:CGFloat = 6
         let proportionSum = weaponSetImageWidthProportion + gearpowerFrameWidthProportion
         
         let weaponSetImageWidth = (frame.size.width - contentInset * 3) * weaponSetImageWidthProportion / proportionSum
-        let weaponSetImageHeight = weaponSetImageWidth  * 4 / 5
+        let weaponSetImageHeight = weaponSetImageWidth
         let weaponSetImageY = (frame.size.height - weaponSetImageHeight - bottomInset) / 2
         let gearpowerFrameWidth = (frame.size.width - contentInset * 3) * gearpowerFrameWidthProportion / proportionSum
         let gearpowerFrameHeight = gearpowerFrameWidth * 4 / 5

@@ -10,7 +10,8 @@ class CustomTableViewCell: UITableViewCell {
         didSet {
             print("didSet")
             if frame.size.height > 0 {
-                print("height > 0")
+                guard gearset != nil else { return }
+                gearsetCardView.setSize()
             }
         }
     }

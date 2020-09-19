@@ -52,6 +52,39 @@ import UIKit
 
 extension UIView {
     
+    func shadow(off:Bool = false) {
+        
+        if !off {
+            self.layer.shadowOpacity = shadowOpacity
+            self.layer.shadowRadius = shadowRadius
+            self.layer.shadowOffset = shadowOffset
+            self.layer.shadowColor = shadowColor
+        } else {
+            self.layer.shadowOpacity = 0
+            self.layer.shadowRadius = 0
+            self.layer.shadowOffset = CGSize(width: 0, height: 0)
+            self.layer.shadowColor = UIColor.clear.cgColor
+        }
+        
+    }
+    
+    func makeImage() -> UIImage? {
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
+        
+        guard let currentContext = UIGraphicsGetCurrentContext() else {
+            UIGraphicsEndImageContext()
+            return nil
+        }
+        
+        layer.render(in: currentContext)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
     func addBackground(name: String) {
         
         // スクリーンサイズの取得
