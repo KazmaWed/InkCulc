@@ -116,7 +116,7 @@ class GearsetDetailViewController: UIViewController {
         
         let gearpowerPoint = gearsetCardView.gearpowerFrameView.gearpowerPoint()
         mainDamageCulcView.culc(weapon: weapon!, gearpowerPoint: gearpowerPoint)
-        mainDamageCulcView.size(width: infoViewWidth)
+        mainDamageCulcView.size()
         mainDamageCulcView.frame.origin.x = infoViewInset
         mainDamageCulcView.frame.origin.y = specialWeaponInfoView.frame.origin.y + specialWeaponInfoView.frame.size.height + infoViewInset
         

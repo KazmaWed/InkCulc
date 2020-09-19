@@ -8,6 +8,8 @@ class SetGearpowerViewController: UIViewController {
         
         title = "ギアパワー選択"
 
+        weaponSetCell.set(weapon: weapon!)
+        
         //ギアパワービュー設定
         gearpowerView.setSize()
         if fromGearsetDetailViewController {
@@ -42,6 +44,8 @@ class SetGearpowerViewController: UIViewController {
     //--------------------IBアウトレットなど--------------------
     
     
+
+    @IBOutlet weak var weaponSetCell: CustomCollectionViewCell!
     @IBOutlet weak var gearpowerView: GearpowerFrameView!
     @IBOutlet weak var gearpowerKeyboard: GearpowerKeyboardView!
     @IBAction func doneButton(_ sender: Any) { doneTapped() }

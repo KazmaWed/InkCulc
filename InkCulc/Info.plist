@@ -53,6 +53,12 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ヒラギノ角ゴシック W0.ttc</string>
+		<string>ヒラギノ角ゴシック W1.ttc</string>
+		<string>ヒラギノ角ゴシック W2.ttc</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -31,14 +31,21 @@ class WeaponSetImageView: UIView {
         specialImageView.frame = CGRect(x: width - subSpecialImageSize,
                                         y: subSpecialImageSize + subSpecialImageGap * 2,
                                         width: subSpecialImageSize, height: subSpecialImageSize)
-        weaponNameLabel.frame = CGRect(x: 0, y: weaponImageSize, width: width, height: labelHeight)
+        
         weaponNameLabel.font = UIFont(name: "bananaslipplus", size: 20)
+        weaponNameLabel.text = "ブキ名"
+        weaponNameLabel.sizeToFit()
+        weaponNameLabel.frame.origin = CGPoint(x: 0, y: weaponImageSize)
+        weaponNameLabel.frame.size.width = width
         weaponNameLabel.textAlignment = .center
         
         self.addSubview(mainImageView)
         self.addSubview(subImageView)
         self.addSubview(specialImageView)
         self.addSubview(weaponNameLabel)
+        
+//        self.backgroundColor = UIColor.green
+//        weaponNameLabel.backgroundColor = UIColor.blue
         
     }
     

@@ -30,6 +30,9 @@
 		479CD0F224FF75240037250D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479CD0F024FF75240037250D /* Main.storyboard */; };
 		479CD0F424FF75260037250D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 479CD0F324FF75260037250D /* Assets.xcassets */; };
 		479CD0F724FF75260037250D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479CD0F524FF75260037250D /* LaunchScreen.storyboard */; };
+		47A097B22515F9FB00B92698 /* ヒラギノ角ゴシック W1.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 47A097B02515F9FB00B92698 /* ヒラギノ角ゴシック W1.ttc */; };
+		47A097B32515F9FB00B92698 /* ヒラギノ角ゴシック W0.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 47A097B12515F9FB00B92698 /* ヒラギノ角ゴシック W0.ttc */; };
+		47A097B62515FB8200B92698 /* ヒラギノ角ゴシック W2.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 47A097B52515FB8200B92698 /* ヒラギノ角ゴシック W2.ttc */; };
 		47BAE2DA250F0FEC00732A53 /* MainDamageCulcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47BAE2D9250F0FEC00732A53 /* MainDamageCulcView.swift */; };
 		47FED9E2250A0B33005EA56A /* MainWeaponInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FED9E1250A0B33005EA56A /* MainWeaponInfoView.swift */; };
 		47FED9E4250A231F005EA56A /* SubWeaponInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FED9E3250A231F005EA56A /* SubWeaponInfoView.swift */; };
@@ -64,6 +67,9 @@
 		479CD0F324FF75260037250D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		479CD0F624FF75260037250D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		479CD0F824FF75260037250D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47A097B02515F9FB00B92698 /* ヒラギノ角ゴシック W1.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ角ゴシック W1.ttc"; sourceTree = "<group>"; };
+		47A097B12515F9FB00B92698 /* ヒラギノ角ゴシック W0.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ角ゴシック W0.ttc"; sourceTree = "<group>"; };
+		47A097B52515FB8200B92698 /* ヒラギノ角ゴシック W2.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ヒラギノ角ゴシック W2.ttc"; sourceTree = "<group>"; };
 		47BAE2D9250F0FEC00732A53 /* MainDamageCulcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDamageCulcView.swift; sourceTree = "<group>"; };
 		47FED9E1250A0B33005EA56A /* MainWeaponInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeaponInfoView.swift; sourceTree = "<group>"; };
 		47FED9E3250A231F005EA56A /* SubWeaponInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubWeaponInfoView.swift; sourceTree = "<group>"; };
@@ -96,6 +102,9 @@
 		474B13852502466600283F32 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				47A097B12515F9FB00B92698 /* ヒラギノ角ゴシック W0.ttc */,
+				47A097B52515FB8200B92698 /* ヒラギノ角ゴシック W2.ttc */,
+				47A097B02515F9FB00B92698 /* ヒラギノ角ゴシック W1.ttc */,
 				474B13992504DA7400283F32 /* bananaslipplus.otf */,
 			);
 			path = Assets;
@@ -243,9 +252,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47A097B32515F9FB00B92698 /* ヒラギノ角ゴシック W0.ttc in Resources */,
 				474B139A2504DA8400283F32 /* bananaslipplus.otf in Resources */,
+				47A097B22515F9FB00B92698 /* ヒラギノ角ゴシック W1.ttc in Resources */,
 				479CD0F724FF75260037250D /* LaunchScreen.storyboard in Resources */,
 				479CD0F424FF75260037250D /* Assets.xcassets in Resources */,
+				47A097B62515FB8200B92698 /* ヒラギノ角ゴシック W2.ttc in Resources */,
 				475855C924FFA10A00AD5FFF /* CustomTableViewCell.xib in Resources */,
 				475855DB2502102100AD5FFF /* CustomCollectionViewCell.xib in Resources */,
 				479CD0F224FF75240037250D /* Main.storyboard in Resources */,

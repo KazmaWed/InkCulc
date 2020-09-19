@@ -9,6 +9,7 @@ class MainDamageCulcView: UIView {
     
     var totalDamages:[Double] = []
     var remainingHps:[Double] = []
+    var thresholds:[Double] = []
     var decisiveAttack:[[(String,String,Double)?]] = []
     
     var topLabel = UILabel()
@@ -16,7 +17,7 @@ class MainDamageCulcView: UIView {
     var remainingHpLabels:[UILabel] = []
     var decisiveAttackLabels:[[UILabel]] = []
     var buttons:[UIButton] = []
-    var thresholds:[Double] = []
+    var backgroundCardView = UIView()
     
     func culc(weapon:Weapon, gearpowerPoint:[String:Int]) {
         
@@ -74,8 +75,8 @@ class MainDamageCulcView: UIView {
                 
                 //擬似確フレーム
                 let slipDamageFrame:Int = Int(ceil(remainingHp / 0.3))
-                let slipDamage:Double = Double(slipDamageFrame) * 0.3
-                decisiveAttack[arrayNum].append(("相手インクダメージ", "\(slipDamageFrame)F", slipDamage))
+                let slipDamage:Double = Double(Int((Double(slipDamageFrame) * 0.3) * 10)) / 10
+                decisiveAttack[arrayNum].append(("相手インクダメージ", "\(slipDamageFrame)F ", slipDamage))
                 
             } else {
                 
@@ -110,19 +111,27 @@ class MainDamageCulcView: UIView {
         
     }
     
-    func size(width:CGFloat) {
+    func size() {
         
         //ビュー初期化
         removeElements()
         
+        let width = self.frame.width
+        
         var labelY:CGFloat = 0
         
+        let topLabelHeight:CGFloat = 54
+        let contentInset:CGFloat = 18
         let labelGap:CGFloat = 10
         
         self.frame.size.width = CGFloat(width)
+        
         topLabel.text = "ダメージ計算"
-        topLabel.font = UIFont(name: "bananaslipplus", size: 24)
-        topLabel.sizeToFit()
+        topLabel.textAlignment = .center
+        topLabel.font = InkFont.Banana
+        topLabel.textColor = UIColor.white
+        topLabel.frame.size = CGSize(width: width, height: topLabelHeight)
+        topLabel.backgroundColor = InkColor.green
         
         for n in 0...totalDamages.count - 1 {
             
@@ -130,28 +139,35 @@ class MainDamageCulcView: UIView {
             let hit = totalDamages.count - n
             let damage = String(totalDamages[n])
             damageLabels.append(UILabel())
+            damageLabels[n].font = InkFont.Sans
             damageLabels[n].text = "メイン \(hit)発ヒット " + damage
             damageLabels[n].sizeToFit()
+            damageLabels[n].frame.size.height *= 1.1
             
             //残りHP
             remainingHpLabels.append(UILabel())
             let remainingHp = remainingHps[n]
             if remainingHp < 0 {
-                remainingHpLabels[n].text = "確定キル"
+                remainingHpLabels[n].text = "確定ダウン"
             } else if remainingHp < 10 {
                 remainingHpLabels[n].text = "残りHP " + String(remainingHp) + " (擬似確)"
             } else {
                 remainingHpLabels[n].text = "残りHP " + String(remainingHp)
             }
             remainingHpLabels[n].sizeToFit()
+            remainingHpLabels[n].frame.size.height = damageLabels[n].frame.size.height
             
             //決定打ラベル
             decisiveAttackLabels.append([])
             for m in 0...decisiveAttack[n].count - 1 {
                 if decisiveAttack[n][m] != nil {
                     decisiveAttackLabels[n].append(UILabel())
-                    decisiveAttackLabels[n].last!.text = "\(decisiveAttack[n][m]!.0) \(decisiveAttack[n][m]!.1) \(String(decisiveAttack[n][m]!.2))"
+                    let text = "\(decisiveAttack[n][m]!.0) \(decisiveAttack[n][m]!.1) \(String(decisiveAttack[n][m]!.2))"
+                    decisiveAttackLabels[n].last!.text = text
+                    decisiveAttackLabels[n].last!.font = InkFont.Sans
+                    decisiveAttackLabels[n].last!.textColor = InkColor.textBlue
                     decisiveAttackLabels[n].last!.sizeToFit()
+                    decisiveAttackLabels[n].last!.frame.size.height *= 1.2
                 }
             }
             
@@ -159,8 +175,20 @@ class MainDamageCulcView: UIView {
             if n > 0 {
                 let button = UIButton()
                 button.setTitle("すべてのダメージ ＞", for: .normal)
-                button.setTitleColor(UIColor.systemBlue, for: .normal)
+                button.setTitleColor(UIColor.white, for: .normal)
                 button.sizeToFit()
+                
+                let buttonInset:CGFloat = 8
+                button.frame.size = CGSize(width: button.frame.width + buttonInset * 2,
+                                           height: button.frame.height)
+                button.layer.cornerRadius = button.frame.height / 2
+                
+                button.backgroundColor = InkColor.green
+                button.layer.shadowColor = shadowColor
+                button.layer.shadowOffset = shadowOffset
+                button.layer.shadowRadius = shadowRadius
+                button.layer.shadowOpacity = shadowOpacity
+                
                 button.tag = n - 1
                 buttons.append(button)
                 
@@ -172,15 +200,15 @@ class MainDamageCulcView: UIView {
         
         //----------ラベルのフレーム----------
         
-        labelY += topLabel.frame.size.height + labelGap
+        labelY += topLabel.frame.size.height + contentInset
         
         for n in 0...damageLabels.count - 1 {
             
             //ダメージラベル
-            damageLabels[n].frame.origin = CGPoint(x: 0, y: labelY)
-            let remainingHpLabelX = width -  remainingHpLabels[n].frame.size.width
+            damageLabels[n].frame.origin = CGPoint(x: contentInset, y: labelY)
             
             //残りHP
+            let remainingHpLabelX = width -  remainingHpLabels[n].frame.size.width - contentInset
             remainingHpLabels[n].frame.origin = CGPoint(x: remainingHpLabelX, y: labelY)
             
             labelY += remainingHpLabels[n].frame.size.height + labelGap
@@ -188,40 +216,62 @@ class MainDamageCulcView: UIView {
             //決定打ラベル
             if decisiveAttackLabels[n].count > 0 {
                 for m in 0...decisiveAttackLabels[n].count - 1 {
-                    let decisiveAttackLabelX = width - decisiveAttackLabels[n][m].frame.size.width
+                    let decisiveAttackLabelX = width - decisiveAttackLabels[n][m].frame.size.width - contentInset
                     decisiveAttackLabels[n][m].frame.origin = CGPoint(x: decisiveAttackLabelX, y: labelY)
-                    labelY += decisiveAttackLabels[n][m].frame.size.height + labelGap - 8
+                    labelY += decisiveAttackLabels[n][m].frame.size.height + labelGap
                 }
             }
             
+            //ボタン
             if n > 0 {
                 let m = n - 1
-                let buttonX = width - buttons[m].frame.size.width
+                let buttonX = width - buttons[m].frame.size.width - contentInset
                 buttons[m].frame.origin = CGPoint(x: buttonX, y: labelY)
-                labelY += buttons[m].frame.size.height + labelGap
+                labelY += buttons[m].frame.size.height + contentInset
+            } else {
+                labelY = damageLabels.first!.frame.origin.y + damageLabels.first!.frame.size.height + contentInset
             }
-                
+            
+            //仕切り線
+            if n != damageLabels.count - 1 {
+                let border = UIView()
+                border.frame.size = CGSize(width: width, height: 1)
+                border.frame.origin.y = labelY
+                border.backgroundColor = InkColor.lightGray
+                backgroundCardView.addSubview(border)
+            }
+            
+            labelY += contentInset
+            
         }
         
         //----------ラベルをビューに追加・ビューのサイズ----------
         
-        self.addSubview(topLabel)
+        let viewHeight = buttons.last!.frame.origin.y + buttons.last!.frame.height + contentInset
+        self.frame.size.height = viewHeight
+        
+        backgroundCardView.frame.size = self.frame.size
+        backgroundCardView.clipsToBounds = true
+        backgroundCardView.layer.cornerRadius = cornerRadius
+        backgroundCardView.backgroundColor = UIColor.white
+        
+        backgroundCardView.addSubview(topLabel)
         
         for n in 0...damageLabels.count - 1 {
-            self.addSubview(damageLabels[n])
-            self.addSubview(remainingHpLabels[n])
+            backgroundCardView.addSubview(damageLabels[n])
+            backgroundCardView.addSubview(remainingHpLabels[n])
             for label in decisiveAttackLabels[n] {
-                self.addSubview(label)
+                backgroundCardView.addSubview(label)
             }
             
             if n > 0 {
                 let m = n - 1
-                self.addSubview(buttons[m])
+                backgroundCardView.addSubview(buttons[m])
             }
         }
         
-        
-        self.frame.size.height =  labelY
+        self.backgroundColor = UIColor.clear
+        self.addSubview(backgroundCardView)
         
     }
     
@@ -241,11 +291,13 @@ class MainDamageCulcView: UIView {
         for button in buttons {
             button.removeFromSuperview()
         }
+        backgroundCardView.removeFromSuperview()
         damageLabels = []
         remainingHpLabels = []
         decisiveAttackLabels = []
         buttons = []
         thresholds = []
+        backgroundCardView = UIView()
         
     }
     

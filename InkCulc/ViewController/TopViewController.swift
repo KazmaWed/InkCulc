@@ -8,64 +8,13 @@ class TopViewController: UIViewController {
         
         title = "ギアセット"
         
-        //ブキ情報・画像ロード
-        if UserDefaults.standard.object(forKey: "weaponImages") != nil {
-            
-            let data = UserDefaults.standard.object(forKey: "weaponInfo")  as! Data
-            inkApi.weaponInfo = try! JSONDecoder().decode(WeaponInfo.self, from: data)
-            
-            inkApi.weaponImageData = UserDefaults.standard.array(forKey: "weaponImages") as! [Data]
-            inkApi.decodeWeaponInfo()
-            inkApi.dataToUIImage()
-            
-            //API通信
-            inkApi.getWeapons(closure: { () -> Void in
-                //ブキ情報保存
-                let data = try! JSONEncoder().encode(inkApi.weaponInfo)
-                UserDefaults.standard.set(data, forKey: "weaponInfo")
-                print("Data redownloaded...")
-            })
-            
-        }
-        
-        //初回のみ画像ダウンロード
-        if UserDefaults.standard.object(forKey: "weaponInfo") == nil {
-            
-            //API通信
-            inkApi.getWeapons(closure: { () -> Void in
-                
-                //ブキ情報保存
-                let data = try! JSONEncoder().encode(inkApi.weaponInfo)
-                UserDefaults.standard.set(data, forKey: "weaponInfo")
-                print("Data downloaded...")
-                
-                //画像取得
-                inkApi.getWeaponImages(closure: { () -> Void in
-                    let data = inkApi.weaponImageData
-                    UserDefaults.standard.set(data, forKey: "weaponImages")
-                    print("Image downloaded")
-                })
-                
-            })
-            
-        }
-        
-        
-        
-        if Static.gearsets.count == 0 {
-            
-        } else {
-            
-        }
-        
-        
-        //追加ボタン
-        var addBarButtonItem: UIBarButtonItem!
-        addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addBarButtonTapped(_:)))
-        
-        //ナビゲーションバーに追加
-        self.navigationItem.rightBarButtonItems = [addBarButtonItem]
+        navigationController?.navigationBar.barTintColor = InkColor.darkGray
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.tintColor = .white
+        
+        //----------データ取得----------
+        
+        getInkApi()
         
         //----------テーブルビュー----------
         
@@ -78,24 +27,20 @@ class TopViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        //編集設定
-        if Static.gearsets.count > 0 {
-            navigationItem.leftBarButtonItem = editButtonItem
-            tableView.allowsMultipleSelectionDuringEditing = true
-        } else {
-            navigationItem.leftBarButtonItem = nil
-        }
+        //追加ボタン
+        naviButtonSlide(out: false)
         self.tableView.reloadData()
-    }
-    
-    override func viewDidLayoutSubviews() {
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
+        //追加ボタン生成
+        if viewFirstAppear { setNavigationButton() }
+        //スライドイン
+        naviButtonSlide(out: false)
+        
     }
-
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
@@ -111,14 +56,123 @@ class TopViewController: UIViewController {
     var selectedGearSet:Gearset?
     var viewWidth:CGFloat?
     
+    var viewFirstAppear = true
+    
     
     //--------------------メソッド--------------------
     
+    
+    //Api通信
+    func getInkApi() {
+        
+        //画像ダウンロード済みの場合
+        if UserDefaults.standard.object(forKey: "weaponImages") != nil {
+            
+            //ロードして
+            let data = UserDefaults.standard.object(forKey: "weaponInfo")  as! Data
+            inkApi.weaponInfo = try! JSONDecoder().decode(WeaponInfo.self, from: data)
+            inkApi.weaponImageData = UserDefaults.standard.array(forKey: "weaponImages") as! [Data]
+            //変換
+            inkApi.decodeWeaponInfo()
+            inkApi.dataToUIImage()
+            print("Image and Data loaded")
+            
+            //ブキ情報再ダウンロード
+            inkApi.getWeapons(closure: { () -> Void in
+                //保存
+                let data = try! JSONEncoder().encode(inkApi.weaponInfo)
+                UserDefaults.standard.set(data, forKey: "weaponInfo")
+                inkApi.decodeWeaponInfo()
+                print("Data redownloaded...")
+            })
+            
+        } else {
+            
+            //API通信
+            inkApi.getWeapons(closure: { () -> Void in
+                
+                //ブキ情報保存
+                let data = try! JSONEncoder().encode(inkApi.weaponInfo)
+                inkApi.decodeWeaponInfo()
+                UserDefaults.standard.set(data, forKey: "weaponInfo")
+                print("Data downloaded...")
+                
+                //画像取得
+                inkApi.getWeaponImages(closure: { () -> Void in
+                    let data = inkApi.weaponImageData
+                    UserDefaults.standard.set(data, forKey: "weaponImages")
+                    inkApi.dataToUIImage()
+                    print("Image downloaded")
+                })
+                
+            })
+            
+        }
+        
+    }
+    
+    //右下追加ボタン
+    func setNavigationButton() {
+        
+        let viewWidth = view.frame.size.width
+        let screenHeight = UIApplication.shared.keyWindow!.frame.size.height
+        let safeAreaBottomInset = view.safeAreaInsets.bottom
+        let inset:CGFloat = 16
+        let buttonSize = viewWidth * 14/100
+        let buttonX = viewWidth + inset
+        let buttonY = screenHeight - safeAreaBottomInset - buttonSize
+        
+        navigationButton.frame.origin = CGPoint(x: buttonX, y: buttonY)
+        navigationButton.frame.size = CGSize(width: buttonSize, height: buttonSize)
+        navigationButton.layer.cornerRadius = buttonSize / 2
+        navigationButton.backgroundColor = navigationController?.navigationBar.barTintColor
+        navigationButton.setTitleColor(UIColor.white, for: .normal)
+        
+        navigationButton.layer.shadowColor = shadowColor
+        navigationButton.layer.shadowOffset = shadowOffset
+        navigationButton.layer.shadowRadius = shadowRadius
+        navigationButton.layer.shadowOpacity = shadowOpacity
+        
+        navigationButton.setTitle("+", for: .normal)
+        navigationButton.titleLabel?.font = InkFont.Navi
+        navigationButton.addTarget(self, action: #selector(addBarButtonTapped(_:)), for: .touchUpInside)
+        
+        UIApplication.shared.keyWindow!.addSubview(navigationButton)
+        viewFirstAppear = false
+        
+    }
+    
+    //スライドイン・アウト
+    func naviButtonSlide(out:Bool = true) {
+        
+        let viewWidth = view.frame.size.width
+        let inset:CGFloat = 18
+        
+        if out {
+            UIView.animate(withDuration: 0.3, delay: 0,
+                           options: .curveEaseIn, animations: { () -> Void in
+                            navigationButton.frame.origin.x = viewWidth + inset
+                           })
+        } else {
+            let viewWidth = view.frame.size.width
+            let viewHeight =  view.frame.size.height
+            let inset:CGFloat = 18
+            let buttonSize = navigationButton.frame.size.height
+            let buttonX = viewWidth - buttonSize - inset
+            
+            UIView.animate(withDuration: 0.3, delay: 0,
+                           options: .curveEaseOut, animations: { () -> Void in
+                            navigationButton.frame.origin.x = buttonX
+                           })
+        }
+        
+    }
     
     //右上追加ボタン
     @objc func addBarButtonTapped(_ sender: UIBarButtonItem) {
         tableView.reloadData()
         self.performSegue(withIdentifier: "addItem", sender: self)
+        naviButtonSlide(out: true)
     }
     
     
@@ -222,7 +276,5 @@ extension TopViewController: UITableViewDelegate, UITableViewDataSource {
         return (view.frame.size.width - 16) * 2 / 3 + 8
     }
  
-    
-    //----------編集モード----------
 
 }

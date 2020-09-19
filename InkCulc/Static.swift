@@ -1,6 +1,8 @@
 import Foundation
+import UIKit
 
 var inkApi = InkAPI()
+let navigationButton = UIButton()
 
 let gearPartNames = ["general","headgear","clothing","shoes"]
 let allGearpowerNames = ["general":["インク効率アップ(メイン)","インク効率アップ(サブ)","インク回復力アップ",
@@ -28,11 +30,23 @@ class Static {
 }
 
 class InkColor {
-    static let Blue = UIColor(red: 128/255, green: 148/255, blue: 255/255, alpha: 1)
-    static let Pink = UIColor(red: 255/255, green: 128/255, blue: 148/255, alpha: 1)
-    static let Yellow = UIColor(red: 248/255, green: 218/255, blue: 102/255, alpha: 1)
+    static let blue = UIColor(red: 128/255, green: 148/255, blue: 255/255, alpha: 1)
+    static let pink = UIColor(red: 255/255, green: 128/255, blue: 148/255, alpha: 1)
+    static let yellow = UIColor(red: 232/255, green: 188/255, blue: 84/255, alpha: 1)
+    static let green = UIColor(red: 104/255, green: 198/255, blue: 112/255, alpha: 1)
+    static let lightGray = UIColor(red: 212/255, green: 212/255, blue: 212/255, alpha: 1)
+    static let gray = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
+    static let darkGray = UIColor(red: 74/255, green: 74/255, blue: 74/255, alpha: 1)
+    static let textBlue = UIColor.systemBlue
     
 }
+
+class InkFont {
+    static let Banana = UIFont(name: "bananaslipplus", size: 24)
+    static let Sans = UIFont(name: "HiraginoSans-W2", size: 18)
+    static let Navi = UIFont(name: "HiraginoSans-W1", size: 28)
+}
+
 
 import UIKit
 

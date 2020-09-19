@@ -118,7 +118,7 @@ class GearpowerFrameView: UIView {
 //                icon.backgroundColor = UIColor.darkGray
 //            }
 //        }
-//        iconFrameView.backgroundColor = UIColor.systemBlue
+//        iconFrameView.backgroundColor = InkColor.textBlue
 //        self.backgroundColor = UIColor.systemRed
         
         //----------フレーム----------
@@ -158,9 +158,9 @@ class GearpowerFrameView: UIView {
                 if at != nil && [n,m] == at {
                     
                     UIView.animate(withDuration: 0.15) {
-                        self.icons[n][m].layer.shadowColor = UIColor.systemPink.cgColor
-                        self.icons[n][m].layer.shadowOffset = CGSize(width: 0, height: 0)
-                        self.icons[n][m].layer.shadowRadius = shadowRadius / 2
+                        self.icons[n][m].layer.shadowColor = shadowColor
+                        self.icons[n][m].layer.shadowOffset = shadowOffset
+                        self.icons[n][m].layer.shadowRadius = shadowRadius * 2
                         self.icons[n][m].layer.shadowOpacity = 1
                         
                         self.icons[n][m].alpha = 1

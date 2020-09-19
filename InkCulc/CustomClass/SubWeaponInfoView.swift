@@ -24,18 +24,16 @@ class SubWeaponInfoView: UIView {
         let contentInset:CGFloat = 18
         let labelGap:CGFloat = 10
         
-        let font = UIFont(name: "HiraMaruProN-W4", size: 17)
-        
         //----------ラベルのテキスト----------
         
         let keysJp = ["インク消費","サブ性能アップ効果"]
         
         topLabel.text = subWeaponName
         topLabel.textAlignment = .center
-        topLabel.font = UIFont(name: "bananaslipplus", size: 24)
+        topLabel.font = InkFont.Banana
         topLabel.textColor = UIColor.white
         topLabel.frame.size = CGSize(width:self.frame.width, height: topLabelHeight)
-        topLabel.backgroundColor = InkColor.Pink
+        topLabel.backgroundColor = InkColor.pink
         
         //ダメージ
         if let damages = inkApi.bombDamage(of: weapon) {
@@ -43,8 +41,8 @@ class SubWeaponInfoView: UIView {
                 
                 let keyLabel = UILabel()
                 let valueLabel = UILabel()
-                keyLabel.font = font
-                valueLabel.font = font
+                keyLabel.font = InkFont.Sans
+                valueLabel.font = InkFont.Sans
                 
                 keyLabel.text = key
                 keyLabel.sizeToFit()
@@ -68,13 +66,13 @@ class SubWeaponInfoView: UIView {
             
             let keyLabel = UILabel()
             let valueLabel = UILabel()
-            keyLabel.font = font
-            valueLabel.font = font
+            keyLabel.font = InkFont.Sans
+            valueLabel.font = InkFont.Sans
             
              if n < keysJp.count - 1 { keyLabel.text = keysJp[n] } else { keyLabel.text = "の効果" }
             
             keyLabel.sizeToFit()
-            keyLabel.frame.size.height *= 1.2
+            keyLabel.frame.size.height *= 1.1
             
             if keyLabelWidth < keyLabel.frame.size.width {
                 keyLabelWidth = keyLabel.frame.size.width
@@ -116,7 +114,7 @@ class SubWeaponInfoView: UIView {
         
         let iconSize = valueLabels.last!.frame.size.height * 1.8
         powerupIcon.frame.size = CGSize(width: iconSize, height: iconSize)
-        powerupIcon.frame.origin = CGPoint(x: contentInset, y:labelY + labelGap)
+        powerupIcon.frame.origin = CGPoint(x: contentInset, y:labelY)
         powerupIcon.contentMode = .scaleAspectFit
         
         //性能アップキーラベル

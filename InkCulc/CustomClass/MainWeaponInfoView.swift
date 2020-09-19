@@ -26,8 +26,6 @@ class MainWeaponInfoView: UIView {
         let contentInset:CGFloat = 18
         let labelGap:CGFloat = 10
         
-        let font = UIFont(name: "HiraMaruProN-W4", size: 17)
-        
         //----------ラベルのテキスト----------
         
         let keysJp = ["ダメージ","射程","連射間隔","インク消費", //0...3
@@ -36,18 +34,18 @@ class MainWeaponInfoView: UIView {
         
         topLabel.text = "メインブキ性能"
         topLabel.textAlignment = .center
-        topLabel.font = UIFont(name: "bananaslipplus", size: 24)
+        topLabel.font = InkFont.Banana
         topLabel.textColor = UIColor.white
         topLabel.frame.size = CGSize(width:self.frame.width, height: topLabelHeight)
-        topLabel.backgroundColor = InkColor.Blue
+        topLabel.backgroundColor = InkColor.blue
         labelY += topLabel.frame.height + contentInset
         
         for n in 0...7 {
             
             let keyLabel = UILabel()
             let valueLabel = UILabel()
-            keyLabel.font = font
-            valueLabel.font = font
+            keyLabel.font = InkFont.Sans
+            valueLabel.font = InkFont.Sans
             
             if n < 7 { keyLabel.text = keysJp[n] } else { keyLabel.text = "の効果" }
             
@@ -104,7 +102,7 @@ class MainWeaponInfoView: UIView {
         
         let iconSize = valueLabels.last!.frame.size.height * 1.8
         powerupIcon.frame.size = CGSize(width: iconSize, height: iconSize)
-        powerupIcon.frame.origin = CGPoint(x: contentInset, y:labelY + labelGap)
+        powerupIcon.frame.origin = CGPoint(x: contentInset, y:labelY + labelGap / 2)
         powerupIcon.contentMode = .scaleAspectFit
         
         //メイン性能アップキーラベル
@@ -147,7 +145,7 @@ class MainWeaponInfoView: UIView {
             detailButton.frame.size = CGSize(width: buttonSize, height: buttonSize)
             
             detailButton.layer.cornerRadius = detailButton.frame.size.height / 2
-            detailButton.backgroundColor =  InkColor.Blue
+            detailButton.backgroundColor =  InkColor.blue
             
             detailButton.layer.shadowColor = shadowColor
             detailButton.layer.shadowOffset = shadowOffset
@@ -182,8 +180,8 @@ class MainWeaponInfoView: UIView {
              
             if gearpowerPoint > 0 {
                 for num in labelNums[n] {
-                    keyLabels[num].textColor = UIColor.systemBlue
-                    valueLabels[num].textColor = UIColor.systemBlue
+                    keyLabels[num].textColor = InkColor.textBlue
+                    valueLabels[num].textColor = InkColor.textBlue
                 }
             }
             
@@ -210,8 +208,8 @@ class MainWeaponInfoView: UIView {
         //上昇後の値
         valueLabels[increasedLabelNum!].text = String(increasedValue!)
         valueLabels[increasedLabelNum!].sizeToFit()
-        valueLabels[increasedLabelNum!].textColor = UIColor.systemBlue
-        keyLabels[increasedLabelNum!].textColor = UIColor.systemBlue
+        valueLabels[increasedLabelNum!].textColor = InkColor.textBlue
+        keyLabels[increasedLabelNum!].textColor = InkColor.textBlue
         
         
     }

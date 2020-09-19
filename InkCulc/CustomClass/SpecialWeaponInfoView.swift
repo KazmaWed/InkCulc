@@ -22,16 +22,14 @@ class SpecialWeaponInfoView: UIView {
         let contentInset:CGFloat = 18
         let labelGap:CGFloat = 10
         
-        let font = UIFont(name: "HiraMaruProN-W4", size: 17)
-        
         //----------ラベルのテキスト----------
         
         topLabel.text = specialWeaponName
         topLabel.textAlignment = .center
-        topLabel.font = UIFont(name: "bananaslipplus", size: 24)
+        topLabel.font = InkFont.Banana
         topLabel.textColor = UIColor.white
         topLabel.frame.size = CGSize(width:self.frame.width, height: topLabelHeight)
-        topLabel.backgroundColor = InkColor.Yellow
+        topLabel.backgroundColor = InkColor.yellow
         
         //ダメージ
         if let damages = inkApi.specialDamage(of: weapon) {
@@ -39,8 +37,8 @@ class SpecialWeaponInfoView: UIView {
                 
                 let keyLabel = UILabel()
                 let valueLabel = UILabel()
-                keyLabel.font = font
-                valueLabel.font = font
+                keyLabel.font = InkFont.Sans
+                valueLabel.font = InkFont.Sans
                 
                 keyLabel.text = key
                 keyLabel.sizeToFit()
@@ -63,16 +61,14 @@ class SpecialWeaponInfoView: UIView {
         //その他情報
         if let info = inkApi.specialInfoDict()[specialWeaponName] {
             
-            print(info)
-            
             //スペシャル性能アップ以外
             for (key, value) in info {
                 if key != "スペシャル性能アップ効果" {
                     
                     let keyLabel = UILabel()
                     let valueLabel = UILabel()
-                    keyLabel.font = font
-                    valueLabel.font = font
+                    keyLabel.font = InkFont.Sans
+                    valueLabel.font = InkFont.Sans
                     
                     keyLabel.text = key
                     keyLabel.sizeToFit()
@@ -98,8 +94,8 @@ class SpecialWeaponInfoView: UIView {
                     
                     let keyLabel = UILabel()
                     let valueLabel = UILabel()
-                    keyLabel.font = font
-                    valueLabel.font = font
+                    keyLabel.font = InkFont.Sans
+                    valueLabel.font = InkFont.Sans
                     
                     keyLabel.text = "の効果"
                     keyLabel.sizeToFit()
@@ -142,7 +138,7 @@ class SpecialWeaponInfoView: UIView {
         
         let iconSize = valueLabels.last!.frame.size.height * 1.8
         powerupIcon.frame.size = CGSize(width: iconSize, height: iconSize)
-        powerupIcon.frame.origin = CGPoint(x: contentInset, y:labelY + labelGap)
+        powerupIcon.frame.origin = CGPoint(x: contentInset, y:labelY)
         powerupIcon.contentMode = .scaleAspectFit
         
         //性能アップキーラベル

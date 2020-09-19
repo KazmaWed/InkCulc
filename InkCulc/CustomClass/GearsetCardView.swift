@@ -44,7 +44,7 @@ class GearsetCardView: UIView {
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = cornerRadius
         
-        let contentInset = frame.size.width / 10
+        let contentInset = frame.size.width / 30
 //        let bottomInset = frame.size.width / 42
         let bottomInset:CGFloat = 0
         let weaponSetImageWidthProportion:CGFloat = 5
@@ -52,7 +52,7 @@ class GearsetCardView: UIView {
         let proportionSum = weaponSetImageWidthProportion + gearpowerFrameWidthProportion
         
         let weaponSetImageWidth = (frame.size.width - contentInset * 3) * weaponSetImageWidthProportion / proportionSum
-        let weaponSetImageHeight = weaponSetImageWidth * 4 / 5
+        let weaponSetImageHeight = weaponSetImageWidth  * 4 / 5
         let weaponSetImageY = (frame.size.height - weaponSetImageHeight - bottomInset) / 2
         let gearpowerFrameWidth = (frame.size.width - contentInset * 3) * gearpowerFrameWidthProportion / proportionSum
         let gearpowerFrameHeight = gearpowerFrameWidth * 4 / 5
