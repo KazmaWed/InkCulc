@@ -5,7 +5,7 @@ class MainWeaponInfoView: UIView {
     let topLabel = UILabel()
     var keyLabels:[UILabel] = []
     var valueLabels:[UILabel] = []
-    let mainPowerupIcon = UIImageView(image: UIImage(named: "メイン性能アップ"))
+    let powerupIcon = UIImageView(image: UIImage(named: "メイン性能アップ"))
     var buttons:[UIButton] = []
     var backgroundCardView = UIView()
     
@@ -26,7 +26,7 @@ class MainWeaponInfoView: UIView {
         let contentInset:CGFloat = 18
         let labelGap:CGFloat = 10
         
-        let font = UIFont(name: "HiraMaruProN-W4", size: 18)
+        let font = UIFont(name: "HiraMaruProN-W4", size: 17)
         
         //----------ラベルのテキスト----------
         
@@ -39,7 +39,7 @@ class MainWeaponInfoView: UIView {
         topLabel.font = UIFont(name: "bananaslipplus", size: 24)
         topLabel.textColor = UIColor.white
         topLabel.frame.size = CGSize(width:self.frame.width, height: topLabelHeight)
-        topLabel.backgroundColor = UIColor.systemTeal
+        topLabel.backgroundColor = InkColor.Blue
         labelY += topLabel.frame.height + contentInset
         
         for n in 0...7 {
@@ -92,6 +92,7 @@ class MainWeaponInfoView: UIView {
          
             keyLabels[n].frame.origin.x = contentInset
             keyLabels[n].frame.origin.y = labelY
+            
             valueLabels[n].frame.origin.x = contentInset + keyLabelWidth + labelGap * 2
             valueLabels[n].frame.origin.y = labelY
             
@@ -99,15 +100,16 @@ class MainWeaponInfoView: UIView {
             
         }
 
-        //メイン性能アップアイコン
-        let iconSize = valueLabels[7].frame.size.height * 1.8
-        mainPowerupIcon.frame.size = CGSize(width: iconSize, height: iconSize)
-        mainPowerupIcon.frame.origin = CGPoint(x: contentInset, y:labelY + labelGap)
-        mainPowerupIcon.contentMode = .scaleAspectFit
+        //----------メイン性能アップアイコン----------
+        
+        let iconSize = valueLabels.last!.frame.size.height * 1.8
+        powerupIcon.frame.size = CGSize(width: iconSize, height: iconSize)
+        powerupIcon.frame.origin = CGPoint(x: contentInset, y:labelY + labelGap)
+        powerupIcon.contentMode = .scaleAspectFit
         
         //メイン性能アップキーラベル
-        let lastLabelY = mainPowerupIcon.frame.origin.y + (iconSize - valueLabels[7].frame.size.height) / 2
-        let keyLabelX = mainPowerupIcon.frame.origin.x + mainPowerupIcon.frame.size.width + labelGap / 2
+        let lastLabelY = powerupIcon.frame.origin.y + (iconSize - valueLabels.last!.frame.size.height) / 2
+        let keyLabelX = powerupIcon.frame.origin.x + powerupIcon.frame.size.width + labelGap / 2
         keyLabels.last!.frame.origin = CGPoint(x: keyLabelX, y: lastLabelY)
         
         //メイン性能アップバリューラベル
@@ -116,7 +118,8 @@ class MainWeaponInfoView: UIView {
         
         //----------ラベルをビューに追加・ビューのサイズ----------
         
-        self.frame.size.height = mainPowerupIcon.frame.origin.y + mainPowerupIcon.frame.size.height + contentInset
+        self.frame.size.height = powerupIcon.frame.origin.y + powerupIcon.frame.size.height + contentInset
+        
         backgroundCardView.frame.size = self.frame.size
         backgroundCardView.clipsToBounds = true
         backgroundCardView.layer.cornerRadius = cornerRadius
@@ -127,7 +130,7 @@ class MainWeaponInfoView: UIView {
             backgroundCardView.addSubview(keyLabels[n])
             backgroundCardView.addSubview(valueLabels[n])
         }
-        backgroundCardView.addSubview(mainPowerupIcon)
+        backgroundCardView.addSubview(powerupIcon)
         
         self.backgroundColor = UIColor.clear
         self.addSubview(backgroundCardView)
@@ -144,7 +147,7 @@ class MainWeaponInfoView: UIView {
             detailButton.frame.size = CGSize(width: buttonSize, height: buttonSize)
             
             detailButton.layer.cornerRadius = detailButton.frame.size.height / 2
-            detailButton.backgroundColor = UIColor.systemTeal
+            detailButton.backgroundColor =  InkColor.Blue
             
             detailButton.layer.shadowColor = shadowColor
             detailButton.layer.shadowOffset = shadowOffset
@@ -227,7 +230,7 @@ class MainWeaponInfoView: UIView {
         }
         valueLabels = []
         
-        mainPowerupIcon.removeFromSuperview()
+        powerupIcon.removeFromSuperview()
         
         for button in buttons {
             button.removeFromSuperview()

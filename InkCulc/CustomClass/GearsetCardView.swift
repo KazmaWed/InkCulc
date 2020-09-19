@@ -10,10 +10,9 @@ import UIKit
 
 class GearsetCardView: UIView {
 
-    //横縦比2:1
     override var frame: CGRect {
         didSet {
-                setSize()
+            setSize()
         }
     }
     
@@ -45,8 +44,9 @@ class GearsetCardView: UIView {
         self.backgroundColor = UIColor.white
         self.layer.cornerRadius = cornerRadius
         
-        let contentInset = frame.size.width / 30
-        let bottomInset = frame.size.width / 42
+        let contentInset = frame.size.width / 10
+//        let bottomInset = frame.size.width / 42
+        let bottomInset:CGFloat = 0
         let weaponSetImageWidthProportion:CGFloat = 5
         let gearpowerFrameWidthProportion:CGFloat = 6
         let proportionSum = weaponSetImageWidthProportion + gearpowerFrameWidthProportion

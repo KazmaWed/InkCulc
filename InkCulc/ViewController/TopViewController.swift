@@ -3,21 +3,61 @@ class TopViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-         
-        //バックグラウンド
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "background_dark.png")!)
         
         //----------ナビゲーションバー----------
         
         title = "ギアセット"
         
-        //ギアセット仮登録
-        Static.gearsets = []
-        inkApi.getWeapons(closure: { () -> Void in
-            inkApi.getWeaponImages(closure: { () -> Void in
-                print("Downloaded...")
+        //ブキ情報・画像ロード
+        if UserDefaults.standard.object(forKey: "weaponImages") != nil {
+            
+            let data = UserDefaults.standard.object(forKey: "weaponInfo")  as! Data
+            inkApi.weaponInfo = try! JSONDecoder().decode(WeaponInfo.self, from: data)
+            
+            inkApi.weaponImageData = UserDefaults.standard.array(forKey: "weaponImages") as! [Data]
+            inkApi.decodeWeaponInfo()
+            inkApi.dataToUIImage()
+            
+            //API通信
+            inkApi.getWeapons(closure: { () -> Void in
+                //ブキ情報保存
+                let data = try! JSONEncoder().encode(inkApi.weaponInfo)
+                UserDefaults.standard.set(data, forKey: "weaponInfo")
+                print("Data redownloaded...")
             })
-        })
+            
+        }
+        
+        //初回のみ画像ダウンロード
+        if UserDefaults.standard.object(forKey: "weaponInfo") == nil {
+            
+            //API通信
+            inkApi.getWeapons(closure: { () -> Void in
+                
+                //ブキ情報保存
+                let data = try! JSONEncoder().encode(inkApi.weaponInfo)
+                UserDefaults.standard.set(data, forKey: "weaponInfo")
+                print("Data downloaded...")
+                
+                //画像取得
+                inkApi.getWeaponImages(closure: { () -> Void in
+                    let data = inkApi.weaponImageData
+                    UserDefaults.standard.set(data, forKey: "weaponImages")
+                    print("Image downloaded")
+                })
+                
+            })
+            
+        }
+        
+        
+        
+        if Static.gearsets.count == 0 {
+            
+        } else {
+            
+        }
+        
         
         //追加ボタン
         var addBarButtonItem: UIBarButtonItem!
@@ -150,7 +190,7 @@ extension TopViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
         if !isEditing {
             UIView.animate(withDuration: 0.3) {
-                tableView.cellForRow(at: indexPath)?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+                tableView.cellForRow(at: indexPath)?.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
             }
         }
     }

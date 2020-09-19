@@ -38,6 +38,11 @@ class GearpowerKeyboardView: UIView {
                 let gearpowerImage = UIImage(named: imageFileName)
                 button.setImage(gearpowerImage, for: .normal)
                 
+                button.layer.shadowOpacity = 1
+                button.layer.shadowRadius = 0
+                button.layer.shadowOffset = CGSize(width: 0, height: 1)
+                button.layer.shadowColor = UIColor.gray.cgColor
+                
                 //座標計算
                 var row = 0; if m >= 7 { row = 1 }
                 var column = m; if row == 1 { column -= 7 }

@@ -156,11 +156,31 @@ class GearpowerFrameView: UIView {
         for n in 0...2 {
             for m in 0...3 {
                 if at != nil && [n,m] == at {
-                    icons[n][m].layer.borderWidth = 4
-                    icons[n][m].layer.borderColor = UIColor.systemPink.cgColor
+                    
+                    UIView.animate(withDuration: 0.15) {
+                        self.icons[n][m].layer.shadowColor = UIColor.systemPink.cgColor
+                        self.icons[n][m].layer.shadowOffset = CGSize(width: 0, height: 0)
+                        self.icons[n][m].layer.shadowRadius = shadowRadius / 2
+                        self.icons[n][m].layer.shadowOpacity = 1
+                        
+                        self.icons[n][m].alpha = 1
+                    }
+                    
                 } else {
-                    icons[n][m].layer.borderWidth = 0
-                    icons[n][m].layer.borderColor = UIColor.clear.cgColor
+                    
+                    UIView.animate(withDuration: 0.15) {
+                        self.icons[n][m].layer.shadowColor = UIColor.clear.cgColor
+                        self.icons[n][m].layer.shadowOffset = CGSize(width: 0, height: 0)
+                        self.icons[n][m].layer.shadowRadius = 0
+                        self.icons[n][m].layer.shadowOpacity = 0
+                        
+                        if self.ifBlank(at: [n,m]) {
+                            self.icons[n][m].alpha = 0.5
+                        } else {
+                            self.icons[n][m].alpha = 1
+                        }
+                    }
+                    
                 }
             }
         }

@@ -166,7 +166,7 @@ class SetGearpowerViewController: UIViewController {
         
         if bool {
             //ボタン有効時
-            UIView.animate(withDuration: 0.3, delay: 0,
+            UIView.animate(withDuration: 0.1, delay: 0,
                            options: .curveEaseInOut, animations: { () -> Void in
                             self.doneButtonOutlet.alpha = 1
                             self.doneButtonOutlet.layer.shadowColor = shadowColor
@@ -177,7 +177,7 @@ class SetGearpowerViewController: UIViewController {
             
         } else {
             //ボタン無効時
-            UIView.animate(withDuration: 0.3, delay: 0,
+            UIView.animate(withDuration: 0.1, delay: 0,
                            options: .curveEaseInOut, animations: { () -> Void in
                             self.doneButtonOutlet.alpha = 0.5
                             self.doneButtonOutlet.layer.shadowColor = UIColor.clear.cgColor

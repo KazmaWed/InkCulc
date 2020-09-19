@@ -5,6 +5,7 @@ import AlamofireImage
 class InkAPI {
     
     var weaponInfo:WeaponInfo?
+    var weaponImageData:[Data] = []
     var weaponList:[Weapon] = []
     var weaponImages:[UIImage] = []
     var mainWeaponInfo:[MainWeaponInfo] = []
@@ -34,12 +35,6 @@ class InkAPI {
                     //data中のjsonを配列にして格納
                     do {
                         self.weaponInfo = try JSONDecoder().decode(WeaponInfo.self, from: data)
-                        self.weaponList = self.weaponInfo!.weaponList
-                        self.mainWeaponInfo = self.weaponInfo!.mainWeaponInfo
-                        self.subWeaponInfo = self.weaponInfo!.subWeaponInfo
-                        self.bombDamageRaw = self.weaponInfo!.bombDamage
-                        self.specialInfo = self.weaponInfo!.specialInfo
-                        self.specialDamageRaw = self.weaponInfo!.specialDamage
                         closure()
                     } catch let error {
                         self.ifError = true
@@ -64,9 +59,7 @@ class InkAPI {
             AF.request(url, method: .get).responseImage { response in
                 guard let data = response.data else { print("Error: No data obtained."); return }
                 
-                let weaponImage = UIImage(data: data)
-                self.weaponImages.append(weaponImage!)
-                
+                self.weaponImageData.append(data)
                 dispatchGroup.leave()
             }
             
@@ -75,6 +68,7 @@ class InkAPI {
         dispatchGroup.leave()
         
         dispatchGroup.notify(queue: .main) {
+            self.dataToUIImage()
             closure()
         }
         
@@ -171,8 +165,27 @@ class InkAPI {
         
     }
     
+    
     //--------------------json変換メソッド--------------------
     
+    func decodeWeaponInfo() {
+        
+        weaponList = weaponInfo!.weaponList
+        mainWeaponInfo = weaponInfo!.mainWeaponInfo
+        subWeaponInfo = weaponInfo!.subWeaponInfo
+        bombDamageRaw = weaponInfo!.bombDamage
+        specialInfo = weaponInfo!.specialInfo
+        specialDamageRaw = weaponInfo!.specialDamage
+        
+    }
+    
+    func dataToUIImage() {
+        
+        for data in weaponImageData {
+            weaponImages.append(UIImage(data: data)!)
+        }
+        
+    }
     
     func increasedValues(of:Weapon) -> [Int:Double] {
         

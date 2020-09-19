@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ugX-7W-Pe3">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sfa-3y-Zt1" customClass="CustomTableViewCell" customModule="IKA_Cul_" customModuleProvider="target">
@@ -43,7 +43,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ugX-7W-Pe3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1E3-Mf-eBj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ugX-7W-Pe3" secondAttribute="bottom" id="OZy-0U-8e8"/>
+                            <constraint firstAttribute="bottom" secondItem="ugX-7W-Pe3" secondAttribute="bottom" id="OZy-0U-8e8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ugX-7W-Pe3" secondAttribute="trailing" id="Sj3-tz-GJt"/>
                             <constraint firstItem="ugX-7W-Pe3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dHW-VM-j0i"/>
                         </constraints>

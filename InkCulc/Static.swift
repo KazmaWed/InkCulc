@@ -1,6 +1,6 @@
 import Foundation
 
-let inkApi = InkAPI()
+var inkApi = InkAPI()
 
 let gearPartNames = ["general","headgear","clothing","shoes"]
 let allGearpowerNames = ["general":["インク効率アップ(メイン)","インク効率アップ(サブ)","インク回復力アップ",
@@ -17,14 +17,21 @@ let gearpowerNums = [0,3,6,9,10,12,13,15,16,18,
                      39,41,42,44,45,47,48,51,54,57]
 
 let shadowColor = UIColor.black.cgColor
-let shadowOffset = CGSize(width: 0, height: 2)
-let shadowRadius:CGFloat = 4
-let shadowOpacity:Float = 0.5
+let shadowOffset = CGSize(width: 0, height: 1)
+let shadowRadius:CGFloat = 3
+let shadowOpacity:Float = 0.6
 
-let cornerRadius:CGFloat = 4
+let cornerRadius:CGFloat = 6
 
 class Static {
     static var gearsets:[Gearset] = []
+}
+
+class InkColor {
+    static let Blue = UIColor(red: 128/255, green: 148/255, blue: 255/255, alpha: 1)
+    static let Pink = UIColor(red: 255/255, green: 128/255, blue: 148/255, alpha: 1)
+    static let Yellow = UIColor(red: 248/255, green: 218/255, blue: 102/255, alpha: 1)
+    
 }
 
 import UIKit
