@@ -3,6 +3,7 @@ import UIKit
 import AlamofireImage
 
 class Gearset: Codable{
+	
     var id:Int?
     var weapon:Weapon
     var gearpowerNames:[[String]]?

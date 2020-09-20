@@ -39,8 +39,8 @@ class GearpowerKeyboardView: UIView {
                 button.setImage(gearpowerImage, for: .normal)
                 
                 button.layer.shadowOpacity = 1
-                button.layer.shadowRadius = 0
-                button.layer.shadowOffset = CGSize(width: 0, height: 1)
+                button.layer.shadowRadius = 2
+                button.layer.shadowOffset = CGSize(width: 0, height: 2)
                 button.layer.shadowColor = UIColor.gray.cgColor
                 
                 //座標計算
@@ -142,10 +142,12 @@ class GearpowerKeyboardView: UIView {
 
     func enableLimitedKeys(part: String = "non") {
         
-        for n in 1...3 {
-            keyFrames[n].isUserInteractionEnabled = false
-            keyFrames[n].alpha = 0.4
-        }
+		UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
+			for n in 1...3 {
+				self.keyFrames[n].isUserInteractionEnabled = false
+				self.keyFrames[n].alpha = 0.4
+			}
+		})
         
         var m = 0
         
@@ -157,10 +159,12 @@ class GearpowerKeyboardView: UIView {
             m = 3
         }
         
-        if m != 0 {
-            keyFrames[m].isUserInteractionEnabled = true
-            keyFrames[m].alpha = 1
-        }
+		UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseOut, animations: {
+			if m != 0 {
+				self.keyFrames[m].isUserInteractionEnabled = true
+				self.keyFrames[m].alpha = 1
+			}
+		})
         
     }
 }

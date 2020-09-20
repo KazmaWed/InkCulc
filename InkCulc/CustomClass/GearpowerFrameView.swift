@@ -6,7 +6,7 @@ class GearpowerFrameView: UIView {
     var partIcons:[UIImageView] = []
     var icons:[[UIButton]] = []
     
-	var gearpowerNames:[[String]] = [] { didSet { reloadIcon(); print("didset") }}
+	var gearpowerNames:[[String]] = [] { didSet { reloadIcon()}}
     override var frame: CGRect {
         didSet {
             guard frame.size.width != 0 else { return }
@@ -304,10 +304,8 @@ class GearpowerFrameView: UIView {
     
     //アイコン更新
     func reloadIcon() {
-		print("reloadicon1")
         
         guard gearpowerNames.count == 3 && gearpowerNames.last!.count == 4 else { return }
-		print("reloadicon2")
         
         for n in 0...2 {
             for m in 0...3 {

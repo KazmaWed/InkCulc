@@ -17,6 +17,10 @@ class SetGearpowerViewController: UIViewController {
             gearpowerView.gearpowerNames = self.gearpowerNames!
         }
         setGearpowerViewAction()
+		
+		//カードビュー
+		cardView.shadow()
+		cardView.layer.cornerRadius = cornerRadius
         
         //キーボード設定
         gearpowerKeyboard.setSize(view: view)
@@ -40,7 +44,7 @@ class SetGearpowerViewController: UIViewController {
         let part = gearpowerView.selectedMainGearpowerIcon()
         gearpowerKeyboard.enableLimitedKeys(part: part)
         
-        if firstAppear {
+        if firstAppear && fromAddItemViewController {
             weaponSetImageAnimate()
             firstAppear = false
         }
@@ -184,8 +188,6 @@ class SetGearpowerViewController: UIViewController {
         let weaponSetImage = WeaponSetImageView()
         
         //ビュー設定・非表示
-        cardView.shadow()
-        cardView.layer.cornerRadius = cornerRadius
         cardView.isHidden = true
         doneButtonOutlet.isHidden = true
         
@@ -205,11 +207,12 @@ class SetGearpowerViewController: UIViewController {
         
         //移動先
         let cardViewOrigin = CGPoint(x: cardView.frame.origin.x,
-                                     y: cardView.frame.origin.y)
+									 y: cardView.frame.origin.y - view.frame.origin.y + 4)
         let cardViewSize = cardView.frame.size
         
         //アニメ
-        UIView.animate(withDuration: 0.5, delay: 0,
+		let duration = Double(0.15 * blankCard.frame.origin.y / view.frame.height + 0.25)
+        UIView.animate(withDuration: duration , delay: 0,
                        options: .curveEaseInOut, animations: { () -> Void in
                         
                         blankCard.frame = CGRect(origin: cardViewOrigin, size: cardViewSize)
@@ -218,11 +221,13 @@ class SetGearpowerViewController: UIViewController {
                        }, completion: { _ in
                         
                         self.cardView.isHidden = false
+						self.gearpowerView.alpha = 0
+						self.doneButtonOutlet.alpha = 0
                         self.doneButtonOutlet.isHidden = false
                         
                         self.cardFrame!.size = blankCard.frame.size
                         self.cardFrame!.origin = CGPoint(x: blankCard.frame.origin.x,
-                                                         y: blankCard.frame.origin.y)
+														 y: blankCard.frame.origin.y)
                         
                         self.imageFrame = weaponSetImage.frame
                         self.gearpowerFrame = self.gearpowerView.frame
@@ -230,6 +235,12 @@ class SetGearpowerViewController: UIViewController {
                         
                         blankCard.removeFromSuperview()
                         weaponSetImage.removeFromSuperview()
+						
+						UIView.animate(withDuration: 0.2 , delay: 0,
+									   options: .curveEaseInOut, animations: { () -> Void in
+										self.doneButtonOutlet.alpha = 0.4
+										self.gearpowerView.alpha = 1
+									   })
                         
                        })
         

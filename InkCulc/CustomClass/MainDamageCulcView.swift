@@ -140,17 +140,18 @@ class MainDamageCulcView: UIView {
             let damage = String(totalDamages[n])
             damageLabels.append(UILabel())
             damageLabels[n].font = InkFont.Sans
-            damageLabels[n].text = "メイン \(hit)発ヒット " + damage
+            damageLabels[n].text = "メイン \(hit)発 " + damage
             damageLabels[n].sizeToFit()
             damageLabels[n].frame.size.height *= 1.1
             
             //残りHP
             remainingHpLabels.append(UILabel())
+			remainingHpLabels.last!.font = InkFont.Sans
             let remainingHp = remainingHps[n]
             if remainingHp < 0 {
                 remainingHpLabels[n].text = "確定ダウン"
             } else if remainingHp < 10 {
-                remainingHpLabels[n].text = "残りHP " + String(remainingHp) + " (擬似確)"
+                remainingHpLabels[n].text = "残りHP " + String(remainingHp) + " (擬似)"
             } else {
                 remainingHpLabels[n].text = "残りHP " + String(remainingHp)
             }

@@ -7,7 +7,7 @@ class InkAPI {
     var weaponInfo:WeaponInfo?
     var weaponImageData:[Data] = []
     var weaponList:[Weapon] = []
-    var weaponImages:[UIImage] = []
+	var weaponImages:[UIImage] = []
     var mainWeaponInfo:[MainWeaponInfo] = []
     var subWeaponInfo:[SubWeaponInfo] = []
     var bombDamageRaw:[KeysAndValues] = []
@@ -27,21 +27,21 @@ class InkAPI {
         ifError = false
         
         AF.request(url, method: .get, parameters: nil, encoding: URLEncoding.default,
-                   headers: headers).responseJSON { response in
-                    
-                    //データなしガード
-                    guard let data = response.data else { print("Error: No data obtained."); return }
-                    
-                    //data中のjsonを配列にして格納
-                    do {
-                        self.weaponInfo = try JSONDecoder().decode(WeaponInfo.self, from: data)
-                        closure()
-                    } catch let error {
-                        self.ifError = true
-                        print("Error: \(error)")
-                        closure()
-                    }
-                    
+				   headers: headers).responseJSON { response in
+				
+				//データなしガード
+				guard let data = response.data else { print("Error: No data obtained."); return }
+				
+				//data中のjsonを配列にして格納
+				do {
+					self.weaponInfo = try JSONDecoder().decode(WeaponInfo.self, from: data)
+					closure()
+				} catch let error {
+					self.ifError = true
+					print("Error: \(error)")
+					closure()
+				}
+				
         }
     }
     
@@ -68,7 +68,6 @@ class InkAPI {
         dispatchGroup.leave()
         
         dispatchGroup.notify(queue: .main) {
-            self.dataToUIImage()
             closure()
         }
         

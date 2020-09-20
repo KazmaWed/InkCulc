@@ -25,21 +25,48 @@ let shadowOpacity:Float = 0.6
 
 let cornerRadius:CGFloat = 8
 
-class Static {
-    static var gearsets:[Gearset] = []
+class Static : NSObject{
+	static var gearsets:[Gearset] = [] { didSet { saveGearsets() }}
+}
+
+func saveGearsets() {
+	var arrayData:[Data] = []
+	for gearset in Static.gearsets {
+		let data = try! JSONEncoder().encode(gearset) as Data
+		arrayData.append(data)
+	}
+	UserDefaults.standard.set(arrayData, forKey: "gearsetsData")
+}
+
+func loadGearsets() {
+	var arrayDecoded:[Gearset] = []
+	
+	let arrayData = UserDefaults.standard.object(forKey: "gearsetsData") as? [Data]
+	if arrayData != nil {
+		for data in arrayData! {
+			let decoded = try! JSONDecoder().decode(Gearset.self, from: data)
+			arrayDecoded.append(decoded)
+		}
+	}
+	
+	Static.gearsets = arrayDecoded
 }
 
 class InkColor {
-    static let blue = UIColor(red: 128/255, green: 148/255, blue: 255/255, alpha: 1)
+	
+    static let blue = UIColor(red: 134/255, green: 142/255, blue: 255/255, alpha: 1)
     static let pink = UIColor(red: 255/255, green: 128/255, blue: 148/255, alpha: 1)
     static let yellow = UIColor(red: 232/255, green: 188/255, blue: 84/255, alpha: 1)
     static let green = UIColor(red: 104/255, green: 198/255, blue: 112/255, alpha: 1)
     static let lightGray = UIColor(red: 212/255, green: 212/255, blue: 212/255, alpha: 1)
     static let gray = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
     static let darkGray = UIColor(red: 74/255, green: 74/255, blue: 74/255, alpha: 1)
-    static let red = UIColor(red: 184/255, green: 74/255, blue: 74/255, alpha: 1)
-    static let textBlue = UIColor.systemBlue
+    static let red = UIColor(red: 232/255, green: 96/255, blue: 112/255, alpha: 1)
+	static let darkRed = UIColor(red: 174/255, green: 64/255, blue: 76/255, alpha: 1)
+    static let textBlue = UIColor(red: 142/255, green: 154/255, blue: 212/255, alpha: 1)
     
+	static let array = [yellow, blue, pink, green, gray, red]
+	
 }
 
 class InkFont {

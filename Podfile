@@ -7,5 +7,6 @@ target 'InkCulc' do
 
   pod 'Alamofire'
   pod 'AlamofireImage'
+  pod 'MBCircularProgressBar'
 
 end

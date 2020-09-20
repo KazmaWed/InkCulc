@@ -102,7 +102,7 @@ extension DamageTableViewController: UITableViewDelegate, UITableViewDataSource 
         if ifDecisive {
             cell.detailTextLabel?.textColor = InkColor.textBlue
         } else {
-//            cell.detailTextLabel?.textColor = UIColor.darkText
+            cell.detailTextLabel?.textColor = UIColor.darkText
         }
         
         return cell

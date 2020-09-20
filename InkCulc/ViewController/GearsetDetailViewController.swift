@@ -270,16 +270,17 @@ class GearsetDetailViewController: UIViewController {
     //保存ボタン
     @objc func saveBarButtonTapped(sender: UIBarButtonItem) {
         
-        let gearSet = Gearset(weapon: weapon!)
-        gearSet.gearpowerNames = gearpowerNames!
-        gearSet.id = Static.gearsets.count
+        let newGearset = Gearset(weapon: weapon!)
+        newGearset.gearpowerNames = gearpowerNames!
+        newGearset.id = Static.gearsets.count
         
-        Static.gearsets.insert(gearset!, at: 0)
+        Static.gearsets.insert(newGearset, at: 0)
         
         //トップビューに値渡し
         let rootVc = self.navigationController?.viewControllers[0] as! TopViewController
         rootVc.gearsetFrame = gearsetCardView.frame
         rootVc.fromGearSetDetailView = true
+		rootVc.newCellAdded = true
 		
 		//トップビュー遷移前に画像作成
 		rootVc.imageViewFowAnimation = UIImageView()
@@ -288,14 +289,50 @@ class GearsetDetailViewController: UIViewController {
 		rootVc.imageViewFowAnimation.frame = cardFrame!
 		rootVc.imageViewFowAnimation.shadow()
 		rootVc.imageViewFowAnimation.image = gearsetCardView.makeImage()
-		//表示
-		rootVc.view.addSubview(rootVc.imageViewFowAnimation)
-		rootVc.tableView.isHidden = true
+		rootVc.viewsFromAnotherVC = imageViews()
         
         //アニメーション無効化
-        UIView.setAnimationsEnabled(false)
-		navigationController?.popToRootViewController(animated: true)
+		let duration = sqrt(Double(scrollView.contentOffset.y / 10000))
+		print(duration)
+		UIView.animate(withDuration: duration, delay: 0,
+					   options: .curveEaseInOut, animations: {() -> Void in
+						
+						self.scrollView.contentOffset.y = 0
+						
+					   }, completion: { _ in
+					
+						UIView.setAnimationsEnabled(false)
+						self.navigationController?.popToRootViewController(animated: true)
+						
+						//表示
+						rootVc.view.addSubview(rootVc.imageViewFowAnimation)
+						rootVc.tableView.isHidden = true
+						for eachView in rootVc.viewsFromAnotherVC {
+							eachView.shadow()
+							rootVc.view.addSubview(eachView)
+						}
+						
+					})
     }
+	
+	func imageViews() -> [UIImageView] {
+		
+		var output:[UIImageView] = []
+		
+		let views = [mainWeaponInfoView!, subWeaponInfoView!, specialWeaponInfoView!, mainDamageCulcView!]
+		
+		for view in views {
+			
+			let imageView = UIImageView(image: view.withoutShadow().makeImage())
+			imageView.layer.cornerRadius = cornerRadius
+			imageView.frame = view.frame
+			imageView.clipsToBounds = false
+			output.append(imageView)
+			
+		}
+		
+		return output
+	}
     
     //遷移先に値渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

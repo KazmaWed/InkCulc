@@ -16,8 +16,6 @@
 		475018C7250A04BB00B1504B /* WeaponSetImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475018C6250A04BB00B1504B /* WeaponSetImageView.swift */; };
 		475855BB24FF881100AD5FFF /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475855BA24FF881100AD5FFF /* Struct.swift */; };
 		475855BD24FF939000AD5FFF /* Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475855BC24FF939000AD5FFF /* Static.swift */; };
-		475855C824FFA10A00AD5FFF /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475855C624FFA10A00AD5FFF /* CustomTableViewCell.swift */; };
-		475855C924FFA10A00AD5FFF /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 475855C724FFA10A00AD5FFF /* CustomTableViewCell.xib */; };
 		475855CB25007C1D00AD5FFF /* InkAPIClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475855CA25007C1D00AD5FFF /* InkAPIClass.swift */; };
 		475855D12501C9F700AD5FFF /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 475855D02501C9F700AD5FFF /* AddItemViewController.swift */; };
 		477B5196251476D0006A592C /* GearsetCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477B5195251476D0006A592C /* GearsetCardView.swift */; };
@@ -49,8 +47,6 @@
 		475018C6250A04BB00B1504B /* WeaponSetImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponSetImageView.swift; sourceTree = "<group>"; };
 		475855BA24FF881100AD5FFF /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		475855BC24FF939000AD5FFF /* Static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Static.swift; sourceTree = "<group>"; };
-		475855C624FFA10A00AD5FFF /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
-		475855C724FFA10A00AD5FFF /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		475855CA25007C1D00AD5FFF /* InkAPIClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkAPIClass.swift; sourceTree = "<group>"; };
 		475855D02501C9F700AD5FFF /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		477B5195251476D0006A592C /* GearsetCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearsetCardView.swift; sourceTree = "<group>"; };
@@ -109,8 +105,6 @@
 		475855D625020E7000AD5FFF /* CustomClass */ = {
 			isa = PBXGroup;
 			children = (
-				475855C624FFA10A00AD5FFF /* CustomTableViewCell.swift */,
-				475855C724FFA10A00AD5FFF /* CustomTableViewCell.xib */,
 				475018C6250A04BB00B1504B /* WeaponSetImageView.swift */,
 				474B1393250357DF00283F32 /* GearpowerFrameView.swift */,
 				477B5195251476D0006A592C /* GearsetCardView.swift */,
@@ -252,7 +246,6 @@
 				479CD0F724FF75260037250D /* LaunchScreen.storyboard in Resources */,
 				479CD0F424FF75260037250D /* Assets.xcassets in Resources */,
 				47A097B62515FB8200B92698 /* ヒラギノ角ゴシック W2.ttc in Resources */,
-				475855C924FFA10A00AD5FFF /* CustomTableViewCell.xib in Resources */,
 				479CD0F224FF75240037250D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +301,6 @@
 			files = (
 				477B5196251476D0006A592C /* GearsetCardView.swift in Sources */,
 				4796DA97251096B200D4EE80 /* DamageTableViewController.swift in Sources */,
-				475855C824FFA10A00AD5FFF /* CustomTableViewCell.swift in Sources */,
 				474B13962503675700283F32 /* SetGearpowerViewController.swift in Sources */,
 				475855BB24FF881100AD5FFF /* Struct.swift in Sources */,
 				47FED9E2250A0B33005EA56A /* MainWeaponInfoView.swift in Sources */,

@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-InkCulc/Pods-InkCulc-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework
+${BUILT_PRODUCTS_DIR}/MBCircularProgressBar/MBCircularProgressBar.framework
