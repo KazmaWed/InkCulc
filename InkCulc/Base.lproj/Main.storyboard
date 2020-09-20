@@ -13,6 +13,9 @@
         <array key="bananaslipplus.otf">
             <string>bananaslipplus</string>
         </array>
+        <array key="ヒラギノ角ゴシック W1.ttc">
+            <string>HiraginoSans-W1</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Top View Controller-->
@@ -27,12 +30,39 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="350" id="Sfa-3y-Zt1" customClass="CustomTableViewCell" customModule="IKA_Cul_" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="350"/>
+                                    <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="320" id="RuP-M7-O3c">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="320"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sfa-3y-Zt1" id="Fow-6s-VYY">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="350"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RuP-M7-O3c" id="Dlg-lR-bVd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x4h-G6-0P3" customClass="GearsetCardView" customModule="IKA_Cul_" customModuleProvider="target">
+                                                    <rect key="frame" x="32" y="134" width="350" height="175"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="x4h-G6-0P3" secondAttribute="height" multiplier="2:1" id="OIO-G0-H50"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TR4-hh-8h6">
+                                                    <rect key="frame" x="32" y="75.5" width="350" height="58.5"/>
+                                                    <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="TR4-hh-8h6" secondAttribute="height" multiplier="6:1" id="eMe-FE-AqD"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="24"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TR4-hh-8h6" firstAttribute="width" secondItem="x4h-G6-0P3" secondAttribute="width" id="3KU-AW-yM5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="x4h-G6-0P3" secondAttribute="trailing" constant="12" id="6dT-oR-puB"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="x4h-G6-0P3" secondAttribute="bottom" id="ARR-TR-JVg"/>
+                                                <constraint firstItem="x4h-G6-0P3" firstAttribute="leading" secondItem="Dlg-lR-bVd" secondAttribute="leadingMargin" constant="12" id="ZHM-Z7-hyB"/>
+                                                <constraint firstItem="x4h-G6-0P3" firstAttribute="top" secondItem="TR4-hh-8h6" secondAttribute="bottom" id="lJC-BU-HaW"/>
+                                                <constraint firstItem="TR4-hh-8h6" firstAttribute="centerX" secondItem="x4h-G6-0P3" secondAttribute="centerX" id="mxX-fT-DFK"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -54,13 +84,13 @@
                     <navigationItem key="navigationItem" id="w1M-wH-vXR"/>
                     <connections>
                         <outlet property="tableView" destination="ugX-7W-Pe3" id="atb-Sl-fVx"/>
-                        <segue destination="CLM-b8-tff" kind="show" identifier="addItem" id="KXQ-Ns-UnE"/>
-                        <segue destination="X5u-JD-zum" kind="show" identifier="editGearset" id="6zv-t0-BNs"/>
+                        <segue destination="X5u-JD-zum" kind="show" identifier="editGearset" id="bnp-7P-UzA"/>
+                        <segue destination="CLM-b8-tff" kind="show" identifier="addItem" id="xih-cy-GKB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="987" y="-546"/>
+            <point key="canvasLocation" x="986.95652173913049" y="-546.42857142857144"/>
         </scene>
         <!--Add Item View Controller-->
         <scene sceneID="Xvl-Br-mm1">
@@ -150,27 +180,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-11-hPl" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
-                                <rect key="frame" x="160" y="106" width="230" height="184"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="JP6-11-hPl" secondAttribute="height" multiplier="5:4" id="hcp-xC-7QW"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctv-Ee-166" customClass="WeaponSetImageView" customModule="IKA_Cul_" customModuleProvider="target">
-                                <rect key="frame" x="18" y="136" width="124" height="124"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ctv-Ee-166" secondAttribute="height" multiplier="1:1" id="tvf-ve-FOC"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-ik-pYy" customClass="GearpowerKeyboardView" customModule="IKA_Cul_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="613" width="414" height="283"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilz-wr-oHb" userLabel="CardView">
+                                <rect key="frame" x="24" y="104" width="366" height="209"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctv-Ee-166" customClass="WeaponSetImageView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="53.5" width="102.5" height="102.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="ctv-Ee-166" secondAttribute="height" multiplier="1:1" id="tvf-ve-FOC"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JP6-11-hPl" customClass="GearpowerFrameView" customModule="IKA_Cul_" customModuleProvider="target">
+                                        <rect key="frame" x="126.5" y="13.5" width="227.5" height="182"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="JP6-11-hPl" secondAttribute="height" multiplier="5:4" id="hcp-xC-7QW"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ctv-Ee-166" firstAttribute="leading" secondItem="ilz-wr-oHb" secondAttribute="leading" constant="12" id="07N-Jn-PFU"/>
+                                    <constraint firstItem="JP6-11-hPl" firstAttribute="leading" secondItem="ctv-Ee-166" secondAttribute="trailing" constant="12" id="7Js-A2-i6R"/>
+                                    <constraint firstItem="ctv-Ee-166" firstAttribute="centerY" secondItem="ilz-wr-oHb" secondAttribute="centerY" id="FQj-hp-SmA"/>
+                                    <constraint firstAttribute="width" secondItem="ilz-wr-oHb" secondAttribute="height" multiplier="7:4" id="KuJ-ur-oZF"/>
+                                    <constraint firstAttribute="trailing" secondItem="JP6-11-hPl" secondAttribute="trailing" constant="12" id="Yhk-yZ-0fC"/>
+                                    <constraint firstItem="ctv-Ee-166" firstAttribute="width" secondItem="ilz-wr-oHb" secondAttribute="width" multiplier="0.28" id="ZFa-PZ-suw"/>
+                                    <constraint firstItem="JP6-11-hPl" firstAttribute="centerY" secondItem="ilz-wr-oHb" secondAttribute="centerY" id="zE3-Vj-exd"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0d-vO-SEg">
-                                <rect key="frame" x="167" y="308" width="80" height="42"/>
+                                <rect key="frame" x="167" y="337" width="80" height="42"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="yLx-kJ-hkX"/>
@@ -188,23 +233,21 @@
                         <viewLayoutGuide key="safeArea" id="zWl-av-I67"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JP6-11-hPl" firstAttribute="centerY" secondItem="ctv-Ee-166" secondAttribute="centerY" id="1Od-8b-5j5"/>
-                            <constraint firstItem="JP6-11-hPl" firstAttribute="top" secondItem="zWl-av-I67" secondAttribute="top" constant="18" id="9wB-QF-LgT"/>
-                            <constraint firstItem="g0d-vO-SEg" firstAttribute="top" secondItem="JP6-11-hPl" secondAttribute="bottom" constant="18" id="CFZ-Cx-O2v"/>
-                            <constraint firstItem="JP6-11-hPl" firstAttribute="leading" secondItem="ctv-Ee-166" secondAttribute="trailing" constant="18" id="D0E-fK-9Ux"/>
-                            <constraint firstItem="ctv-Ee-166" firstAttribute="width" secondItem="w2b-Am-IRc" secondAttribute="width" multiplier="0.3" id="Ku2-JI-jc4"/>
+                            <constraint firstItem="g0d-vO-SEg" firstAttribute="top" secondItem="ilz-wr-oHb" secondAttribute="bottom" constant="24" id="CCx-Fg-Pnq"/>
                             <constraint firstItem="g0d-vO-SEg" firstAttribute="centerX" secondItem="w2b-Am-IRc" secondAttribute="centerX" id="LaU-ZA-mQY"/>
-                            <constraint firstItem="zWl-av-I67" firstAttribute="trailing" secondItem="JP6-11-hPl" secondAttribute="trailing" constant="24" id="aUu-hV-SD3"/>
-                            <constraint firstItem="ctv-Ee-166" firstAttribute="leading" secondItem="zWl-av-I67" secondAttribute="leading" constant="18" id="nfh-hQ-J1h"/>
+                            <constraint firstItem="ilz-wr-oHb" firstAttribute="top" secondItem="zWl-av-I67" secondAttribute="top" constant="16" id="jH6-MC-UbF"/>
+                            <constraint firstItem="zWl-av-I67" firstAttribute="trailing" secondItem="ilz-wr-oHb" secondAttribute="trailing" constant="24" id="kEp-Mt-LwO"/>
+                            <constraint firstItem="ilz-wr-oHb" firstAttribute="leading" secondItem="zWl-av-I67" secondAttribute="leading" constant="24" id="utl-75-rhg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Jw5-Lt-zlV"/>
                     <connections>
+                        <outlet property="cardView" destination="ilz-wr-oHb" id="rGz-FQ-GpS"/>
                         <outlet property="doneButtonOutlet" destination="g0d-vO-SEg" id="xQc-uf-SOb"/>
                         <outlet property="gearpowerKeyboard" destination="wbk-ik-pYy" id="0Mr-at-IXe"/>
                         <outlet property="gearpowerView" destination="JP6-11-hPl" id="h9y-Kd-xVM"/>
                         <outlet property="weaponSetView" destination="ctv-Ee-166" id="PIL-zL-nSD"/>
-                        <segue destination="X5u-JD-zum" kind="show" identifier="gearsetDetail" id="G81-F5-FZ6"/>
+                        <segue destination="X5u-JD-zum" kind="show" identifier="gearsetDetail" animates="NO" id="G81-F5-FZ6"/>
                         <segue destination="lCf-Su-s8E" kind="show" identifier="showGearpowerEffect" id="K5d-aA-X6z"/>
                     </connections>
                 </viewController>
@@ -237,23 +280,23 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="EUo-Pe-W5F" detailTextLabel="I7E-eg-Tcc" style="IBUITableViewCellStyleValue1" id="uWo-2g-Z0W">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="47.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="53.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uWo-2g-Z0W" id="feT-UK-WlA">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="47.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="53.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EUo-Pe-W5F">
-                                                    <rect key="frame" x="20" y="12" width="38" height="24"/>
+                                                    <rect key="frame" x="20" y="18" width="36" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="HiraginoSans-W1" family="Hiragino Sans" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="I7E-eg-Tcc">
-                                                    <rect key="frame" x="343.5" y="12" width="50.5" height="24"/>
+                                                    <rect key="frame" x="346" y="18" width="48" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="HiraginoSans-W1" family="Hiragino Sans" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -377,23 +420,23 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="hrK-Ow-HR2" detailTextLabel="CW2-CP-1ki" style="IBUITableViewCellStyleValue1" id="fQe-Ps-ugy">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="53.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fQe-Ps-ugy" id="J2T-qP-orb">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="53.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hrK-Ow-HR2">
-                                                    <rect key="frame" x="20" y="12" width="33" height="20.5"/>
+                                                    <rect key="frame" x="20" y="18" width="36" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HiraginoSans-W1" family="Hiragino Sans" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CW2-CP-1ki">
-                                                    <rect key="frame" x="350" y="12" width="44" height="20.5"/>
+                                                    <rect key="frame" x="346" y="18" width="48" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HiraginoSans-W1" family="Hiragino Sans" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -450,13 +493,16 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="G81-F5-FZ6"/>
-        <segue reference="K5d-aA-X6z"/>
+        <segue reference="bnp-7P-UzA"/>
+        <segue reference="14A-FL-mdv"/>
         <segue reference="CVx-TV-Vbd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

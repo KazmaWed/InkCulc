@@ -20,10 +20,7 @@ class GearsetDetailViewController: UIViewController {
         let views = [mainWeaponInfoView!, subWeaponInfoView!, specialWeaponInfoView!, mainDamageCulcView!]
         for view in views {
             view.clipsToBounds = false
-            view.layer.shadowOpacity = shadowOpacity
-            view.layer.shadowRadius = shadowRadius
-            view.layer.shadowOffset = shadowOffset
-            view.layer.shadowColor = shadowColor
+            view.shadow()
         }
         
     }
@@ -46,7 +43,10 @@ class GearsetDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        if fromSetGearpowerViewController && firstAppear {
+            weaponSetImageAnimate()
+            firstAppear = false
+        }
     }
     
 
@@ -62,11 +62,19 @@ class GearsetDetailViewController: UIViewController {
     
     var weapon:Weapon?
     var gearpowerNames:[[String]]?
-    
     var gearset:Gearset?
     
+    //遷移アニメ用フレーム
+    var cardFrame:CGRect?
+    var imageFrame:CGRect?
+    var gearpowerFrame:CGRect?
+    var keyboardFrame:CGRect?
+    var keyboardCopyView = UIImageView()
+    
+    //遷移元
     var fromTopViewController = false
     var fromSetGearpowerViewController = false
+    var firstAppear = true
     
     var tappedButtonTag = 0
     
@@ -152,6 +160,100 @@ class GearsetDetailViewController: UIViewController {
     //--------------------画面遷移--------------------
     
     
+    //ギアパワーセッテビューからアニメ
+    func weaponSetImageAnimate() {
+        
+        let weaponSetImage = WeaponSetImageView()
+        let blankCard = UIView()
+        let gearpowerImage = GearpowerFrameView()
+        
+        //ギアセット非表示
+        self.gearsetCardView.isHidden = true
+        
+        //アニメ用カード(背景)ビュー設定
+        blankCard.frame = cardFrame!
+        blankCard.backgroundColor = UIColor.white
+        blankCard.shadow()
+        blankCard.layer.cornerRadius = cornerRadius
+        
+        //ブキ画像設定
+        weaponSetImage.frame = imageFrame!
+        weaponSetImage.weapon = weapon
+        //画像化
+        let uiImageWeaponView = UIImageView(image: weaponSetImage.makeImage())
+        uiImageWeaponView.frame = imageFrame!
+        
+        //ギアパワー
+        gearpowerImage.frame = gearpowerFrame!
+        gearpowerImage.gearpowerNames = gearpowerNames!
+        //画像化
+        let uiImageGearpowerView = UIImageView(image: gearpowerImage.makeImage())
+        uiImageGearpowerView.frame = gearpowerFrame!
+        
+        //キーボード
+        view.addSubview(keyboardCopyView)
+        
+        //ビューに追加
+        blankCard.addSubview(uiImageGearpowerView)
+        blankCard.addSubview(uiImageWeaponView)
+        view.addSubview(blankCard)
+        
+        let cardViewOrigin = CGPoint(x: gearsetCardView.frame.origin.x,
+                                     y: gearsetCardView.frame.origin.y)
+        let cardViewSize = gearsetCardView.frame.size
+        
+        //ギアセットアニメ
+        UIView.animate(withDuration: 0.4, delay: 0,
+                       options: .curveEaseOut, animations: {() -> Void in
+                        
+                        blankCard.frame = CGRect(origin: cardViewOrigin, size: cardViewSize)
+                        uiImageWeaponView.frame = self.gearsetCardView.weaponSetImageView.frame
+                        uiImageGearpowerView.frame = self.gearsetCardView.gearpowerFrameView.frame
+                        
+					   }, completion: { _ in
+                        
+						self.cardFrame = blankCard.frame
+						
+                        self.gearsetCardView.isHidden = false
+                        blankCard.removeFromSuperview()
+                        
+                       })
+        
+        //キーボードアニメ
+        UIView.animate(withDuration: 0.3, delay: 0,
+                       options: .curveEaseIn, animations: {() -> Void in
+                        
+                        self.keyboardCopyView.frame.origin.y = self.view.frame.size.height
+                        
+                       }, completion: { _ in
+                        
+                        self.keyboardCopyView.removeFromSuperview()
+                        
+                       })
+        
+        infoViewSlideIn()
+    }
+    
+    func infoViewSlideIn() {
+        
+        let views = [mainWeaponInfoView!, subWeaponInfoView!, specialWeaponInfoView!, mainDamageCulcView!]
+        let distance = view.frame.size.height - (gearsetCardView.frame.height + gearsetCardView.frame.origin.y)
+        
+        for n in 0...3 {
+            
+            views[n].frame.origin.y += distance
+            
+            let delay = 0.3/3 * Double(n)
+            
+            UIView.animate(withDuration: 0.4, delay: delay,
+                           options: .curveEaseOut, animations: {() -> Void in
+                            views[n].frame.origin.y -= distance
+                           })
+            
+        }
+        
+    }
+    
     @objc func editBarButtonTapped(sender: UIBarButtonItem) {
         performSegue(withIdentifier: "changeGearpower", sender: self)
     }
@@ -172,9 +274,27 @@ class GearsetDetailViewController: UIViewController {
         gearSet.gearpowerNames = gearpowerNames!
         gearSet.id = Static.gearsets.count
         
-        Static.gearsets.append(gearSet)
-        navigationController?.popToRootViewController(animated: true)
-    
+        Static.gearsets.insert(gearset!, at: 0)
+        
+        //トップビューに値渡し
+        let rootVc = self.navigationController?.viewControllers[0] as! TopViewController
+        rootVc.gearsetFrame = gearsetCardView.frame
+        rootVc.fromGearSetDetailView = true
+		
+		//トップビュー遷移前に画像作成
+		rootVc.imageViewFowAnimation = UIImageView()
+		rootVc.imageViewFowAnimation.layer.cornerRadius = cornerRadius
+		rootVc.imageViewFowAnimation.backgroundColor = UIColor.red
+		rootVc.imageViewFowAnimation.frame = cardFrame!
+		rootVc.imageViewFowAnimation.shadow()
+		rootVc.imageViewFowAnimation.image = gearsetCardView.makeImage()
+		//表示
+		rootVc.view.addSubview(rootVc.imageViewFowAnimation)
+		rootVc.tableView.isHidden = true
+        
+        //アニメーション無効化
+        UIView.setAnimationsEnabled(false)
+		navigationController?.popToRootViewController(animated: true)
     }
     
     //遷移先に値渡し

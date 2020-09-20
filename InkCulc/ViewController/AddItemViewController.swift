@@ -43,10 +43,8 @@ class AddItemViewController: UIViewController {
     var selectedItem:Weapon?
     var firstAppear = true
     
-    var imageSize:CGSize?
-    var imageOrigin:CGPoint?
-    var cardSize:CGSize?
-    var cardOrigin:CGPoint?
+    var imageFrame:CGRect?
+    var cardFrame:CGRect?
     
     
     //--------------------メソッド--------------------
@@ -141,14 +139,23 @@ extension AddItemViewController : UICollectionViewDelegate, UICollectionViewData
         
         //セルないビュー
         let cell = collectionView.cellForItem(at: indexPath)!
+        let card = cell.contentView.viewWithTag(1)!
         let image = cell.contentView.viewWithTag(2)!
         //スクロール量
         let contentOffset = collectionView.contentOffset.y
         
-        let imageX = image.frame.origin.x + cell.frame.origin.x
-        let imageY = image.frame.origin.y + cell.frame.origin.y - contentOffset
-        imageSize = image.frame.size
-        imageOrigin = CGPoint(x: imageX, y: imageY)
+        let cardX = card.frame.origin.x + cell.frame.origin.x
+        let cardY = card.frame.origin.y + cell.frame.origin.y - contentOffset
+        let cardSize = card.frame.size
+        let cardOrigin = CGPoint(x: cardX, y: cardY)
+        
+        let imageX = image.frame.origin.x
+        let imageY = image.frame.origin.y
+        let imageSize = image.frame.size
+        let imageOrigin = CGPoint(x: imageX, y: imageY)
+        
+        cardFrame = CGRect(origin: cardOrigin, size: cardSize)
+        imageFrame = CGRect(origin: imageOrigin, size: imageSize)
         
         selectedItem = weaponsGrouped![indexPath.section][indexPath.row]
         self.performSegue(withIdentifier: "setGearpower", sender: self)
@@ -163,8 +170,8 @@ extension AddItemViewController : UICollectionViewDelegate, UICollectionViewData
             let next = segue.destination as! SetGearpowerViewController
             next.fromAddItemViewController = true
             next.weapon = selectedItem
-            next.imageSize = imageSize
-            next.imageOrigin = imageOrigin
+            next.imageFrame = imageFrame
+            next.cardFrame = cardFrame
         }
         
     }

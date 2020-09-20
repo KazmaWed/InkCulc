@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -21,31 +23,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="324" height="212"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ge-Hk-GUX">
+                    <view clipsSubviews="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ge-Hk-GUX">
                         <rect key="frame" x="12" y="12" width="300" height="200"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kP-As-UQ7" customClass="GearsetCardView" customModule="IKA_Cul_" customModuleProvider="target">
+                            <view clipsSubviews="YES" tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kP-As-UQ7" customClass="GearsetCardView" customModule="IKA_Cul_" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="300" height="150"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2kP-As-UQ7" secondAttribute="height" multiplier="2:1" id="RSJ-Wu-FBp"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ギアセット" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAM-SK-JIb">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
-                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <fontDescription key="fontDescription" name="bananaslipplus" family="bananaslip plus" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eAM-SK-JIb" firstAttribute="top" secondItem="5Ge-Hk-GUX" secondAttribute="top" id="2Fx-6R-MLT"/>
                             <constraint firstAttribute="trailing" secondItem="eAM-SK-JIb" secondAttribute="trailing" id="3Ux-ip-AK1"/>
                             <constraint firstAttribute="bottom" secondItem="2kP-As-UQ7" secondAttribute="bottom" id="F0H-i0-yUr"/>
                             <constraint firstAttribute="trailing" secondItem="2kP-As-UQ7" secondAttribute="trailing" id="Ggd-la-WLT"/>
-                            <constraint firstAttribute="width" secondItem="5Ge-Hk-GUX" secondAttribute="height" multiplier="3:2" id="N9L-Cg-lPB"/>
                             <constraint firstItem="eAM-SK-JIb" firstAttribute="leading" secondItem="5Ge-Hk-GUX" secondAttribute="leading" id="Pk9-ws-umN"/>
                             <constraint firstItem="eAM-SK-JIb" firstAttribute="height" secondItem="5Ge-Hk-GUX" secondAttribute="height" multiplier="0.25" id="WSr-GS-Ct1"/>
                             <constraint firstItem="2kP-As-UQ7" firstAttribute="top" secondItem="eAM-SK-JIb" secondAttribute="bottom" id="hfi-OH-BVm"/>
@@ -61,8 +62,8 @@
                     <constraint firstAttribute="trailing" secondItem="5Ge-Hk-GUX" secondAttribute="trailing" constant="12" id="aJH-cn-tjO"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="frameView" destination="5Ge-Hk-GUX" id="JbX-bH-3ZU"/>
                 <outlet property="gearsetCardView" destination="2kP-As-UQ7" id="VQb-17-JSC"/>
@@ -71,4 +72,12 @@
             <point key="canvasLocation" x="115.94202898550725" y="109.15178571428571"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

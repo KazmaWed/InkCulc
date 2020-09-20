@@ -6,7 +6,7 @@ class GearpowerFrameView: UIView {
     var partIcons:[UIImageView] = []
     var icons:[[UIButton]] = []
     
-    var gearpowerNames:[[String]] = [] { didSet { reloadIcon() }}
+	var gearpowerNames:[[String]] = [] { didSet { reloadIcon(); print("didset") }}
     override var frame: CGRect {
         didSet {
             guard frame.size.width != 0 else { return }
@@ -158,21 +158,14 @@ class GearpowerFrameView: UIView {
                 if at != nil && [n,m] == at {
                     
                     UIView.animate(withDuration: 0.15) {
-                        self.icons[n][m].layer.shadowColor = shadowColor
-                        self.icons[n][m].layer.shadowOffset = shadowOffset
-                        self.icons[n][m].layer.shadowRadius = shadowRadius * 2
-                        self.icons[n][m].layer.shadowOpacity = 1
-                        
+                        self.icons[n][m].shadow()
                         self.icons[n][m].alpha = 1
                     }
                     
                 } else {
                     
                     UIView.animate(withDuration: 0.15) {
-                        self.icons[n][m].layer.shadowColor = UIColor.clear.cgColor
-                        self.icons[n][m].layer.shadowOffset = CGSize(width: 0, height: 0)
-                        self.icons[n][m].layer.shadowRadius = 0
-                        self.icons[n][m].layer.shadowOpacity = 0
+                        self.icons[n][m].shadow(off: true)
                         
                         if self.ifBlank(at: [n,m]) {
                             self.icons[n][m].alpha = 0.5
@@ -311,8 +304,10 @@ class GearpowerFrameView: UIView {
     
     //アイコン更新
     func reloadIcon() {
+		print("reloadicon1")
         
         guard gearpowerNames.count == 3 && gearpowerNames.last!.count == 4 else { return }
+		print("reloadicon2")
         
         for n in 0...2 {
             for m in 0...3 {

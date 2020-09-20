@@ -23,7 +23,7 @@ let shadowOffset = CGSize(width: 0, height: 1)
 let shadowRadius:CGFloat = 3
 let shadowOpacity:Float = 0.6
 
-let cornerRadius:CGFloat = 6
+let cornerRadius:CGFloat = 8
 
 class Static {
     static var gearsets:[Gearset] = []
@@ -37,6 +37,7 @@ class InkColor {
     static let lightGray = UIColor(red: 212/255, green: 212/255, blue: 212/255, alpha: 1)
     static let gray = UIColor(red: 128/255, green: 128/255, blue: 128/255, alpha: 1)
     static let darkGray = UIColor(red: 74/255, green: 74/255, blue: 74/255, alpha: 1)
+    static let red = UIColor(red: 184/255, green: 74/255, blue: 74/255, alpha: 1)
     static let textBlue = UIColor.systemBlue
     
 }
@@ -65,6 +66,13 @@ extension UIView {
             self.layer.shadowOffset = CGSize(width: 0, height: 0)
             self.layer.shadowColor = UIColor.clear.cgColor
         }
+        
+    }
+    
+    func withoutShadow() -> UIView {
+        
+        self.shadow(off: true)
+        return self
         
     }
     
@@ -106,77 +114,4 @@ extension UIView {
         
     }
     
-    func addTileBackground(name: String) {
-        
-        // スクリーンサイズの取得
-        let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height
-        
-        let tileImageForSize = UIImageView(image: UIImage(named: name))
-        
-        let tileWidth = tileImageForSize.image!.size.width
-        let tileHeight = tileImageForSize.image!.size.height
-        
-        let tileHeightFixed = tileHeight * (width / tileWidth)
-        let tileNum = Int(ceil(height / tileHeightFixed))
-        
-        for n in 0...tileNum {
-            
-            let tileImage = UIImageView(image: UIImage(named: name))
-            let tileY = Int(tileHeightFixed) * n
-            tileImage.frame.size = CGSize(width: width, height: tileHeightFixed)
-            tileImage.frame.origin = CGPoint(x:0, y: tileY)
-            self.addSubview(tileImage)
-            self.sendSubviewToBack(tileImage)
-            
-        }
-    }
-    
-    func addCardStyleBackground() {
-        
-        let width = self.frame.size.width
-        let height = self.frame.size.height
-        let cornerRadious:CGFloat = 32
-        
-        let cardTopImage = UIImageView(image: UIImage(named: "card_white_wide"))
-        let cardBottomImage = UIImageView(image: UIImage(named: "card_white_wide"))
-        let cardHeight = width * cardTopImage.image!.size.height / cardTopImage.image!.size.width
-        
-        cardTopImage.frame.size = CGSize(width: width, height: cardHeight)
-        cardTopImage.contentMode = .scaleAspectFill
-        
-        cardBottomImage.frame.size = CGSize(width: width, height: cardHeight)
-        cardBottomImage.contentMode = .scaleAspectFill
-        
-        //----------
-        
-        let cardTopView = UIView()
-        let cardBodyView = UIView()
-        let cardBottomView = UIView()
-        
-        cardTopView.frame.size = CGSize(width: width, height: cornerRadious)
-        cardTopView.clipsToBounds = true
-        cardTopView.addSubview(cardTopImage)
-        
-        cardBottomView.frame.size = CGSize(width: width, height: cornerRadious)
-        cardBottomView.clipsToBounds = true
-        cardBottomView.frame.origin.y = height - cornerRadious
-        cardBottomView.addSubview(cardBottomImage)
-        cardBottomImage.frame.origin.y = cornerRadious - cardHeight
-        
-        
-        cardBodyView.frame.size = CGSize(width: width,
-                                         height: height - cornerRadious * 2)
-        cardBodyView.frame.origin.y = cornerRadious
-        cardBodyView.backgroundColor = UIColor.white
-        
-        self.addSubview(cardTopView)
-        self.addSubview(cardBottomView)
-        self.addSubview(cardBodyView)
-        
-        self.sendSubviewToBack(cardTopView)
-        self.sendSubviewToBack(cardBottomView)
-        self.sendSubviewToBack(cardBodyView)
-        
-    }
 }

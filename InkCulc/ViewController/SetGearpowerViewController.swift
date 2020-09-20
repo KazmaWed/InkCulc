@@ -40,7 +40,10 @@ class SetGearpowerViewController: UIViewController {
         let part = gearpowerView.selectedMainGearpowerIcon()
         gearpowerKeyboard.enableLimitedKeys(part: part)
         
-        weaponSetImageAnimate()
+        if firstAppear {
+            weaponSetImageAnimate()
+            firstAppear = false
+        }
         
     }
     
@@ -49,6 +52,7 @@ class SetGearpowerViewController: UIViewController {
     
 
     
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var weaponSetView: WeaponSetImageView!
     @IBOutlet weak var gearpowerView: GearpowerFrameView!
     @IBOutlet weak var gearpowerKeyboard: GearpowerKeyboardView!
@@ -56,17 +60,21 @@ class SetGearpowerViewController: UIViewController {
     @IBOutlet weak var doneButtonOutlet: UIButton!
     
     
-    
     var weapon:Weapon?
     var gearpowerNames:[[String]]?
     
     var fromAddItemViewController = false
     var fromGearsetDetailViewController = false
+    var firstAppear = true
+
+    //遷移アニメ用フレーム
     
-    var weaponSetImage = WeaponSetImageView()
-    var imageSize:CGSize?
-    var imageOrigin:CGPoint?
+    var imageFrame:CGRect?
+    var cardFrame:CGRect?
+    var gearpowerFrame:CGRect?
+    let keyboardCopyView = UIImageView()
     
+    //ビューを戻るときにメソッド実行用
     var closure = {(changedNames: [[String]]) -> Void in }
     
     
@@ -155,6 +163,16 @@ class SetGearpowerViewController: UIViewController {
         
     }
     
+    //キーボード退避
+    func keyboardWithdraw() {
+        
+        keyboardCopyView.image = gearpowerKeyboard.makeImage()
+        keyboardCopyView.frame = gearpowerKeyboard.frame
+        
+        gearpowerKeyboard.frame.origin.y = view.frame.size.height
+        
+    }
+    
     
     //--------------------画面遷移--------------------
     
@@ -162,30 +180,70 @@ class SetGearpowerViewController: UIViewController {
     //コレクションビューからアニメ
     func weaponSetImageAnimate() {
         
-        weaponSetImage.frame.size = imageSize!
-        weaponSetImage.frame.origin = imageOrigin!
+        let blankCard = UIView()
+        let weaponSetImage = WeaponSetImageView()
+        
+        //ビュー設定・非表示
+        cardView.shadow()
+        cardView.layer.cornerRadius = cornerRadius
+        cardView.isHidden = true
+        doneButtonOutlet.isHidden = true
+        
+        //アニメ用カード(背景)ビュー設定
+        blankCard.frame = cardFrame!
+        blankCard.backgroundColor = UIColor.white
+        blankCard.shadow()
+        blankCard.layer.cornerRadius = cornerRadius
+        //ブキ画像設定
+        weaponSetImage.frame = imageFrame!
         weaponSetImage.weapon = weapon
         
-        view.addSubview(weaponSetImage)
-        view.sendSubviewToBack(weaponSetImage)
+        //ビューに追加
+        blankCard.addSubview(weaponSetImage)
+        view.addSubview(blankCard)
+        view.sendSubviewToBack(blankCard)
         
-        let weaponImageX = weaponSetView.frame.origin.x
-        let weaponImageY = weaponSetView.frame.origin.y - view.frame.origin.y
-        let weaponImageSize = weaponSetView.frame.size.width
+        //移動先
+        let cardViewOrigin = CGPoint(x: cardView.frame.origin.x,
+                                     y: cardView.frame.origin.y)
+        let cardViewSize = cardView.frame.size
         
-        UIView.animate(withDuration: 0.3, delay: 0,
+        //アニメ
+        UIView.animate(withDuration: 0.5, delay: 0,
                        options: .curveEaseInOut, animations: { () -> Void in
-                        self.weaponSetImage.frame.size = CGSize(width: weaponImageSize, height: weaponImageSize)
-                        self.weaponSetImage.frame.origin = CGPoint(x: weaponImageX, y: weaponImageY)
-        })
+                        
+                        blankCard.frame = CGRect(origin: cardViewOrigin, size: cardViewSize)
+                        weaponSetImage.frame = self.weaponSetView.frame
+                        
+                       }, completion: { _ in
+                        
+                        self.cardView.isHidden = false
+                        self.doneButtonOutlet.isHidden = false
+                        
+                        self.cardFrame!.size = blankCard.frame.size
+                        self.cardFrame!.origin = CGPoint(x: blankCard.frame.origin.x,
+                                                         y: blankCard.frame.origin.y)
+                        
+                        self.imageFrame = weaponSetImage.frame
+                        self.gearpowerFrame = self.gearpowerView.frame
+                                                     
+                        
+                        blankCard.removeFromSuperview()
+                        weaponSetImage.removeFromSuperview()
+                        
+                       })
         
     }
     
     //決定ボタン
     func doneTapped() {
         
+        keyboardWithdraw()
+        
         if fromAddItemViewController {
+            
             performSegue(withIdentifier: "gearsetDetail", sender: self)
+            
         } else if fromGearsetDetailViewController {
             
             self.navigationController?.popViewController(animated: true)
@@ -213,7 +271,7 @@ class SetGearpowerViewController: UIViewController {
             //ボタン無効時
             UIView.animate(withDuration: 0.1, delay: 0,
                            options: .curveEaseInOut, animations: { () -> Void in
-                            self.doneButtonOutlet.alpha = 0.5
+                            self.doneButtonOutlet.alpha = 0.4
                             self.doneButtonOutlet.layer.shadowColor = UIColor.clear.cgColor
                             self.doneButtonOutlet.layer.shadowOffset = CGSize(width: 0, height: 0)
                             self.doneButtonOutlet.layer.shadowRadius = 0
@@ -237,8 +295,13 @@ class SetGearpowerViewController: UIViewController {
             let next = segue.destination as! GearsetDetailViewController
             let gearset = Gearset(weapon:weapon!)
             gearset.gearpowerNames = gearpowerView.gearpowerNames
+            
             next.gearset = gearset
             next.fromSetGearpowerViewController = true
+            next.cardFrame = cardFrame
+            next.imageFrame = imageFrame
+            next.gearpowerFrame = gearpowerFrame
+            next.keyboardCopyView = keyboardCopyView
         }
         
     }

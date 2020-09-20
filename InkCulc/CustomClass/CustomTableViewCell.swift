@@ -24,12 +24,10 @@ class CustomTableViewCell: UITableViewCell {
             
             topLabel.backgroundColor = InkColor.yellow
             
-            self.layer.shadowColor = shadowColor
-            self.layer.shadowOffset = shadowOffset
-            self.layer.shadowRadius = shadowRadius
-            self.layer.shadowOpacity = shadowOpacity
+            self.shadow()
             
             gearsetCardView.gearset = self.gearset
+			gearsetCardView.gearpowerFrameView.gearpowerNames = gearset!.gearpowerNames!
         }
     }
     
