@@ -51,7 +51,9 @@ class InkAPI {
         let dispatchGroup = DispatchGroup()
         dispatchGroup.enter()
         
-        for eachWeapon in weaponList {
+		for n in 0...weaponList.count - 1 {
+			let eachWeapon = weaponList[n]
+			weaponImageData.append(Data())
             
             dispatchGroup.enter()
             
@@ -59,7 +61,7 @@ class InkAPI {
             AF.request(url, method: .get).responseImage { response in
                 guard let data = response.data else { print("Error: No data obtained."); return }
                 
-                self.weaponImageData.append(data)
+                self.weaponImageData[n] = data
                 dispatchGroup.leave()
             }
             
