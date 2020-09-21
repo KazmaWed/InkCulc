@@ -63,7 +63,7 @@ class InkColor {
     static let darkGray = UIColor(red: 74/255, green: 74/255, blue: 74/255, alpha: 1)
     static let red = UIColor(red: 232/255, green: 96/255, blue: 112/255, alpha: 1)
 	static let darkRed = UIColor(red: 174/255, green: 64/255, blue: 76/255, alpha: 1)
-    static let textBlue = UIColor(red: 142/255, green: 154/255, blue: 242/255, alpha: 1)
+    static let textBlue = UIColor(red: 174/255, green: 64/255, blue: 76/255, alpha: 1)
     
 	static let array = [yellow, blue, pink, green, gray, red]
 	
