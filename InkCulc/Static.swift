@@ -71,7 +71,7 @@ class InkColor {
 
 class InkFont {
     static let Banana = UIFont(name: "bananaslipplus", size: 24)
-    static let Sans = UIFont(name: "HiraginoSans-W2", size: 18)
+    static let Sans = UIFont(name: "HiraginoSans-W2", size: 17)
     static let Navi = UIFont(name: "HiraginoSans-W1", size: 28)
 }
 
